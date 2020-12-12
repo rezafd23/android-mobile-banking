@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">android-mobile-banking</string>
+
+    <string name="input_pin">Masukkan PIN</string>
+    <string name="forgot_pin">Lupa PIN?</string>
+    <string name="donthave_account">Belum punya akun?</string>
+    <string name="diawasi">Aplikasi ini diawasi oleh </string>
+    <string name="diawasi2">Aplikasi ini terdaftar dan diawasi oleh Otoritas Jasa Keuangan </string>
+    <string name="belum_punya_akun">Belum punya akun? </string>
+    <string name="mbanking">di m-BTPS </string>
+    <string name="signup_uppercase">SIGN UP </string>
+    <string name="login">Login </string>
+    <string name="register">Register </string>
+
+    <string name="credit_availble">SALDO TERSEDIA</string>
+    <string name="customer_type">Anda Merupakan Nasabah Prioritas</string>
+    <string name="nikmati">Nikmati Kemudahan Pembayaran</string>
+
+    <string name="e_wallet">e-Wallet Center</string>
+    <string name="card_center">Card Center</string>
+
+    <string name="personal_data">Data Pribadi</string>
+    <string name="relative_data">Data Kerabat</string>
+    <string name="work_data">Data Pekerjaan</string>
+    <string name="apply_data">Daftar Sekarang</string>
+
+    <string name="apply_not_finish">Pendaftaranmu belum selesai. Harap lanjutkan pengisian data untuk menikmati fasilitas mobile banking</string>
+
+
+    <string name="apply">Daftarkan diri anda sekarang untuk mendapatkan kemudahan aktivitas perbankan di m-BTPS</string>
+
+    <string name="phone_number_login_ph">No. Handphone Terdaftar</string>
+
+    <string name="agree_checked"><![CDATA[Saya telah membaca dan menyetujui <b>syarat dan ketentuan aplikasi M-BTPS</b>]]></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

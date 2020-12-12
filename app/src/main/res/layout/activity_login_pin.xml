@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.LoginPinActivity"
+    android:background="@drawable/bg_loginpin">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/default_margin">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/logo_100"
+            android:layout_height="@dimen/logo_100"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/default_medium_margin"
+            app:srcCompat="@drawable/logo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/input_pin"
+            android:textColor="@color/white"
+            android:fontFamily="@font/rubik_medium"
+            android:textSize="@dimen/text_extra_large" />
+
+        <com.alimuzaffar.lib.pin.PinEntryEditText
+            android:id="@+id/txt_pin_entry"
+            android:layout_width="220dp"
+            android:layout_height="21dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="0dp"
+            android:background="@null"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:digits="1234567890"
+            android:editable="false"
+            android:focusable="false"
+            android:inputType="number|numberPassword"
+            android:maxLength="6"
+            android:textColor="@android:color/transparent"
+            android:textIsSelectable="false"
+            android:textSize="0px"
+            android:visibility="visible"
+            app:pinBackgroundDrawable="@drawable/selector_pin_round"
+            android:paddingBottom="1dp"
+            app:pinBackgroundIsSquare="true"
+            app:pinCharacterSpacing="20dp"
+            app:pinLineColors="@color/colorBackgroundInfoTint"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_forgotpin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/default_extralong_margin"
+            android:clickable="true"
+            android:text="@string/forgot_pin"
+            android:textAllCaps="true"
+            android:fontFamily="@font/rubik"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_xs_14" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_donthave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:text="@string/donthave_account"
+            android:clickable="true"
+            android:fontFamily="@font/rubik"
+            android:textColor="@color/colorWhiteTint"
+            android:textSize="@dimen/text_xs_13" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/container"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/keyboard_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/default_medium_margin" />
+    </RelativeLayout>
+
+</RelativeLayout>

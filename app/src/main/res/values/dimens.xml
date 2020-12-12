@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_long_margin">16dp</dimen>
+    <dimen name="keyboard_textsize">24sp</dimen>
+    <dimen name="default_margin">8dp</dimen>
+
+<!--    font size-->
+    <dimen name="text_extra_large">24sp</dimen>
+    <dimen name="text_xs_14">14sp</dimen>
+    <dimen name="text_xs_13">13sp</dimen>
+    <dimen name="text_xs_11">11sp</dimen>
+    <dimen name="text_xs_12">12sp</dimen>
+    <dimen name="text_xs_16">16sp</dimen>
+    <dimen name="text_xs_18">18sp</dimen>
+    <dimen name="text_xs_20">20sp</dimen>
+    <dimen name="text_xs_35">35sp</dimen>
+
+<!--    margin-->
+    <dimen name="default_extralong_margin">32dp</dimen>
+    <dimen name="default_medium_margin">10dp</dimen>
+
+<!--    logo size-->
+    <dimen name="logo_100">100dp</dimen>
+    <dimen name="logo_200">200dp</dimen>
+    <dimen name="logo_50">50dp</dimen>
+
+<!--    padding-->
+    <dimen name="pad_5">5dp</dimen>
+    <dimen name="pad_10">10dp</dimen>
+    <dimen name="pad_15">15dp</dimen>
+    <dimen name="pad_20">20dp</dimen>
+    <dimen name="pad_24">24dp</dimen>
+    <dimen name="pad_32">32dp</dimen>
+
+<!--    spacing-->
+    <dimen name="linespacing_small">1.2</dimen>
+    <dimen name="linespacing_medium">1.5</dimen>
+    <dimen name="linespacing_large">2</dimen>
+
+    <dimen name="rbk_btn_full">56dp</dimen>
+</resources>

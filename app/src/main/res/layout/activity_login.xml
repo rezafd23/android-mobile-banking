@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.activity.LoginActivity">
+
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_weight="1">-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/logoSignUP"
+                android:layout_width="123dp"
+                android:layout_height="177dp"
+                android:layout_marginTop="-2dp"
+                android:layout_alignParentRight="true"
+                app:srcCompat="@drawable/ic_bg_reloginsvg" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/pad_32"
+                android:layout_marginLeft="@dimen/pad_20"
+                android:layout_marginRight="@dimen/pad_20">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_icon"
+                    android:layout_width="@dimen/logo_50"
+                    android:layout_height="@dimen/logo_50"
+                    android:layout_marginTop="@dimen/pad_10"
+                    app:srcCompat="@drawable/logo" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_title1"
+                    android:layout_marginTop="@dimen/pad_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:text="Selamat \nDatang Kembali"
+                    android:textSize="@dimen/text_extra_large"
+                    android:lineSpacingExtra="8sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="8sp"
+                    android:text="@string/mbanking"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_extra_large" />
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_hp"
+                        android:hint="@string/phone_number_login_ph"
+                        android:inputType="number"
+                        android:maxLength="13"
+                        android:layout_marginTop="@dimen/pad_10"
+                        android:paddingBottom="@dimen/pad_20"
+                        />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/pad_15"
+                    android:text="@string/belum_punya_akun"
+                    android:fontFamily="@font/opensans"
+                    android:alpha="0.5"
+                    android:textSize="@dimen/text_xs_13" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:text="@string/signup_uppercase"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/text_xs_14" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/pad_20"
+        android:background="@drawable/bg_stroke"
+        android:padding="@dimen/default_margin">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_ojk"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:layout_marginRight="@dimen/pad_5"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/ic_ojk" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/iv_ojk"
+            android:paddingLeft="@dimen/pad_5"
+            android:paddingRight="@dimen/pad_5"
+            android:lineSpacingMultiplier="@dimen/pad_5"
+            android:alpha="0.5"
+            android:layout_marginStart="@dimen/pad_5"
+            android:fontFamily="@font/opensans"
+            android:text="@string/diawasi2"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_xs_11" />
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/tnc_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/default_medium_margin">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cb_tnc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/colorStroke" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_tnc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pad_5"
+            android:textColor="@color/black"
+            android:fontFamily="@font/opensans"
+            android:textSize="@dimen/text_xs_12"
+            android:lineSpacingExtra="4sp"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_signup"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/rbk_btn_full"
+        android:background="@drawable/selector_btn_primary_full"
+        android:enabled="false"
+        android:text="@string/login"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_xs_18"/>
+
+<!--    </androidx.core.widget.NestedScrollView>-->
+
+</androidx.appcompat.widget.LinearLayoutCompat>
