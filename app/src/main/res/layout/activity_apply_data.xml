@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.ApplyDataActivity">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/pad_15">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pengisian"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_extra_large"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:text="@string/apply_terms"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="@dimen/text_xs_16" />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progressDrawable="@drawable/progressbar_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_medium_margin"
+            android:minHeight="@dimen/pad_10"
+            android:maxHeight="@dimen/pad_10"
+            android:max="100"
+            android:progress="2"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:text="@string/progress"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="@dimen/text_xs_14" />
+
+<!--        foto ktp-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/btn_capture_ktp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_long_margin"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/default_medium_margin"
+            android:paddingBottom="@dimen/default_medium_margin">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/default_medium_margin"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_camera" />
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/progress_foto"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/default_medium_margin"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_foto"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/default_medium_margin"
+                android:layout_toEndOf="@id/progress_foto"
+                android:scaleType="fitCenter"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_camera" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_foto"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_cam_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_take_foto"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/text_xs_16" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_cam_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_take_foto_desc"
+                    android:textColor="@color/colorDarkGrey"
+                    android:textSize="@dimen/text_xs_14"
+                    android:visibility="visible" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_arrow_cam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_arrow_right" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_edit_cam"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="end|center_vertical"
+                android:text="Ubah Foto"
+                android:textAllCaps="true"
+                android:textColor="@color/dark_blue"
+                android:visibility="gone" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLightGrey" />
+
+        <!--  Verifikasi Wajah-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/btn_capture_face"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_long_margin"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/default_medium_margin"
+            android:paddingBottom="@dimen/default_medium_margin">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_camera_face"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/default_medium_margin"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_face" />
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/progress_face"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/default_medium_margin"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_face"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/default_medium_margin"
+                android:layout_toEndOf="@id/progress_foto"
+                android:scaleType="fitCenter"
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_camera" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_foto"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_face_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_take_face"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/text_xs_16" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_face_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_take_face_desc"
+                    android:textColor="@color/colorDarkGrey"
+                    android:textSize="@dimen/text_xs_14"
+                    android:visibility="visible" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_arrow_face"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_arrow_right" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_edit_face"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="end|center_vertical"
+                android:text="Ubah Foto"
+                android:textAllCaps="true"
+                android:textColor="@color/dark_blue"
+                android:visibility="gone" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLightGrey" />
+
+<!--        layout data pribadi-->
+        <RelativeLayout
+            android:id="@+id/btn_personal_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/default_long_margin"
+            android:paddingTop="@dimen/default_long_margin">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_personal"
+                android:layout_width="@dimen/pad_32"
+                android:layout_height="@dimen/pad_32"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/default_medium_margin"
+                app:srcCompat="@drawable/ic_personal_info" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_personal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_personal"
+                android:enabled="false"
+                android:text="@string/data_pribadi"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="@dimen/text_xs_16"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_arrow_personal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_arrow_right" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_edit_personal"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="end|center_vertical"
+                android:text="@string/Ubah"
+                android:textAllCaps="true"
+                android:textColor="@color/dark_blue"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+        <include
+            android:id="@+id/personal_detail"
+            layout="@layout/layout_personal_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_medium_margin"
+            android:visibility="gone" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLightGrey" />
+
+<!--        layout kerabat-->
+        <RelativeLayout
+            android:id="@+id/btn_relevan_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/default_long_margin"
+            android:paddingTop="@dimen/default_long_margin">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_relevan"
+                android:layout_width="@dimen/pad_32"
+                android:layout_height="@dimen/pad_32"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/default_medium_margin"
+                app:srcCompat="@drawable/ic_relative" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_relevan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_relevan"
+                android:enabled="false"
+                android:text="Data Kerabat"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="@dimen/text_xs_16"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_arrow_relevan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_arrow_right" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_edit_relevan"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="end|center_vertical"
+                android:text="@string/Ubah"
+                android:textAllCaps="true"
+                android:textColor="@color/dark_blue"
+                android:visibility="gone" />
+        </RelativeLayout>
+        <include
+            android:id="@+id/relevan_detail"
+            layout="@layout/layout_relevan_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_medium_margin"
+            android:visibility="gone" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLightGrey" />
+
+<!--        layout pekerjaan-->
+        <RelativeLayout
+            android:id="@+id/btn_work_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/default_long_margin"
+            android:paddingTop="@dimen/default_long_margin">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_work"
+                android:layout_width="@dimen/pad_32"
+                android:layout_height="@dimen/pad_32" android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/default_medium_margin"
+                app:srcCompat="@drawable/ic_work_info" />
+
+            <TextView
+                android:id="@+id/tv_work"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_work"
+                android:enabled="false"
+                android:text="Data Pekerjaan"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="@dimen/text_xs_16"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_arrow_work"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_arrow_right" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_edit_work"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="end|center_vertical"
+                android:text="@string/Ubah"
+                android:textAllCaps="true"
+                android:textColor="@color/dark_blue"
+                android:visibility="gone" />
+        </RelativeLayout>
+        <include
+            android:id="@+id/work_detail"
+            layout="@layout/layout_work_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_medium_margin"
+            android:visibility="gone" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLightGrey" />
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:lineSpacingExtra="5sp"
+            android:textSize="12sp"
+            android:text="@string/apply_form_agreement"
+            android:textColor="@color/colorDarkGrey"
+            android:enabled="false"
+            />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_save_local"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/selector_btn_transparent"
+                android:padding="@dimen/default_medium_margin"
+                android:text="@string/Simpan"
+                android:textAllCaps="true"
+                android:textColor="@color/dark_blue"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_medium_margin"
+                android:layout_weight="1"
+                android:background="@drawable/selector_btn_primary"
+                android:padding="@dimen/default_medium_margin"
+                android:text="@string/Kirim"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:enabled="false"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.core.widget.NestedScrollView>

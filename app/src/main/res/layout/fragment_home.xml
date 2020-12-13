@@ -90,7 +90,7 @@
                             android:orientation="vertical"
                             android:paddingTop="@dimen/pad_24"
                             android:paddingBottom="@dimen/pad_24"
-                            android:visibility="gone">
+                            android:visibility="visible">
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="match_parent"
@@ -296,7 +296,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             android:padding="@dimen/pad_24"
-                            android:visibility="visible">
+                            android:visibility="gone">
 
 
                             <androidx.appcompat.widget.AppCompatImageView
@@ -331,6 +331,8 @@
                                 android:textAllCaps="false"
                                 android:textColor="@color/white" />
                         </RelativeLayout>
+
+<!--                        layout finish-->
                         <RelativeLayout
                             android:id="@+id/layout_credit_finish"
                             android:layout_width="match_parent"

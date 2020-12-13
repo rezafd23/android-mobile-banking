@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/work_panel"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nomor NPWP"
+        android:textSize="@dimen/text_xs_14"
+        android:textStyle="bold"
+        android:fontFamily="@font/opensans_bold"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_nomor_npwp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="1234567890567789"
+        android:textSize="@dimen/text_xs_12" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="Sumber Penghasilan"
+        android:textSize="@dimen/text_xs_14"
+        android:textStyle="bold"
+        android:fontFamily="@font/opensans_bold"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_sumber_penghasilan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Gaji"
+        android:textSize="@dimen/text_xs_12" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="Pendapatan Bersih Per Bulan"
+        android:textSize="@dimen/text_xs_14"
+        android:textStyle="bold"
+        android:fontFamily="@font/opensans_bold"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_pendapatan_perbulan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="7000000"
+        android:textSize="@dimen/text_xs_12" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="Jenis Pekerjaan"
+        android:textSize="@dimen/text_xs_14"
+        android:textStyle="bold"
+        android:fontFamily="@font/opensans_bold"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_jenis_pekerjaan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Karyawan Swasta"
+        android:textSize="@dimen/text_xs_12" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="Perusahaan Tempat Bekerja"
+        android:textSize="@dimen/text_xs_14"
+        android:textStyle="bold"
+        android:fontFamily="@font/opensans_bold"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_nama_perusahaan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="PT Thunder Agency"
+        android:textSize="@dimen/text_xs_12" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="Status Pekerjaan"
+        android:textSize="@dimen/text_xs_14"
+        android:textStyle="bold"
+        android:fontFamily="@font/opensans_bold"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_status_pekerjaan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Kontrak"
+        android:textSize="@dimen/text_xs_12" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

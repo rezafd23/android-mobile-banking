@@ -24,6 +24,60 @@
     <string name="work_data">Data Pekerjaan</string>
     <string name="apply_data">Daftar Sekarang</string>
 
+    <string name="security_code">Verifikasi Nomor</string>
+
+
+    <string name="otp_verification_description">Masukan kode keamanan yang baru saja dikirimkan ke nomor handphone kamu untuk mulai mendaftar</string>
+    <string name="otp_invalid">Kode keamanan salah, Mohon tunggu</string>
+    <string name="otp_not_received">Tidak menerima kode keamanan?</string>
+    <string name="resend_otp">KIRIM ULANG</string>
+
+
+    <string name="pengisian">Pengisian Data</string>
+    <string name="data_pribadi">Data Pribadi</string>
+    <string name="data_diri">Data Diri</string>
+    <string name="data_kerabat">Data Kerabat</string>
+    <string name="data_pekerjaan">Data Pekerjaan</string>
+    <string name="data_home">Data Tempat Tinggal</string>
+    <string name="apply_desc">Semua informasi wajib diisi</string>
+    <string name="apply_terms">Lengkapi seluruh data berikut sebagai syarat pengajuan</string>
+    <string name="progress">0% Completed</string>
+    <string name="btn_take_foto">AMBIL FOTO E-KTP</string>
+    <string name="btn_take_foto_desc">Pastikan ambil foto E-KTP dengan jelas</string>
+    <string name="btn_take_face">AMBIL FOTO WAJAH</string>
+    <string name="btn_take_face_desc">Pastikan wajah anda terlihat dengan jelas</string>
+
+    <string name="apply_form_agreement">Saya menyatakan telah mengisi data-data diatas secara baik dan benar</string>
+
+    <string name="kerabat_desc">Pilih kerabat yang berbeda domisili dengan kamu. Kami Akan menghubungi kerabat kamu sebagai bagian proses verifikasi data.</string>
+
+    <string name="input_text">abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890/.,</string>
+
+    <string name="hintPendapatan">Pendapatan Bersih per Bulan</string>
+
+    <string name="camera_view_note">Pastikan kartu E-KTP kamu di dalam dan memenuhi bingkai di atas</string>
+
+    <string name="retake_foto">FOTO ULANG</string>
+    <string name="use_foto">Gunakan Foto</string>
+
+    <string name="pulsa">Listrik Prabayar</string>
+    <string name="meter">Nomor Meter / ID Pelanggan</string>
+    <string name="meter_m">Masukan Nomor Meter disini..</string>
+
+    <string name="rincian">Rincian Pembelian</string>
+    <string name="desc">Seluruh transaksi kamu dilakukan dengan cepat dan aman.</string>
+    <string name="bayar">BAYAR SEKARANG</string>
+    <string name="berhasil">Transaksi Anda Berhasil</string>
+    <string name="back_home">Kembali ke Home</string>
+
+    <string name="create_pin">Buat PIN</string>
+    <string name="create_secure_pin_message">Buat PIN yang aman untuk membuka aplikasi m-BTPS</string>
+
+    <string name="Ubah">Ubah</string>
+    <string name="Kirim">Kirim</string>
+    <string name="Simpan">Berhenti &amp; Simpan</string>
+    <string name="btnSimpan">Simpan</string>
+
     <string name="apply_not_finish">Pendaftaranmu belum selesai. Harap lanjutkan pengisian data untuk menikmati fasilitas mobile banking</string>
 
 

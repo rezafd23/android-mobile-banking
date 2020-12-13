@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.CreatePinActivity">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/pad_20"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/create_pin"
+            android:fontFamily="@font/rubik_medium"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="@dimen/text_xs_24"/>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:fontFamily="@font/opensans"
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_medium_margin"
+            android:layout_marginEnd="@dimen/pad_32"
+            android:text="@string/create_secure_pin_message"
+            android:lineSpacingMultiplier="@dimen/linespacing_small"
+            android:textColor="@color/colorDarkGrey"
+            android:layout_marginBottom="20dp"
+            android:textSize="@dimen/text_xs_14" />
+
+        <com.alimuzaffar.lib.pin.PinEntryEditText
+            android:id="@+id/txt_pin_entry"
+            android:layout_width="196dp"
+            android:layout_height="26dp"
+            android:background="@null"
+            android:cursorVisible="false"
+            android:digits="1234567890"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:inputType="number"
+            android:maxLength="6"
+            android:textColor="@android:color/transparent"
+            android:textIsSelectable="false"
+            android:textSize="0px"
+            app:pinBackgroundDrawable="@drawable/selector_pin_round_primary"
+            app:pinBackgroundIsSquare="true"
+            app:pinCharacterSpacing="10dp"
+            android:padding="0dp"
+            android:layout_margin="0dp"
+            app:pinLineColors="@color/colorBackgroundInfoTint"
+            android:paddingBottom="1dp"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:fontFamily="@font/opensans"
+            android:id="@+id/tv_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:lineSpacingMultiplier="1.2"
+            android:text="PIN harus berjumlah 6 angka, \nhindari menggunakan angka berulang"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="@dimen/text_xs_16" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</RelativeLayout>

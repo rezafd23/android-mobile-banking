@@ -13,6 +13,7 @@
     <dimen name="text_xs_16">16sp</dimen>
     <dimen name="text_xs_18">18sp</dimen>
     <dimen name="text_xs_20">20sp</dimen>
+    <dimen name="text_xs_24">24sp</dimen>
     <dimen name="text_xs_35">35sp</dimen>
 
 <!--    margin-->
@@ -27,6 +28,7 @@
 <!--    padding-->
     <dimen name="pad_5">5dp</dimen>
     <dimen name="pad_10">10dp</dimen>
+    <dimen name="pad_12">12dp</dimen>
     <dimen name="pad_15">15dp</dimen>
     <dimen name="pad_20">20dp</dimen>
     <dimen name="pad_24">24dp</dimen>
@@ -36,6 +38,10 @@
     <dimen name="linespacing_small">1.2</dimen>
     <dimen name="linespacing_medium">1.5</dimen>
     <dimen name="linespacing_large">2</dimen>
+
+<!--    camera-->
+    <dimen name="frame_camera_height">280dp</dimen>
+    <dimen name="frame_camera_margin">15dp</dimen>
 
     <dimen name="rbk_btn_full">56dp</dimen>
 </resources>

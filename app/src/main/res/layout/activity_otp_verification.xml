@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.activity.OtpVerificationActivity">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/pad_20"
+        android:paddingEnd="@dimen/pad_20"
+        android:paddingStart="@dimen/pad_15"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/security_code"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nunito_bold"
+            android:textSize="@dimen/text_xs_24" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:fontFamily="@font/opensans"
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/pad_32"
+            android:layout_marginTop="@dimen/pad_32"
+            android:lineSpacingExtra="@dimen/pad_5"
+            android:text="@string/otp_verification_description"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="@dimen/text_xs_16" />
+
+        <com.alimuzaffar.lib.pin.PinEntryEditText
+            android:id="@+id/otp_verification_txt"
+            android:layout_width="220dp"
+            android:layout_height="@dimen/logo_50"
+            android:layout_marginTop="@dimen/default_medium_margin"
+            android:layout_marginBottom="@dimen/pad_5"
+            android:cursorVisible="true"
+            android:digits="1234567890"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:inputType="number"
+            android:maxLength="6"
+            android:textColor="@color/colorDarkGrey"
+            android:textIsSelectable="false"
+            android:textSize="@dimen/text_xs_20"
+            app:pinBackgroundIsSquare="true"
+            app:pinCharacterSpacing="10dp"
+            app:pinLineColors="@color/dark_blue"
+            app:pinLineStroke="2dp"
+            android:text=""
+            app:pinLineStrokeSelected="3dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:fontFamily="@font/ptsans"
+            android:id="@+id/tv_alert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/otp_invalid"
+            android:textColor="@color/colorTextError"
+            android:textSize="@dimen/text_xs_13"
+            android:visibility="invisible"
+            tools:visibility="visible" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_countdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="30:00"
+            android:layout_marginBottom="12dp"
+            android:textColor="@color/purple_700"
+            android:textSize="@dimen/text_xs_12"
+            android:visibility="gone"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="0dp"
+            android:paddingEnd="@dimen/default_margin"
+            android:text="@string/otp_not_received"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="@dimen/text_xs_13" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_resend_otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:clickable="true"
+            android:enabled="true"
+            android:paddingEnd="@dimen/default_margin"
+            android:paddingBottom="5dp"
+            android:text="@string/resend_otp"
+            android:textColor="@color/dark_blue"
+            android:textSize="@dimen/text_xs_14" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</RelativeLayout>

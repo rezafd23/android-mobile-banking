@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green_s"
+    tools:context=".ui.activity.SuccessResponseActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_berhasil"
+        android:layout_above="@+id/tv_berhasil"
+        android:layout_centerHorizontal="true"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_berhasil"
+        android:layout_width="match_parent"
+        android:textColor="@color/white"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/text_xs_24"
+        android:fontFamily="@font/rubik_medium"
+        android:text="@string/berhasil"
+        android:gravity="center"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_date_time"
+        android:layout_width="match_parent"
+        android:textColor="@color/white"
+        android:fontFamily="@font/opensans_regular"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/text_xs_16"
+        android:layout_below="@id/tv_berhasil"
+        android:text="24 Januari 2020"
+        android:gravity="center"
+        android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_back"
+        android:layout_marginTop="@dimen/pad_10"
+        android:background="@drawable/selector_btn_primary"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tv_date_time"
+        android:layout_width="@dimen/logo_200"
+        android:layout_height="wrap_content"
+        android:text="@string/back_home"/>
+
+</RelativeLayout>

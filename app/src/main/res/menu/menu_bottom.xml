@@ -5,9 +5,12 @@
         android:title="Home"/>
 
     <item android:id="@+id/search"
-        android:icon="@drawable/ic_home"
-        android:title="Search"/>
+        android:icon="@drawable/ic_mutasi"
+        android:title="Mutasi"/>
     <item android:id="@+id/useracount"
-        android:icon="@drawable/ic_home"
-        android:title="Acount"/>
+        android:icon="@drawable/ic_qr"
+        android:title="QRIS"/>
+    <item android:id="@+id/pln"
+        android:icon="@drawable/ic_flash"
+        android:title="PLN"/>
 </menu>

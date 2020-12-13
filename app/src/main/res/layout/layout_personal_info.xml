@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/personal_panel"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No KTP"
+        android:textSize="@dimen/text_xs_14"
+        android:textStyle="bold"
+        android:fontFamily="@font/opensans_bold"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_ktp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_xs_12"
+        tools:text="3277...." />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textSize="@dimen/text_xs_14"
+        android:textStyle="bold"
+        android:fontFamily="@font/opensans_bold"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_xs_12"
+        tools:text="rama.kumbara@gmail.com" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="Pendidikan Terakhir"
+        android:textSize="@dimen/text_xs_14"
+        android:textStyle="bold"
+        android:fontFamily="@font/opensans_bold"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_pendidikan_terakhir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_xs_12"
+        tools:text="Pasca Sarjana" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="Status Perkawinan"
+        android:textSize="@dimen/text_xs_14"
+        android:fontFamily="@font/opensans_bold" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_status_perkawinan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_xs_12"
+        tools:text="Belum Menikah" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="Alamat Tempat Tinggal"
+        android:textSize="@dimen/text_xs_14"
+        android:textStyle="bold"
+        android:fontFamily="@font/opensans_bold"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_alamat_rumah"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_xs_12"
+        tools:text="Sesuai dengan KTP" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/address_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Provinsi"
+            android:textSize="@dimen/text_xs_14"
+            android:textStyle="bold"
+            android:fontFamily="@font/opensans_bold"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_provinsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_xs_12"
+            tools:text="DKI Jakarta" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:text="Kabupaten"
+            android:textSize="@dimen/text_xs_14"
+            android:textStyle="bold"
+            android:fontFamily="@font/opensans_bold"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_kabupaten"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_xs_12"
+            tools:text="Jakarta" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:text="Kecamatan"
+            android:textSize="@dimen/text_xs_14"
+            android:textStyle="bold"
+            android:fontFamily="@font/opensans_bold"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_kecamatan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_xs_12"
+            tools:text="Setiabudi" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:text="Kelurahan"
+            android:textSize="@dimen/text_xs_14"
+            android:fontFamily="@font/opensans_bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_kelurahan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_xs_12"
+            tools:text="Setiabudi" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:text="RT/RW"
+            android:textSize="@dimen/text_xs_14"
+            android:fontFamily="@font/opensans_bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_rtrw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_xs_12"
+            tools:text="001/008" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="Status Tempat Tinggal"
+        android:textSize="@dimen/text_xs_14"
+        android:textStyle="bold"
+        android:fontFamily="@font/opensans_bold"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_status_rumah"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_xs_12"
+        tools:text="Kontrak" />
+
+
+
+</LinearLayout>

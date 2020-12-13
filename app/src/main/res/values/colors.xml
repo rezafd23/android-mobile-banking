@@ -9,13 +9,18 @@
     <color name="white">#FFFFFFFF</color>
     <color name="deep_blue">#00BFFF</color>
     <color name="dark_blue">#1E90FF</color>
+    <color name="disabled_color">#44000000</color>
 
     <color name="green">#008000</color>
+    <color name="green_s">#00FF00</color>
 
     <color name="colorBackgroundInfoTint">#8073abd0</color>
     <color name="colorWhiteTint">#90FFFFFF</color>
 
     <color name="colorButtonDisabled">#d7d5d9</color>
+    <color name="colorTextError">#fb2132</color>
+
+    <color name="colorSecondaryTint">#805a5a5a</color>"
 
     <color name="colorLightGrey">#e7e6e6</color>
     <color name="colorDarkGrey">#A9A9A9</color>

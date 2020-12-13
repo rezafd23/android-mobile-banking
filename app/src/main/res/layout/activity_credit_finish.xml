@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="@dimen/pad_15"
+    android:layout_marginEnd="@dimen/pad_15"
+    tools:context=".ui.activity.CreditFinishActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ll_selamat"
+        android:layout_gravity="top"
+        android:layout_marginBottom="30dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/ic_success" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll_selamat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_panel"
+        android:paddingTop="10dp"
+        android:layout_marginBottom="40dp"
+        android:gravity="top"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_medium_margin"
+            android:text="Selamat, Akun m-BTPS anda"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_extra_large"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_credit_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sudah aktif!"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_extra_large" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:lineSpacingMultiplier="1.2"
+            android:text="Dapatkan kemudahan pembayaran dan aktivitas perbankan"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="@dimen/text_xs_16" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/btn_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_primary"
+            android:padding="@dimen/default_medium_margin"
+            android:text="Asyik!"
+            android:layout_marginRight="@dimen/pad_20"
+            android:layout_marginLeft="@dimen/pad_20"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</RelativeLayout>

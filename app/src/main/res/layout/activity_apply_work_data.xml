@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.ApplyWorkDataActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_simpan">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/pad_20"
+        android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/default_medium_margin"
+        android:paddingTop="@dimen/default_medium_margin"
+        android:text="Data Pekerjaan"
+        android:fontFamily="@font/rubik"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_extra_large"
+        android:textStyle="bold"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:paddingTop="@dimen/default_medium_margin"
+            android:text="Data Keuangan"
+            android:fontFamily="@font/rubik"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_xs_20"
+            android:textStyle="bold"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/apply_desc"
+            android:fontFamily="@font/nunito_regular"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="@dimen/text_xs_16" />
+
+        <com.example.android_mobile_banking.widget.CustomTextInputLayout
+            android:id="@+id/input_npwp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_long_margin"
+            app:errorTextAppearance="@style/MyErrorText"
+            android:layout_marginBottom="@dimen/pad_10"
+            android:hint="Nomor NPWP"
+            style="@style/EditTextLayoutApply">
+
+            <com.xw.repo.XEditText
+                android:id="@+id/et_npwp"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:digits="1234567890"
+                android:inputType="phone"
+                android:nextFocusDown="@+id/sp_income"
+                android:imeOptions="actionNext"
+                style="@style/EditTextLayoutApply"
+                android:maxLength="15"
+                android:textSize="@dimen/text_xs_16"
+                android:background="@drawable/edit_bg_selector"/>
+        </com.example.android_mobile_banking.widget.CustomTextInputLayout>
+
+        <com.example.android_mobile_banking.widget.CustomSpinner
+            android:id="@+id/sp_income"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@+id/et_pendapatan"
+            app:ms_hint="Sumber Penghasilan"
+            android:layout_marginBottom="@dimen/pad_10"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/opensans_regular"
+                android:layout_marginTop="@dimen/pad_20"
+                android:text="Rp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_xs_18"/>
+
+            <com.example.android_mobile_banking.widget.CustomTextInputLayout
+                android:id="@+id/input_pendapatan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hintPendapatan"
+                style="@style/EditTextLayoutApply"
+                app:errorEnabled="true"
+                app:errorTextAppearance="@style/MyErrorText">
+
+                <com.xw.repo.XEditText
+                    android:id="@+id/et_pendapatan"
+                    android:layout_width="match_parent"
+                    android:inputType="phone"
+                    android:textColorHint="@color/colorLightGrey"
+                    android:layout_height="56dp"
+                    android:maxLength="11"
+                    android:gravity="bottom"
+                    style="@style/EditTextLayoutApply"
+                    android:nextFocusDown="@+id/et_pengeluaran"
+                    android:imeOptions="actionNext"
+                    android:background="@drawable/edit_bg_selector"
+                    android:fontFamily="@font/opensans_regular"
+                    android:paddingLeft="@dimen/pad_32"/>
+
+            </com.example.android_mobile_banking.widget.CustomTextInputLayout>
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:paddingTop="@dimen/default_medium_margin"
+            android:text="Detail Pekerjaan"
+            android:fontFamily="@font/rubik"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_xs_20"
+            android:textStyle="bold"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/apply_desc"
+            android:fontFamily="@font/nunito_regular"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="@dimen/text_xs_16" />
+
+        <com.example.android_mobile_banking.widget.CustomSpinner
+            android:id="@+id/sp_job_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/opensans_regular"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@+id/et_perusahaan"
+            app:ms_hint="Jenis Pekerjaan" />
+
+        <com.example.android_mobile_banking.widget.CustomTextInputLayout
+            android:id="@+id/input_perusahaan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/EditTextLayoutApply"
+            android:hint="Perusahaan Tempat Bekerja"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/MyErrorText">
+
+            <com.xw.repo.XEditText
+                android:id="@+id/et_perusahaan"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:digits="@string/input_text"
+                android:imeOptions="actionNext"
+                android:nextFocusDown="@+id/sp_status_kerja"
+                android:textSize="@dimen/text_xs_16"
+                app:x_disableClear="true"
+                style="@style/EditTextLayoutApply"
+                android:background="@drawable/edit_bg_selector"
+                app:x_disableEmoji="true" />
+        </com.example.android_mobile_banking.widget.CustomTextInputLayout>
+
+        <com.example.android_mobile_banking.widget.CustomSpinner
+            android:id="@+id/sp_status_kerja"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:nextFocusDown="@+id/btn_simpan"
+            app:ms_hint="Status Pekerjaan" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_simpan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/selector_btn_primary_full"
+        android:padding="@dimen/default_medium_margin"
+        android:text="@string/btnSimpan"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+</RelativeLayout>
