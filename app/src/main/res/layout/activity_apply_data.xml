@@ -52,6 +52,189 @@
             android:textSize="@dimen/text_xs_14" />
 
 <!--        foto ktp-->
+
+<!--        layout data pribadi-->
+        <RelativeLayout
+            android:id="@+id/btn_personal_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/default_long_margin"
+            android:paddingTop="@dimen/default_long_margin">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_personal"
+                android:layout_width="@dimen/pad_32"
+                android:layout_height="@dimen/pad_32"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/default_medium_margin"
+                app:srcCompat="@drawable/ic_personal_info" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_personal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_personal"
+                android:enabled="false"
+                android:text="@string/data_pribadi"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="@dimen/text_xs_16"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_arrow_personal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_arrow_right" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_edit_personal"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="end|center_vertical"
+                android:text="@string/Ubah"
+                android:textAllCaps="true"
+                android:textColor="@color/dark_blue"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+        <include
+            android:id="@+id/personal_detail"
+            layout="@layout/layout_personal_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_medium_margin"
+            android:visibility="gone" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLightGrey" />
+
+<!--        layout kerabat-->
+        <RelativeLayout
+            android:id="@+id/btn_relevan_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/default_long_margin"
+            android:paddingTop="@dimen/default_long_margin">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_relevan"
+                android:layout_width="@dimen/pad_32"
+                android:layout_height="@dimen/pad_32"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/default_medium_margin"
+                app:srcCompat="@drawable/ic_relative" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_relevan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_relevan"
+                android:enabled="false"
+                android:text="Data Kerabat"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="@dimen/text_xs_16"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_arrow_relevan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_arrow_right" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_edit_relevan"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="end|center_vertical"
+                android:text="@string/Ubah"
+                android:textAllCaps="true"
+                android:textColor="@color/dark_blue"
+                android:visibility="gone" />
+        </RelativeLayout>
+        <include
+            android:id="@+id/relevan_detail"
+            layout="@layout/layout_relevan_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_medium_margin"
+            android:visibility="gone" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLightGrey" />
+
+<!--        layout pekerjaan-->
+        <RelativeLayout
+            android:id="@+id/btn_work_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/default_long_margin"
+            android:paddingTop="@dimen/default_long_margin">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_work"
+                android:layout_width="@dimen/pad_32"
+                android:layout_height="@dimen/pad_32" android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/default_medium_margin"
+                app:srcCompat="@drawable/ic_work_info" />
+
+            <TextView
+                android:id="@+id/tv_work"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_work"
+                android:enabled="false"
+                android:text="Data Pekerjaan"
+                android:textColor="@color/colorDarkGrey"
+                android:textSize="@dimen/text_xs_16"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_arrow_work"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/ic_arrow_right" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_edit_work"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="end|center_vertical"
+                android:text="@string/Ubah"
+                android:textAllCaps="true"
+                android:textColor="@color/dark_blue"
+                android:visibility="gone" />
+        </RelativeLayout>
+        <include
+            android:id="@+id/work_detail"
+            layout="@layout/layout_work_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_medium_margin"
+            android:visibility="gone" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLightGrey" />
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/btn_capture_ktp"
             android:layout_width="match_parent"
@@ -240,188 +423,6 @@
             android:layout_height="1dp"
             android:background="@color/colorLightGrey" />
 
-<!--        layout data pribadi-->
-        <RelativeLayout
-            android:id="@+id/btn_personal_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/default_long_margin"
-            android:paddingTop="@dimen/default_long_margin">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_personal"
-                android:layout_width="@dimen/pad_32"
-                android:layout_height="@dimen/pad_32"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/default_medium_margin"
-                app:srcCompat="@drawable/ic_personal_info" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_personal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/iv_personal"
-                android:enabled="false"
-                android:text="@string/data_pribadi"
-                android:textColor="@color/colorDarkGrey"
-                android:textSize="@dimen/text_xs_16"
-                android:textStyle="bold" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_arrow_personal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                app:srcCompat="@drawable/ic_arrow_right" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_edit_personal"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:gravity="end|center_vertical"
-                android:text="@string/Ubah"
-                android:textAllCaps="true"
-                android:textColor="@color/dark_blue"
-                android:visibility="gone" />
-
-        </RelativeLayout>
-        <include
-            android:id="@+id/personal_detail"
-            layout="@layout/layout_personal_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_medium_margin"
-            android:visibility="gone" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorLightGrey" />
-
-<!--        layout kerabat-->
-        <RelativeLayout
-            android:id="@+id/btn_relevan_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/default_long_margin"
-            android:paddingTop="@dimen/default_long_margin">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_relevan"
-                android:layout_width="@dimen/pad_32"
-                android:layout_height="@dimen/pad_32"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/default_medium_margin"
-                app:srcCompat="@drawable/ic_relative" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_relevan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/iv_relevan"
-                android:enabled="false"
-                android:text="Data Kerabat"
-                android:textColor="@color/colorDarkGrey"
-                android:textSize="@dimen/text_xs_16"
-                android:textStyle="bold" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_arrow_relevan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                app:srcCompat="@drawable/ic_arrow_right" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_edit_relevan"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:gravity="end|center_vertical"
-                android:text="@string/Ubah"
-                android:textAllCaps="true"
-                android:textColor="@color/dark_blue"
-                android:visibility="gone" />
-        </RelativeLayout>
-        <include
-            android:id="@+id/relevan_detail"
-            layout="@layout/layout_relevan_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_medium_margin"
-            android:visibility="gone" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorLightGrey" />
-
-<!--        layout pekerjaan-->
-        <RelativeLayout
-            android:id="@+id/btn_work_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/default_long_margin"
-            android:paddingTop="@dimen/default_long_margin">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_work"
-                android:layout_width="@dimen/pad_32"
-                android:layout_height="@dimen/pad_32" android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/default_medium_margin"
-                app:srcCompat="@drawable/ic_work_info" />
-
-            <TextView
-                android:id="@+id/tv_work"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/iv_work"
-                android:enabled="false"
-                android:text="Data Pekerjaan"
-                android:textColor="@color/colorDarkGrey"
-                android:textSize="@dimen/text_xs_16"
-                android:textStyle="bold" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_arrow_work"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                app:srcCompat="@drawable/ic_arrow_right" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_edit_work"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:gravity="end|center_vertical"
-                android:text="@string/Ubah"
-                android:textAllCaps="true"
-                android:textColor="@color/dark_blue"
-                android:visibility="gone" />
-        </RelativeLayout>
-        <include
-            android:id="@+id/work_detail"
-            layout="@layout/layout_work_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_medium_margin"
-            android:visibility="gone" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorLightGrey" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkbox"
