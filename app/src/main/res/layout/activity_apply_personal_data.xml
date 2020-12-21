@@ -47,12 +47,11 @@
             <com.example.android_mobile_banking.widget.CustomTextInputLayout
                 android:id="@+id/input_ektp"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginTop="@dimen/pad_10"
-                android:paddingTop="@dimen/pad_10"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_15"
+                android:hint="No KTP"
                 app:errorTextAppearance="@style/MyErrorText"
                 android:layout_marginBottom="15dp"
-                android:hint="No E-KTP"
                 style="@style/EditTextLayoutApply">
                 <com.xw.repo.XEditText
                     app:x_disableClear="true"
@@ -60,6 +59,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusable="true"
+                    android:paddingTop="@dimen/pad_10"
+                    android:paddingBottom="@dimen/pad_15"
                     android:imeOptions="actionNext"
                     android:inputType="numberDecimal"
                     android:maxLength="20"
@@ -85,6 +86,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusable="true"
+                    android:paddingTop="@dimen/pad_10"
+                    android:paddingBottom="@dimen/pad_15"
                     android:imeOptions="actionNext"
                     android:inputType="textEmailAddress"
                     android:maxLength="32"
@@ -239,10 +242,12 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_simpan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/pad_56"
         android:layout_alignParentBottom="true"
         android:background="@drawable/selector_btn_primary_full"
         android:text="@string/btnSimpan"
+        android:onClick="onSaveClicked"
+        android:enabled="false"
         android:textAllCaps="false"
         android:textColor="@color/white"/>
 

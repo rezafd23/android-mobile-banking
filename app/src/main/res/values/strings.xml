@@ -7,10 +7,11 @@
     <string name="diawasi">Aplikasi ini diawasi oleh </string>
     <string name="diawasi2">Aplikasi ini terdaftar dan diawasi oleh Otoritas Jasa Keuangan </string>
     <string name="belum_punya_akun">Belum punya akun? </string>
-    <string name="mbanking">di m-BTPS </string>
+    <string name="mbanking">di mySyaria </string>
     <string name="signup_uppercase">SIGN UP </string>
     <string name="login">Login </string>
     <string name="register">Register </string>
+
 
     <string name="credit_availble">SALDO TERSEDIA</string>
     <string name="customer_type">Anda Merupakan Nasabah Prioritas</string>
@@ -71,21 +72,26 @@
     <string name="back_home">Kembali ke Home</string>
 
     <string name="create_pin">Buat PIN</string>
-    <string name="create_secure_pin_message">Buat PIN yang aman untuk membuka aplikasi m-BTPS</string>
+    <string name="create_secure_pin_message">Buat PIN yang aman untuk membuka aplikasi mySyaria</string>
+
+    <string name="confirm_pin">Konfirmasi PIN</string>
+    <string name="confirm_pin_description">Ulangi PIN untuk mengkonfirmasi PIN yang baru saja kamu buat</string>
+    <string name="confirm_pin_invalid">PIN tidak sesuai!</string>
 
     <string name="Ubah">Ubah</string>
     <string name="Kirim">Kirim</string>
     <string name="Simpan">Berhenti &amp; Simpan</string>
     <string name="btnSimpan">Simpan</string>
+    <string name="err_msg_email_not_valid">Email tidak valid</string>
 
     <string name="apply_not_finish">Pendaftaranmu belum selesai. Harap lanjutkan pengisian data untuk menikmati fasilitas mobile banking</string>
 
 
-    <string name="apply">Daftarkan diri anda sekarang untuk mendapatkan kemudahan aktivitas perbankan di m-BTPS</string>
+    <string name="apply">Daftarkan diri anda sekarang untuk mendapatkan kemudahan aktivitas perbankan di mySyaria</string>
 
     <string name="phone_number_login_ph">No. Handphone Terdaftar</string>
 
-    <string name="agree_checked"><![CDATA[Saya telah membaca dan menyetujui <b>syarat dan ketentuan aplikasi M-BTPS</b>]]></string>
+    <string name="agree_checked"><![CDATA[Saya telah membaca dan menyetujui <b>syarat dan ketentuan aplikasi mySyaria</b>]]></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

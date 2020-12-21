@@ -33,6 +33,7 @@
     <dimen name="pad_20">20dp</dimen>
     <dimen name="pad_24">24dp</dimen>
     <dimen name="pad_32">32dp</dimen>
+    <dimen name="pad_56">56dp</dimen>
 
 <!--    spacing-->
     <dimen name="linespacing_small">1.2</dimen>

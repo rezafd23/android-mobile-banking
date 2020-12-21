@@ -25,6 +25,16 @@
             android:fontFamily="@font/nunito_bold"
             android:textSize="@dimen/text_xs_24" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_OTP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/security_code"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nunito_bold"
+            android:textSize="@dimen/text_xs_24" />
+
 
         <androidx.appcompat.widget.AppCompatTextView
             android:fontFamily="@font/opensans"
@@ -69,8 +79,7 @@
             android:text="@string/otp_invalid"
             android:textColor="@color/colorTextError"
             android:textSize="@dimen/text_xs_13"
-            android:visibility="invisible"
-            tools:visibility="visible" />
+            android:visibility="gone"/>
 
 
         <androidx.appcompat.widget.AppCompatTextView

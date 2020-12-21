@@ -6,30 +6,861 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.MainActivity">
 
-    <FrameLayout
-        android:id="@+id/frame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomnav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/pad_32"
-        android:layout_marginRight="@dimen/pad_32"
-        android:layout_marginBottom="@dimen/rbk_btn_full"
-        android:background="@drawable/bg_float_menu"
-        android:elevation="@dimen/pad_10"
-        app:menu="@menu/menu_bottom"
-        android:paddingTop="@dimen/pad_10"
-        android:paddingBottom="@dimen/pad_10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        />
+
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintRight_toRightOf="parent">-->
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swiperefresh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/scroll_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/bg_home"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:scaleType="fitStart"
+                            android:src="@drawable/ic_bg_home" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/home_header"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingTop="@dimen/pad_32">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="@dimen/pad_20"
+                                android:paddingRight="@dimen/pad_20">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/logo_50"
+                                    android:layout_height="@dimen/logo_50"
+                                    app:srcCompat="@drawable/btps" />
+
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/iv_notification"
+                                    android:layout_width="@dimen/pad_32"
+                                    android:layout_height="@dimen/pad_32"
+                                    android:layout_alignParentEnd="true"
+                                    android:paddingTop="5dp"
+                                    android:src="@drawable/ic_notification" />
+
+                            </RelativeLayout>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/welcome_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="30dp"
+                                android:layout_marginBottom="-5dp"
+                                android:lineSpacingMultiplier="1.2"
+                                android:paddingLeft="@dimen/pad_20"
+                                android:paddingRight="@dimen/pad_20"
+                                android:singleLine="false"
+                                android:text="Selamat\nDatang!"
+                                android:textColor="@color/colorTextHyperlink"
+                                android:textSize="@dimen/text_xs_35"
+                                android:textStyle="bold" />
+
+                            <com.github.captain_miao.optroundcardview.OptRoundCardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/pad_20"
+                                android:layout_marginTop="@dimen/pad_20"
+                                android:layout_marginRight="@dimen/pad_20"
+                                android:layout_marginBottom="1dp"
+                                android:background="@drawable/home_card_bg"
+                                android:elevation="@dimen/pad_5"
+                                app:cardUseCompatPadding="false"
+                                app:optRoundCardCornerRadius="@dimen/default_medium_margin">
+
+                                <RelativeLayout
+                                    android:id="@+id/layout_loading_data"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:textAlignment="center"
+                                    android:visibility="visible">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="@dimen/default_medium_margin"
+                                        android:layout_marginTop="@dimen/pad_15"
+                                        android:paddingBottom="@dimen/pad_10"
+                                        android:layout_marginRight="@dimen/default_medium_margin"
+                                        android:layout_marginBottom="@dimen/default_margin"
+                                        android:text="Loading data ..."
+                                        android:textColor="@color/dark_blue"
+                                        android:textSize="@dimen/text_xs_18"
+                                        android:textStyle="bold" />
+
+                                </RelativeLayout>
+
+                                <!--                        layout apply new-->
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:id="@+id/layout_apply_new"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingTop="@dimen/pad_24"
+                                    android:paddingBottom="@dimen/pad_24"
+                                    android:visibility="gone">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:lineSpacingMultiplier="@dimen/linespacing_small"
+                                        android:paddingLeft="@dimen/pad_24"
+                                        android:paddingRight="@dimen/pad_24"
+                                        android:text="@string/apply"
+                                        android:textColor="@color/black" />
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/default_margin"
+                                        android:layout_marginRight="8dp"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <androidx.appcompat.widget.LinearLayoutCompat
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <androidx.appcompat.widget.AppCompatImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                app:srcCompat="@drawable/ic_personal_info" />
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="@dimen/pad_20"
+                                                android:maxLines="1"
+                                                android:minLines="1"
+                                                android:text="@string/personal_data"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/black"
+                                                app:autoSizeMaxTextSize="12sp"
+                                                app:autoSizeMinTextSize="5sp"
+                                                app:autoSizeStepGranularity="1sp"
+                                                app:autoSizeTextType="uniform" />
+                                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            app:srcCompat="@drawable/ic_add" />
+
+                                        <androidx.appcompat.widget.LinearLayoutCompat
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <androidx.appcompat.widget.AppCompatImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                app:srcCompat="@drawable/ic_relative" />
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="@dimen/pad_20"
+                                                android:maxLines="1"
+                                                android:minLines="1"
+                                                android:text="@string/relative_data"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/black"
+                                                app:autoSizeMaxTextSize="12sp"
+                                                app:autoSizeMinTextSize="5sp"
+                                                app:autoSizeStepGranularity="1sp"
+                                                app:autoSizeTextType="uniform" />
+
+                                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            app:srcCompat="@drawable/ic_add" />
+
+                                        <androidx.appcompat.widget.LinearLayoutCompat
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:orientation="vertical">
+
+                                            <androidx.appcompat.widget.AppCompatImageView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                app:srcCompat="@drawable/ic_work_info" />
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:layout_width="match_parent"
+                                                android:layout_height="@dimen/pad_20"
+                                                android:maxLines="1"
+                                                android:minLines="1"
+                                                android:text="@string/work_data"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/black"
+                                                app:autoSizeMaxTextSize="12sp"
+                                                app:autoSizeMinTextSize="5sp"
+                                                app:autoSizeStepGranularity="1sp"
+                                                app:autoSizeTextType="uniform" />
+                                        </androidx.appcompat.widget.LinearLayoutCompat>
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginTop="@dimen/default_long_margin"
+                                        android:gravity="center"
+                                        android:orientation="horizontal"
+                                        android:paddingStart="@dimen/pad_24">
+
+                                        <androidx.appcompat.widget.AppCompatButton
+                                            android:id="@+id/btn_ajukan_credit"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginRight="@dimen/default_long_margin"
+                                            android:layout_weight="2"
+                                            android:background="@drawable/selector_btn_primary"
+                                            android:text="@string/apply_data"
+                                            android:textAllCaps="false"
+                                            android:textColor="@color/white" />
+
+                                        <!-- layout_timer_freeze -->
+                                        <androidx.appcompat.widget.LinearLayoutCompat
+                                            android:id="@+id/layout_timer_freeze"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginRight="12dp"
+                                            android:layout_weight="1"
+                                            android:gravity="center"
+                                            android:orientation="horizontal"
+                                            android:visibility="invisible">
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:id="@+id/tv_timer_minutes_freeze"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="2"
+                                                android:maxLines="1"
+                                                android:minLines="1"
+                                                android:text="15"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/dark_blue"
+                                                android:textStyle="bold"
+                                                app:autoSizeMaxTextSize="32sp"
+                                                app:autoSizeMinTextSize="14sp"
+                                                app:autoSizeStepGranularity="2sp"
+                                                app:autoSizeTextType="uniform" />
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="1"
+                                                android:maxLines="1"
+                                                android:minLines="1"
+                                                android:text=":"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/dark_blue"
+                                                android:textStyle="bold"
+                                                app:autoSizeMaxTextSize="32sp"
+                                                app:autoSizeMinTextSize="14sp"
+                                                app:autoSizeStepGranularity="2sp"
+                                                app:autoSizeTextType="uniform" />
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:id="@+id/tv_timer_seconds_freeze"
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_weight="2"
+                                                android:maxLines="1"
+                                                android:minLines="1"
+                                                android:text="00"
+                                                android:textAlignment="center"
+                                                android:textColor="@color/dark_blue"
+                                                android:textStyle="bold"
+                                                app:autoSizeMaxTextSize="32sp"
+                                                app:autoSizeMinTextSize="14sp"
+                                                app:autoSizeStepGranularity="2sp"
+                                                app:autoSizeTextType="uniform" />
+
+
+                                        </androidx.appcompat.widget.LinearLayoutCompat>
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                <!--                        layout proggress-->
+                                <RelativeLayout
+                                    android:id="@+id/layout_apply_onprogress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/pad_24"
+                                    android:visibility="gone">
+
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/iv_icon_status"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_gravity="center_horizontal"
+                                        android:layout_marginTop="@dimen/pad_10"
+                                        android:layout_marginEnd="@dimen/pad_10"
+                                        app:srcCompat="@drawable/ic_egg" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tv_title_status"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginRight="15dp"
+                                        android:layout_toLeftOf="@+id/iv_icon_status"
+                                        android:lineSpacingMultiplier="@dimen/linespacing_small"
+                                        android:text="@string/apply_not_finish"
+                                        android:textColor="@color/colorDarkGrey" />
+
+                                    <androidx.appcompat.widget.AppCompatButton
+                                        android:id="@+id/btn_continue_apply"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/tv_title_status"
+                                        android:layout_marginTop="@dimen/default_long_margin"
+                                        android:background="@drawable/selector_btn_primary"
+                                        android:padding="@dimen/default_medium_margin"
+                                        android:text="Lanjutkan Pengajuan"
+                                        android:textAllCaps="false"
+                                        android:textColor="@color/white" />
+                                </RelativeLayout>
+
+                                <!--                        layout finish-->
+                                <RelativeLayout
+                                    android:id="@+id/layout_credit_finish"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:visibility="gone">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tv_credit_finish"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/pad_20"
+                                        android:layout_marginTop="@dimen/pad_20"
+                                        android:layout_marginEnd="@dimen/default_medium_margin"
+                                        android:layout_marginBottom="@dimen/default_margin"
+                                        android:fontFamily="@font/opensans_regular"
+                                        android:text="@string/credit_availble"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/dark_blue"
+                                        android:textSize="@dimen/text_xs_14"
+                                        android:textStyle="bold" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/rp_holder"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="20sp"
+                                        android:layout_below="@+id/tv_credit_finish"
+                                        android:layout_marginStart="@dimen/pad_20"
+                                        android:layout_marginTop="2dp"
+                                        android:text="Rp"
+                                        android:textColor="@color/black"
+                                        android:textSize="15sp" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tv_cash_used"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@+id/tv_credit_finish"
+                                        android:layout_marginStart="5dp"
+                                        android:layout_marginEnd="@dimen/default_medium_margin"
+                                        android:layout_toEndOf="@id/rp_holder"
+                                        android:fontFamily="@font/opensans"
+                                        android:text="1.000.000"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/text_xs_35" />
+
+                                    <View
+                                        android:id="@+id/view_margin"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/pad_32"
+                                        android:layout_below="@+id/tv_cash_used" />
+
+
+                                    <com.github.captain_miao.optroundcardview.OptRoundCardView
+                                        android:id="@+id/optScoringMaxLimit"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/view_margin"
+                                        android:layout_alignParentBottom="true"
+                                        android:elevation="@dimen/pad_5"
+                                        app:cardUseCompatPadding="false"
+                                        app:optRoundCardBackgroundColor="@color/colorLightGrey"
+                                        app:optRoundCardCornerRadius="@dimen/default_medium_margin"
+                                        app:optRoundCardLeftTopCorner="false"
+                                        app:optRoundCardRightTopCorner="false">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/tv_category_saving"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/pad_20"
+                                            android:layout_marginTop="@dimen/default_long_margin"
+                                            android:layout_marginBottom="@dimen/default_long_margin"
+                                            android:fontFamily="@font/opensans"
+                                            android:text="@string/customer_type"
+                                            android:textColor="@color/dark_blue"
+                                            android:textSize="@dimen/text_xs_12"
+                                            android:textStyle="bold" />
+                                    </com.github.captain_miao.optroundcardview.OptRoundCardView>
+                                </RelativeLayout>
+                            </com.github.captain_miao.optroundcardview.OptRoundCardView>
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tv_nikmati"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/pad_20"
+                                android:layout_marginTop="@dimen/logo_50"
+                                android:fontFamily="@font/opensans"
+                                android:text="@string/nikmati"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_xs_18"
+                                android:textStyle="bold" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/pad_10"
+                                android:orientation="vertical" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="5dp"
+                                android:background="@color/colorLightGrey" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="3dp"
+                                android:background="@color/dark_blue" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:id="@+id/layout_ewallet"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:orientation="vertical">
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="@dimen/pad_20"
+                                    android:paddingTop="@dimen/pad_20"
+                                    android:paddingRight="@dimen/pad_20"
+                                    android:paddingBottom="@dimen/pad_20">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/ic_wallet"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        app:srcCompat="@drawable/ic_wallet" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginStart="@dimen/pad_10"
+                                        android:layout_toRightOf="@+id/ic_wallet"
+                                        android:fontFamily="@font/opensans"
+                                        android:text="@string/e_wallet"
+                                        android:textSize="@dimen/text_xs_16"
+                                        android:textStyle="bold" />
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentEnd="true"
+                                        android:paddingTop="5dp"
+                                        android:src="@drawable/ic_arrow_right" />
+                                </RelativeLayout>
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/colorLightGrey"/>
+                                <HorizontalScrollView
+                                    android:paddingTop="@dimen/pad_5"
+                                    android:paddingBottom="@dimen/pad_10"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:paddingTop="@dimen/pad_10"
+                                        android:paddingBottom="@dimen/pad_10">
+                                        <RelativeLayout
+                                            android:layout_width="@dimen/logo_100"
+                                            android:layout_height="@dimen/logo_100"
+                                            android:background="@drawable/bg_stroke"
+                                            android:layout_marginRight="@dimen/pad_10"
+                                            android:layout_marginStart="@dimen/pad_20"
+                                            android:orientation="vertical">
+
+                                            <androidx.appcompat.widget.AppCompatImageView
+                                                android:id="@+id/ic_wallet_1"
+                                                android:layout_width="@dimen/logo_50"
+                                                android:layout_height="@dimen/logo_50"
+                                                android:src="@drawable/ovo2"
+                                                android:padding="@dimen/pad_10"
+                                                android:layout_marginTop="@dimen/pad_10"
+                                                android:background="@drawable/bg_circle"
+                                                android:layout_centerHorizontal="true"
+                                                />
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_below="@id/ic_wallet_1"
+                                                android:layout_centerHorizontal="true"
+                                                android:layout_marginTop="@dimen/pad_5"
+                                                android:text="REZA FADILAH"/>
+
+
+                                        </RelativeLayout>
+                                        <RelativeLayout
+                                            android:layout_width="@dimen/logo_100"
+                                            android:layout_height="@dimen/logo_100"
+                                            android:background="@drawable/bg_stroke"
+                                            android:layout_marginRight="@dimen/pad_10"
+                                            android:layout_marginStart="@dimen/pad_20"
+                                            android:orientation="vertical">
+
+                                            <androidx.appcompat.widget.AppCompatImageView
+                                                android:id="@+id/ic_wallet_2"
+                                                android:layout_width="@dimen/logo_50"
+                                                android:layout_height="@dimen/logo_50"
+                                                android:src="@drawable/gopay"
+                                                android:padding="@dimen/pad_10"
+                                                android:layout_marginTop="@dimen/pad_10"
+                                                android:background="@drawable/bg_circle"
+                                                android:layout_centerHorizontal="true"
+                                                />
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_below="@id/ic_wallet_2"
+                                                android:layout_centerHorizontal="true"
+                                                android:layout_marginTop="@dimen/pad_5"
+                                                android:text="REZA FADILAH"/>
+
+                                        </RelativeLayout>
+                                        <RelativeLayout
+                                            android:layout_width="@dimen/logo_100"
+                                            android:layout_height="@dimen/logo_100"
+                                            android:background="@drawable/bg_stroke"
+                                            android:layout_marginRight="@dimen/pad_10"
+                                            android:layout_marginStart="@dimen/pad_20"
+                                            android:orientation="vertical">
+
+                                            <androidx.appcompat.widget.AppCompatImageView
+                                                android:id="@+id/ic_wallet_3"
+                                                android:layout_width="@dimen/logo_50"
+                                                android:layout_height="@dimen/logo_50"
+                                                android:src="@drawable/ovo2"
+                                                android:padding="@dimen/pad_10"
+                                                android:layout_marginTop="@dimen/pad_10"
+                                                android:background="@drawable/bg_circle"
+                                                android:layout_centerHorizontal="true"
+                                                />
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_below="@id/ic_wallet_3"
+                                                android:layout_centerHorizontal="true"
+                                                android:layout_marginTop="@dimen/pad_5"
+                                                android:text="FUAD ZAUQI"/>
+
+                                        </RelativeLayout>
+                                        <RelativeLayout
+                                            android:layout_width="@dimen/logo_100"
+                                            android:layout_height="@dimen/logo_100"
+                                            android:background="@drawable/bg_stroke"
+                                            android:layout_marginRight="@dimen/pad_10"
+                                            android:layout_marginStart="@dimen/pad_20"
+                                            android:orientation="vertical">
+
+                                            <androidx.appcompat.widget.AppCompatImageView
+                                                android:id="@+id/ic_wallet_4"
+                                                android:layout_width="@dimen/logo_50"
+                                                android:layout_height="@dimen/logo_50"
+                                                android:src="@drawable/gopay"
+                                                android:padding="@dimen/pad_10"
+                                                android:layout_marginTop="@dimen/pad_10"
+                                                android:background="@drawable/bg_circle"
+                                                android:layout_centerHorizontal="true"
+                                                />
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_below="@id/ic_wallet_4"
+                                                android:layout_centerHorizontal="true"
+                                                android:layout_marginTop="@dimen/pad_5"
+                                                android:text="ZEFANYA MAR"/>
+
+                                        </RelativeLayout>
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+                                </HorizontalScrollView>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="5dp"
+                                android:background="@color/colorLightGrey" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="3dp"
+                                android:background="@color/dark_blue" />
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:id="@+id/layout_card_center"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="@dimen/pad_20"
+                                    android:paddingTop="@dimen/pad_20"
+                                    android:paddingRight="@dimen/pad_20"
+                                    android:paddingBottom="@dimen/pad_20">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/ic_card"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        app:srcCompat="@drawable/ic_card" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginStart="@dimen/pad_10"
+                                        android:layout_toRightOf="@+id/ic_card"
+                                        android:fontFamily="@font/opensans"
+                                        android:text="@string/card_center"
+                                        android:textSize="@dimen/text_xs_16"
+                                        android:textStyle="bold" />
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentEnd="true"
+                                        android:paddingTop="5dp"
+                                        android:src="@drawable/ic_arrow_right" />
+                                </RelativeLayout>
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/colorLightGrey"/>
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingTop="@dimen/pad_10"
+                                    android:paddingBottom="@dimen/pad_10">
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:id="@+id/card1"
+                                            android:layout_width="@dimen/logo_100"
+                                            android:layout_height="70dp"
+                                            android:background="@drawable/blackcard"/>
+                                        <androidx.appcompat.widget.LinearLayoutCompat
+                                            android:id="@+id/card_desc"
+                                            android:layout_marginStart="@dimen/pad_20"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:layout_centerVertical="true"
+                                            android:layout_toEndOf="@id/card1">
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:id="@+id/cardName1"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/opensans_regular"
+                                                android:text="Reza Fadilah D"/>
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:id="@+id/cardStatus1"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textColor="@color/green"
+                                                android:fontFamily="@font/opensans_bold"
+                                                android:text="Active"/>
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:id="@+id/cardBalance1"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/opensans_regular"
+                                                android:text="Rp.1.000.000"/>
+
+                                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:layout_centerVertical="true"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_marginRight="@dimen/pad_20"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:src="@drawable/ic_more"
+                                            />
+
+                                    </RelativeLayout>
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/colorLightGrey"/>
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/colorLightGrey"/>
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingTop="@dimen/pad_10"
+                                    android:paddingBottom="@dimen/pad_10">
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:id="@+id/card2"
+                                            android:layout_width="@dimen/logo_100"
+                                            android:layout_height="70dp"
+                                            android:background="@drawable/amex"/>
+                                        <androidx.appcompat.widget.LinearLayoutCompat
+                                            android:id="@+id/card_desc2"
+                                            android:layout_marginStart="@dimen/pad_20"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="vertical"
+                                            android:layout_centerVertical="true"
+                                            android:layout_toEndOf="@id/card2">
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:id="@+id/cardName2"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/opensans_regular"
+                                                android:text="Reza Fadilah D"/>
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:id="@+id/cardStatus2"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:textColor="@color/green"
+                                                android:fontFamily="@font/opensans_bold"
+                                                android:text="Active"/>
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:id="@+id/cardBalance2"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:fontFamily="@font/opensans_regular"
+                                                android:text="Rp.1.000.000"/>
+
+                                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:layout_centerVertical="true"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_marginRight="@dimen/pad_20"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:src="@drawable/ic_more"
+                                            />
+
+                                    </RelativeLayout>
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="5dp"
+                                    android:background="@color/colorLightGrey" />
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="3dp"
+                                    android:background="@color/dark_blue" />
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </RelativeLayout>
+                </androidx.core.widget.NestedScrollView>
+
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomnav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/pad_32"
+            android:layout_marginRight="@dimen/pad_32"
+            android:layout_marginBottom="@dimen/rbk_btn_full"
+            android:background="@drawable/bg_float_menu"
+            android:elevation="@dimen/pad_10"
+            app:labelVisibilityMode="selected"
+            app:itemIconSize="28dp"
+            app:menu="@menu/menu_bottom"
+            android:paddingTop="@dimen/pad_10"
+            android:paddingBottom="@dimen/pad_15"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

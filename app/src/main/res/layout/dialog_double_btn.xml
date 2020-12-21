@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:padding="@dimen/default_medium_margin">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:padding="@dimen/default_medium_margin"
+            app:srcCompat="@drawable/ic_baseline_close_24" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/default_medium_margin"
+            android:visibility="gone"
+            app:srcCompat="@drawable/btps" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:paddingTop="16dp"
+            android:paddingLeft="@dimen/default_long_margin"
+            android:paddingRight="@dimen/default_long_margin"
+            android:text="Informasi"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="@dimen/text_xs_20"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:fontFamily="@font/opensans"
+            android:id="@+id/tv_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="@dimen/default_long_margin"
+            android:paddingBottom="@dimen/default_long_margin"
+            android:paddingStart="12dp"
+            android:paddingLeft="12dp"
+            android:text="Lorem ipsum"
+            android:textColor="@color/colorDarkGrey"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/default_medium_margin"
+            android:layout_marginTop="@dimen/default_medium_margin"
+            android:background="@drawable/selector_btn_primary"
+            android:padding="@dimen/default_medium_margin"
+            android:text="OK"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/double_button_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_medium_margin"
+            android:padding="@dimen/default_medium_margin"
+            android:weightSum="2">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_negative"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:background="@drawable/selector_btn_transparent"
+                android:text="Batalkan"
+                android:textAllCaps="false"
+                android:textSize="@dimen/text_xs_14"
+                android:textColor="@color/dark_blue" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_positive"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/default_medium_margin"
+                android:layout_weight="1"
+                android:background="@drawable/selector_btn_primary"
+                android:text="Tidak"
+                android:textSize="@dimen/text_xs_14"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.cardview.widget.CardView>

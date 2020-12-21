@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.activity.LoginActivity">
+    class=".ui.activity.LoginActivity">
 
 <!--    <androidx.core.widget.NestedScrollView-->
 <!--        android:layout_width="match_parent"-->
@@ -88,6 +88,7 @@
                     android:textSize="@dimen/text_xs_13" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_sign_up"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margin"
@@ -120,7 +121,6 @@
             android:layout_toStartOf="@+id/iv_ojk"
             android:paddingLeft="@dimen/pad_5"
             android:paddingRight="@dimen/pad_5"
-            android:lineSpacingMultiplier="@dimen/pad_5"
             android:alpha="0.5"
             android:layout_marginStart="@dimen/pad_5"
             android:fontFamily="@font/opensans"
