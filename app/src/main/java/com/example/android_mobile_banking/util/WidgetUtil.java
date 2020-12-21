@@ -55,6 +55,13 @@ public class WidgetUtil {
             return false;
         }
     }
+    public static boolean validateEditTextRTRW(TextView view) {
+        if (view.getText().toString().length() == 7) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public static boolean notValidate(TextInputLayout inputLayout, EditText editText) {
         if (!validateEditText(editText)) {
@@ -67,6 +74,16 @@ public class WidgetUtil {
                 inputLayout.setError("Data Belum Terisi");
                 return true;
             }
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean notValidateRTRW(TextInputLayout inputLayout, EditText editText) {
+        if (!validateEditTextRTRW(editText)) {
+            editText.requestFocus();
+            inputLayout.setError("Format RT RW invalid");
+            return true;
         } else {
             return false;
         }

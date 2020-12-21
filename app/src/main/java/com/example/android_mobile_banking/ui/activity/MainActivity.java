@@ -32,7 +32,7 @@ public class MainActivity extends SingleActivity {
     private RelativeLayout layout_loading_data, layout_apply_onprogress,
             layout_credit_finish;
     private LinearLayoutCompat layout_apply_new;
-    private AppCompatButton btn_ajukan;
+    private AppCompatButton btn_ajukan,btn_continue_apply;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,7 @@ public class MainActivity extends SingleActivity {
 
         getDataUser(Util.getData(getApplication(), "access_token"));
         doAjukan();
+        doContinue();
     }
 
     public static void navigate(Activity activity) {
@@ -67,6 +68,7 @@ public class MainActivity extends SingleActivity {
         layout_apply_onprogress = findViewById(R.id.layout_apply_onprogress);
         layout_credit_finish = findViewById(R.id.layout_credit_finish);
         btn_ajukan = findViewById(R.id.btn_ajukan_credit);
+        btn_continue_apply = findViewById(R.id.btn_continue_apply);
 
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
     }
@@ -81,11 +83,23 @@ public class MainActivity extends SingleActivity {
                         dismissProgressDialog();
                         Log.v("isiResponse: ", userResponse.getPayload().toString());
                         setUpHome(userResponse.getPayload());
-                    } else {
+                    } else if (userResponse.getResponse().equals("401")){
+                        LoginActivity.navigate(MainActivity.this,true);
+                    }
+                    else {
                         dismissProgressDialog();
                         Toast.makeText(getApplicationContext(), "Terjadi Kesalahan, Mohon Ulangi", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void doContinue(){
+        btn_continue_apply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ApplyDataActivity.navigate(MainActivity.this);
+            }
+        });
     }
 
     private void doAjukan(){

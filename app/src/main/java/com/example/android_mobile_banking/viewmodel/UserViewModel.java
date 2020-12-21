@@ -29,4 +29,12 @@ public class UserViewModel extends ViewModel {
         mutableLiveData=userRepositories.getData(auth);
         return mutableLiveData;
     }
+
+    public LiveData<UserResponse> addPersonalData(String auth,JSONObject object){
+        if (mutableLiveData==null){
+            userRepositories=UserRepositories.getInstance();
+        }
+        mutableLiveData=userRepositories.addPersonalData(auth,object);
+        return mutableLiveData;
+    }
 }

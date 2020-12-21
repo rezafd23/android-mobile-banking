@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.NestedScrollView;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,17 +17,22 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 //import com.github.rtoshiro.util.format.text.SimpleMaskTextWatcher;
 
 import com.example.android_mobile_banking.R;
 import com.example.android_mobile_banking.constant.AppConstant;
 import com.example.android_mobile_banking.ui.helper.SingleActivity;
+import com.example.android_mobile_banking.util.Util;
 import com.example.android_mobile_banking.util.WidgetUtil;
+import com.example.android_mobile_banking.viewmodel.UserViewModel;
 import com.example.android_mobile_banking.widget.CustomSpinner;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.SimpleMaskTextWatcher;
 import com.google.android.material.textfield.TextInputLayout;
 import com.xw.repo.XEditText;
+
+import org.json.JSONObject;
 
 public class ApplyPersonalDataActivity extends SingleActivity {
 
@@ -36,6 +42,8 @@ public class ApplyPersonalDataActivity extends SingleActivity {
     private AppCompatButton btn_simpan;
     private CustomSpinner sp_pendidikan, sp_status_perkawinan,
             sp_kecamatan, sp_kelurahan, sp_kabupaten, sp_provinsi,sp_status_rumah;
+
+    private UserViewModel userViewModel;
 
 
     @Override
@@ -66,6 +74,8 @@ public class ApplyPersonalDataActivity extends SingleActivity {
         sp_provinsi = findViewById(R.id.sp_provinsi);
         sp_status_rumah = findViewById(R.id.sp_status_rumah);
         nested_scroll_view = findViewById(R.id.nested_scroll_view);
+
+        userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
     }
 
     private void setupView() {
@@ -208,39 +218,96 @@ public class ApplyPersonalDataActivity extends SingleActivity {
     }
 
     public void onSaveClicked(View view) {
-        boolean notValid = true;
-        if (WidgetUtil.notValidate(inputEmail, et_email)) {
-            WidgetUtil.scrollToView(nested_scroll_view, et_email);
-        } else if (!WidgetUtil.isEmailValid(et_email.getText().toString())) {
-            WidgetUtil.scrollToView(nested_scroll_view, et_email);
-            et_email.requestFocus();
-            inputEmail.setError(getString(R.string.err_msg_email_not_valid));
-        } else if (WidgetUtil.notValidate(sp_pendidikan)) {
-            WidgetUtil.scrollToView(nested_scroll_view, sp_pendidikan);
-        } else if (WidgetUtil.notValidate(sp_status_perkawinan)) {
-            WidgetUtil.scrollToView(nested_scroll_view, sp_status_perkawinan);
-        }
-//        else if (WidgetUtil.notValidate(inputAlamatLengkap, etAlamatLengkap)) {
-//            WidgetUtil.scrollToView(nested_scroll_view, etAlamatLengkap);
+//        boolean notValid = true;
+//        if (WidgetUtil.notValidate(inputNoKTP, et_ektp)) {
+//            WidgetUtil.scrollToView(nested_scroll_view, et_ektp);
 //        }
-        else if (WidgetUtil.notValidate(sp_provinsi)) {
-            WidgetUtil.scrollToView(nested_scroll_view, sp_provinsi);
-        } else if (WidgetUtil.notValidate(sp_kabupaten)) {
-            WidgetUtil.scrollToView(nested_scroll_view, sp_kabupaten);
-        } else if (WidgetUtil.notValidate(sp_kecamatan)) {
-            WidgetUtil.scrollToView(nested_scroll_view, sp_kecamatan);
-        } else if (WidgetUtil.notValidate(sp_kelurahan)) {
-            WidgetUtil. scrollToView(nested_scroll_view, sp_kelurahan);
-        }
-//        else if (notValidate(inputRtRw, etRtRw)) {
-//            scrollToView(nestedScrollView, etRtRw);
-//        } else if (notValidateRTRW(inputRtRw, etRtRw)) {
-//            scrollToView(nestedScrollView, etRtRw);
+//        else if (WidgetUtil.notValidate(inputEmail, et_email)) {
+//            WidgetUtil.scrollToView(nested_scroll_view, et_email);
+//        } else if (!WidgetUtil.isEmailValid(et_email.getText().toString())) {
+//            WidgetUtil.scrollToView(nested_scroll_view, et_email);
+//            et_email.requestFocus();
+//            inputEmail.setError(getString(R.string.err_msg_email_not_valid));
+//        } else if (WidgetUtil.notValidate(sp_pendidikan)) {
+//            WidgetUtil.scrollToView(nested_scroll_view, sp_pendidikan);
+//        } else if (WidgetUtil.notValidate(sp_status_perkawinan)) {
+//            WidgetUtil.scrollToView(nested_scroll_view, sp_status_perkawinan);
 //        }
-        else {
-            notValid = false;
+//        else if (WidgetUtil.notValidate(input_alamat, et_alamat)) {
+//            WidgetUtil.scrollToView(nested_scroll_view, et_alamat);
+//        }
+//        else if (WidgetUtil.notValidate(sp_provinsi)) {
+//            WidgetUtil.scrollToView(nested_scroll_view, sp_provinsi);
+//        } else if (WidgetUtil.notValidate(sp_kabupaten)) {
+//            WidgetUtil.scrollToView(nested_scroll_view, sp_kabupaten);
+//        } else if (WidgetUtil.notValidate(sp_kecamatan)) {
+//            WidgetUtil.scrollToView(nested_scroll_view, sp_kecamatan);
+//        } else if (WidgetUtil.notValidate(sp_kelurahan)) {
+//            WidgetUtil.scrollToView(nested_scroll_view, sp_kelurahan);
+//        }
+//        else if (WidgetUtil.notValidate(input_rt_rw, et_rt_rw)) {
+//            WidgetUtil.scrollToView(nested_scroll_view, et_rt_rw);
+//        }
+//        else if (WidgetUtil.notValidateRTRW(input_rt_rw, et_rt_rw)) {
+//            WidgetUtil.scrollToView(nested_scroll_view, et_rt_rw);
+//        }
+//        else {
+//            notValid = false;
+//        }
+//        if (notValid){
+
+           try {
+               String[] parts = et_rt_rw.getText().toString().split("/");
+               String rt = parts[0]; // 004
+               String rw = parts[1];
+               JSONObject jsonObject = new JSONObject();
+               jsonObject.put("no_ktp",et_ektp.getText().toString());
+               jsonObject.put("email",et_email.getText().toString());
+               jsonObject.put("education",sp_pendidikan.getSelectedItem().toString());
+               jsonObject.put("marital",sp_status_perkawinan.getSelectedItem().toString());
+               jsonObject.put("address",et_alamat.getText().toString());
+               jsonObject.put("province",sp_provinsi.getSelectedItem().toString());
+               jsonObject.put("city",sp_kabupaten.getSelectedItem().toString());
+               jsonObject.put("district",sp_kecamatan.getSelectedItem().toString());
+               jsonObject.put("sub_district",sp_kelurahan.getSelectedItem().toString());
+               jsonObject.put("rt",rt);
+               jsonObject.put("rw",rw);
+               jsonObject.put("living_status",sp_status_rumah.getSelectedItem().toString());
+//               userViewModel.getUserData(auth)
+//                       .observe(this, userResponse -> {
+//                           dismissProgressDialog();
+//                           Log.v("isiREsponse: ", userResponse.getResponse());
+//                           if (userResponse.getResponse().equals("200")) {
+//                               dismissProgressDialog();
+//                               Log.v("isiResponse: ", userResponse.getPayload().toString());
+//                               setUpHome(userResponse.getPayload());
+//                           } else {
+//                               dismissProgressDialog();
+//                               Toast.makeText(getApplicationContext(), "Terjadi Kesalahan, Mohon Ulangi", Toast.LENGTH_SHORT).show();
+//                           }
+//                       });
+               showProgressDialog();
+               userViewModel.addPersonalData(Util.getData(getApplication(),"access_token"),jsonObject
+               ).observe(this,userResponse -> {
+                   dismissProgressDialog();
+                   if(userResponse.getResponse().equals("200")){
+                       Toast.makeText(getApplicationContext(),"Data Pribadi Berhasil Ditambah",Toast.LENGTH_SHORT);
+                       ApplyDataActivity.navigate(ApplyPersonalDataActivity.this);
+                   } else if (userResponse.getResponse().equals("401")){
+                       LoginActivity.navigate(ApplyPersonalDataActivity.this,true);
+                   } else if (userResponse.getMessage().equals("Your Email and KTP Number Exist!")){
+                       Toast.makeText(getApplicationContext(),"Nomor KTP atau Email Anda telah Terdaftar",Toast.LENGTH_SHORT);
+                   }
+                   else {
+                       Toast.makeText(getApplicationContext(),"Mohon Periksa Kembali Data Anda",Toast.LENGTH_SHORT);
+                   }
+               });
+
+           } catch (Exception e){
+               Log.v("error: ","Error Save Data");
+           }
         }
-    }
+//    }
 
     private void checkEnabledButton() {
         String email = et_email.getText().toString();

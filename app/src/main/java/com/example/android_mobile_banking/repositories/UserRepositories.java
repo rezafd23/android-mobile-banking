@@ -69,4 +69,48 @@ public class UserRepositories {
         }
         return dataUser;
     }
+
+    public MutableLiveData<UserResponse> addPersonalData(String authorization,JSONObject object) {
+        MutableLiveData<UserResponse> dataUser = new MutableLiveData<>();
+        Log.v("isiJSON: ",object.toString());
+        try {
+            final UserResponse res = new UserResponse();
+            AndroidNetworking.post(ApiService.addPersonalData)
+                    .addHeaders("authorization", authorization)
+                    .addJSONObjectBody(object)
+                    .setTag("addPersonalData")
+                    .setPriority(Priority.MEDIUM)
+                    .build()
+                    .getAsJSONObject(new JSONObjectRequestListener() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                Log.v("isiRESPONSEUSER: ",response.toString());
+                                if (response.getString("response").equals("200")) {
+                                    res.setResponse(response.getString("response"));
+                                    res.setStatus(response.getString("status"));
+                                } else {
+                                    res.setResponse(response.getString("response"));
+                                    res.setMessage(response.getString("payload"));
+                                }
+                                dataUser.setValue(res);
+                            } catch (Exception e) {
+                                dataUser.setValue(null);
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onError(ANError anError) {
+                            dataUser.setValue(null);
+                            Log.v("Cek Error", "onError: " + anError);
+                            anError.printStackTrace();
+                        }
+                    });
+        } catch (Exception e) {
+            dataUser.setValue(null);
+            e.printStackTrace();
+        }
+        return dataUser;
+    }
 }

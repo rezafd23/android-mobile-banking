@@ -12,6 +12,7 @@ public class ApiService {
 
 //    Nasabah
     public static String getData=BASE_URL+"api/nasabah/getData/";
+    public static String addPersonalData=BASE_URL+"api/nasabah/addPersonalData/";
 
 
 
