@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">android-mobile-banking</string>
 
     <string name="input_pin">Masukkan PIN</string>
@@ -14,7 +14,7 @@
 
 
     <string name="credit_availble">SALDO TERSEDIA</string>
-    <string name="customer_type">Anda Merupakan Nasabah Prioritas</string>
+    <string name="customer_type">Anda Membutuhkan Pinjaman? Segera Klik disini!</string>
     <string name="nikmati">Nikmati Kemudahan Pembayaran</string>
 
     <string name="e_wallet">e-Wallet Center</string>
@@ -83,6 +83,17 @@
     <string name="Simpan">Berhenti &amp; Simpan</string>
     <string name="btnSimpan">Simpan</string>
     <string name="err_msg_email_not_valid">Email tidak valid</string>
+    <string name="foto_upload_finish">Foto telah sesuai</string>
+
+    <!--    element-->
+    <string name="center_face" tools:override="true">Posisikan Wajah Anda Ditengah</string>
+    <string name="keep_centered" tools:override="true">Posisikan Wajah Selalu Ditengah</string>
+    <string name="watch_circles" tools:override="true">Perhatikan Lingkaran</string>
+    <string name="clear_face_view" tools:override="true">Pastikan Wajah Anda Terlihat Jelas dengan Pencahayaan yang Cukup</string>
+    <string name="hold_phone_eye_level" tools:override="true">Hold phone at eye level</string>
+    <string name="selfie_move_message" tools:override="true">We will automatically take a selfie then you will be prompted to move your eyes to make sure it is you.</string>
+    <string name="selfie_message" tools:override="true">You will be asked to frame your face then we will snap a selfie.</string>
+
 
     <string name="apply_not_finish">Pendaftaranmu belum selesai. Harap lanjutkan pengisian data untuk menikmati fasilitas mobile banking</string>
 

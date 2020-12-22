@@ -525,6 +525,7 @@
                                     android:layout_height="1dp"
                                     android:background="@color/colorLightGrey"/>
                                 <HorizontalScrollView
+                                    android:id="@+id/scroll_ewallet"
                                     android:paddingTop="@dimen/pad_5"
                                     android:paddingBottom="@dimen/pad_10"
                                     android:layout_width="match_parent"
@@ -703,6 +704,7 @@
                                     android:layout_height="1dp"
                                     android:background="@color/colorLightGrey"/>
                                 <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:id="@+id/layoutCard1"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
@@ -767,6 +769,7 @@
                                     android:layout_height="1dp"
                                     android:background="@color/colorLightGrey"/>
                                 <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:id="@+id/layoutCard2"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"

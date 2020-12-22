@@ -6,8 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.ApplyWorkDataActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLightGrey"
+        >
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ic_back"
+            android:src="@drawable/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/pad_20"
+            android:text="Data Pekerjaan"
+            android:fontFamily="@font/rubik"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_extra_large"
+            android:textStyle="bold"/>
+    </androidx.appcompat.widget.Toolbar>
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nested_scroll_view"
+        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/btn_simpan">
@@ -15,19 +38,10 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/pad_20"
+        android:paddingLeft="@dimen/pad_20"
+        android:paddingRight="@dimen/pad_20"
+        android:paddingBottom="@dimen/pad_20"
         android:orientation="vertical">
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/default_medium_margin"
-        android:paddingTop="@dimen/default_medium_margin"
-        android:text="Data Pekerjaan"
-        android:fontFamily="@font/rubik"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_extra_large"
-        android:textStyle="bold"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
@@ -54,22 +68,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_long_margin"
             app:errorTextAppearance="@style/MyErrorText"
-            android:layout_marginBottom="@dimen/pad_10"
             android:hint="Nomor NPWP"
             style="@style/EditTextLayoutApply">
 
             <com.xw.repo.XEditText
                 android:id="@+id/et_npwp"
                 android:layout_width="match_parent"
+                android:inputType="number"
+                android:textColorHint="@color/colorLightGrey"
                 android:layout_height="56dp"
-                android:digits="1234567890"
-                android:inputType="phone"
+                android:maxLength="15"
+                android:digits="0123456789"
+                android:gravity="bottom"
+                style="@style/EditTextLayoutApply"
                 android:nextFocusDown="@+id/sp_income"
                 android:imeOptions="actionNext"
-                style="@style/EditTextLayoutApply"
-                android:maxLength="15"
-                android:textSize="@dimen/text_xs_16"
-                android:background="@drawable/edit_bg_selector"/>
+                android:background="@drawable/edit_bg_selector"
+                android:fontFamily="@font/opensans_regular"/>
         </com.example.android_mobile_banking.widget.CustomTextInputLayout>
 
         <com.example.android_mobile_banking.widget.CustomSpinner
@@ -112,10 +127,9 @@
                     android:inputType="phone"
                     android:textColorHint="@color/colorLightGrey"
                     android:layout_height="56dp"
-                    android:maxLength="11"
                     android:gravity="bottom"
                     style="@style/EditTextLayoutApply"
-                    android:nextFocusDown="@+id/et_pengeluaran"
+                    android:nextFocusDown="@+id/sp_job_type"
                     android:imeOptions="actionNext"
                     android:background="@drawable/edit_bg_selector"
                     android:fontFamily="@font/opensans_regular"
@@ -157,22 +171,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/EditTextLayoutApply"
-            android:hint="Perusahaan Tempat Bekerja"
+            android:hint="Perusahaan/Kantor Tempat Bekerja"
             app:errorEnabled="true"
             app:errorTextAppearance="@style/MyErrorText">
 
             <com.xw.repo.XEditText
                 android:id="@+id/et_perusahaan"
                 android:layout_width="match_parent"
+                android:inputType="text"
+                android:textColorHint="@color/colorLightGrey"
                 android:layout_height="56dp"
                 android:digits="@string/input_text"
-                android:imeOptions="actionNext"
-                android:nextFocusDown="@+id/sp_status_kerja"
-                android:textSize="@dimen/text_xs_16"
-                app:x_disableClear="true"
+                android:gravity="bottom"
                 style="@style/EditTextLayoutApply"
+                android:nextFocusDown="@+id/sp_status_kerja"
+                android:imeOptions="actionNext"
                 android:background="@drawable/edit_bg_selector"
-                app:x_disableEmoji="true" />
+                android:fontFamily="@font/opensans_regular"/>
         </com.example.android_mobile_banking.widget.CustomTextInputLayout>
 
         <com.example.android_mobile_banking.widget.CustomSpinner
@@ -188,11 +203,14 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_simpan"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/pad_56"
         android:layout_alignParentBottom="true"
         android:background="@drawable/selector_btn_primary_full"
         android:padding="@dimen/default_medium_margin"
         android:text="@string/btnSimpan"
+        android:fontFamily="@font/opensans_regular"
+        android:textSize="@dimen/text_xs_18"
+        android:enabled="false"
         android:textAllCaps="false"
         android:textColor="@color/white" />
 </RelativeLayout>

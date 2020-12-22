@@ -3,6 +3,7 @@ package com.example.android_mobile_banking.util;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
@@ -75,5 +76,18 @@ public class Util {
     public static String getData(Application application,String keyword){
         SharedPreferences preferences = application.getSharedPreferences("localStorage",Context.MODE_PRIVATE);
         return preferences.getString(keyword,"-");
+    }
+
+    public static Bitmap scaleDown(Bitmap realImage, float maxImageSize,
+                                   boolean filter) {
+        float ratio = Math.min(
+                maxImageSize / realImage.getWidth(),
+                maxImageSize / realImage.getHeight());
+        int width = Math.round(ratio * realImage.getWidth());
+        int height = Math.round(ratio * realImage.getHeight());
+
+        Bitmap newBitmap = Bitmap.createScaledBitmap(realImage, width,
+                height, filter);
+        return newBitmap;
     }
 }

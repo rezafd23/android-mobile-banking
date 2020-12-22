@@ -6,12 +6,15 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+//import com.element.camera.ElementFaceSDK;
+
 public abstract class SingleActivity extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        ElementFaceSDK.initSDK(getApplication());
 
     }
 

@@ -6,7 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.ApplyPersonalDataActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLightGrey"
+        >
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ic_back"
+            android:src="@drawable/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/pad_20"
+            android:text="Data Pribadi"
+            android:fontFamily="@font/rubik"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_extra_large"
+            android:textStyle="bold"/>
+    </androidx.appcompat.widget.Toolbar>
+
     <androidx.core.widget.NestedScrollView
+        android:layout_below="@+id/toolbar"
         android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,16 +38,10 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           android:padding="@dimen/pad_20"
+            android:paddingLeft="@dimen/pad_20"
+            android:paddingRight="@dimen/pad_20"
+            android:paddingBottom="@dimen/pad_20"
             android:orientation="vertical">
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/personal_data"
-                android:fontFamily="@font/rubik"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_extra_large"
-                android:textStyle="bold"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,21 +71,18 @@
                 android:layout_marginBottom="15dp"
                 style="@style/EditTextLayoutApply">
                 <com.xw.repo.XEditText
-                    app:x_disableClear="true"
                     android:id="@+id/et_ektp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:paddingTop="@dimen/pad_10"
-                    android:paddingBottom="@dimen/pad_15"
+                    android:inputType="phone"
+                    android:textColorHint="@color/colorLightGrey"
+                    android:layout_height="56dp"
+                    android:maxLength="16"
+                    android:gravity="bottom"
+                    style="@style/EditTextLayoutApply"
+                    android:nextFocusDown="@+id/et_pengeluaran"
                     android:imeOptions="actionNext"
-                    android:inputType="numberDecimal"
-                    android:maxLength="20"
                     android:background="@drawable/edit_bg_selector"
-                    android:nextFocusDown="@+id/input_email"
-                    android:textSize="@dimen/text_xs_16"
-                    app:x_disableEmoji="true"
-                    />
+                    android:fontFamily="@font/opensans_regular"/>
             </com.example.android_mobile_banking.widget.CustomTextInputLayout>
 
             <com.example.android_mobile_banking.widget.CustomTextInputLayout
@@ -81,21 +95,18 @@
                 android:hint="Email"
                 style="@style/EditTextLayoutApply">
                 <com.xw.repo.XEditText
-                    app:x_disableClear="true"
                     android:id="@+id/et_email"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:paddingTop="@dimen/pad_10"
-                    android:paddingBottom="@dimen/pad_15"
-                    android:imeOptions="actionNext"
                     android:inputType="textEmailAddress"
-                    android:maxLength="32"
+                    android:textColorHint="@color/colorLightGrey"
+                    android:layout_height="56dp"
+                    android:gravity="bottom"
+                    style="@style/EditTextLayoutApply"
+                    android:nextFocusDown="@+id/et_pengeluaran"
+                    android:imeOptions="actionNext"
                     android:background="@drawable/edit_bg_selector"
-                    android:nextFocusDown="@+id/sp_pendidikan"
-                    android:textSize="@dimen/text_xs_16"
-                    app:x_disableEmoji="true"
-                    />
+                    android:fontFamily="@font/opensans_regular"/>
+
             </com.example.android_mobile_banking.widget.CustomTextInputLayout>
 
             <com.example.android_mobile_banking.widget.CustomSpinner
@@ -140,14 +151,16 @@
                 <com.xw.repo.XEditText
                     android:id="@+id/et_alamat"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:imeOptions="actionNext"
-                    android:nextFocusDown="@+id/sp_provinsi"
-                    android:textSize="@dimen/text_xs_16"
+                    android:inputType="text"
+                    android:textColorHint="@color/colorLightGrey"
+                    android:layout_height="56dp"
                     android:maxLength="80"
-                    app:x_disableClear="true"
-                    app:x_disableEmoji="true"
-                    android:background="@drawable/edit_bg_selector"/>
+                    android:gravity="bottom"
+                    style="@style/EditTextLayoutApply"
+                    android:nextFocusDown="@+id/et_pengeluaran"
+                    android:imeOptions="actionNext"
+                    android:background="@drawable/edit_bg_selector"
+                    android:fontFamily="@font/opensans_regular"/>
             </com.example.android_mobile_banking.widget.CustomTextInputLayout>
 
             <com.example.android_mobile_banking.widget.CustomSpinner
@@ -218,16 +231,15 @@
                 <com.xw.repo.XEditText
                     android:id="@+id/et_rt_rw"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/edit_bg_selector"
-                    android:digits="1234567890"
-                    android:focusable="true"
-                    android:imeOptions="actionNext"
                     android:inputType="phone"
-                    android:nextFocusDown="@+id/sp_status_rumah"
-                    android:textSize="@dimen/text_xs_16"
-                    app:x_disableClear="true"
-                    app:x_disableEmoji="true" />
+                    android:textColorHint="@color/colorLightGrey"
+                    android:layout_height="56dp"
+                    android:gravity="bottom"
+                    style="@style/EditTextLayoutApply"
+                    android:nextFocusDown="@+id/et_pengeluaran"
+                    android:imeOptions="actionNext"
+                    android:background="@drawable/edit_bg_selector"
+                    android:fontFamily="@font/opensans_regular"/>
             </com.example.android_mobile_banking.widget.CustomTextInputLayout>
 
             <com.example.android_mobile_banking.widget.CustomSpinner

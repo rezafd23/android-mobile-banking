@@ -5,12 +5,14 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -31,8 +33,10 @@ public class MainActivity extends SingleActivity {
     private NestedScrollView scrollView;
     private RelativeLayout layout_loading_data, layout_apply_onprogress,
             layout_credit_finish;
-    private LinearLayoutCompat layout_apply_new;
+    private LinearLayoutCompat layout_apply_new,layoutCard1,layoutCard2;
     private AppCompatButton btn_ajukan,btn_continue_apply;
+    private SwipeRefreshLayout swiperefresh;
+    private HorizontalScrollView scroll_ewallet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,7 @@ public class MainActivity extends SingleActivity {
         getDataUser(Util.getData(getApplication(), "access_token"));
         doAjukan();
         doContinue();
+        doRefresh();
     }
 
     public static void navigate(Activity activity) {
@@ -69,8 +74,23 @@ public class MainActivity extends SingleActivity {
         layout_credit_finish = findViewById(R.id.layout_credit_finish);
         btn_ajukan = findViewById(R.id.btn_ajukan_credit);
         btn_continue_apply = findViewById(R.id.btn_continue_apply);
+        swiperefresh = findViewById(R.id.swiperefresh);
+        scroll_ewallet = findViewById(R.id.scroll_ewallet);
+        layoutCard2 = findViewById(R.id.layoutCard2);
+        layoutCard1 = findViewById(R.id.layoutCard1);
 
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+    }
+
+    private void doRefresh(){
+        swiperefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getDataUser(Util.getData(getApplication(),"access_token"));
+
+
+            }
+        });
     }
 
     private void getDataUser(String auth) {
@@ -78,13 +98,14 @@ public class MainActivity extends SingleActivity {
         userViewModel.getUserData(auth)
                 .observe(this, userResponse -> {
                     dismissProgressDialog();
-                    Log.v("isiREsponse: ", userResponse.getResponse());
+//                    Log.v("isiResponse: ", userResponse.getResponse());
                     if (userResponse.getResponse().equals("200")) {
                         dismissProgressDialog();
+                        if (swiperefresh.isRefreshing())swiperefresh.setRefreshing(false);
                         Log.v("isiResponse: ", userResponse.getPayload().toString());
                         setUpHome(userResponse.getPayload());
                     } else if (userResponse.getResponse().equals("401")){
-                        LoginActivity.navigate(MainActivity.this,true);
+                        LoginPinActivity.navigate(MainActivity.this,true);
                     }
                     else {
                         dismissProgressDialog();
@@ -118,15 +139,33 @@ public class MainActivity extends SingleActivity {
             switch (application_status){
                 case "NOT_YET":
                     layout_loading_data.setVisibility(View.GONE);
+                    layout_credit_finish.setVisibility(View.GONE);
+                    layout_apply_onprogress.setVisibility(View.GONE);
                     layout_apply_new.setVisibility(View.VISIBLE);
+                    navigationView.setVisibility(View.GONE);
+                    scroll_ewallet.setVisibility(View.GONE);
+                    layoutCard2.setVisibility(View.GONE);
+                    layoutCard1.setVisibility(View.GONE);
                     break;
                 case "IN_PROGGRESS":
-                    layout_loading_data.setVisibility(View.GONE);
                     layout_apply_onprogress.setVisibility(View.VISIBLE);
-                    break;
-                case "Application_Success":
                     layout_loading_data.setVisibility(View.GONE);
+                    layout_credit_finish.setVisibility(View.GONE);
+                    layout_apply_new.setVisibility(View.GONE);
+                    navigationView.setVisibility(View.GONE);
+                    scroll_ewallet.setVisibility(View.GONE);
+                    layoutCard2.setVisibility(View.GONE);
+                    layoutCard1.setVisibility(View.GONE);
+                    break;
+                case "APPLICATION_SUCCESS":
+                    layout_apply_new.setVisibility(View.GONE);
+                    layout_loading_data.setVisibility(View.GONE);
+                    layout_apply_onprogress.setVisibility(View.GONE);
                     layout_credit_finish.setVisibility(View.VISIBLE);
+                    navigationView.setVisibility(View.VISIBLE);
+                    layoutCard1.setVisibility(View.VISIBLE);
+                    scroll_ewallet.setVisibility(View.VISIBLE);
+                    layoutCard2.setVisibility(View.VISIBLE);
                     break;
             }
 

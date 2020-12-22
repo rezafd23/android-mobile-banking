@@ -85,6 +85,7 @@
             android:padding="@dimen/default_long_margin"
             android:text="@string/retake_foto"
             android:textAllCaps="true"
+            android:onClick="onRetakeFoto"
             android:textColor="@color/dark_blue" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -92,6 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:onClick="onUseFoto"
             android:background="@drawable/selector_btn_primary"
             android:padding="@dimen/default_long_margin"
             android:text="@string/use_foto"

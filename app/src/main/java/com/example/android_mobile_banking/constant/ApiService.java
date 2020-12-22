@@ -3,6 +3,7 @@ package com.example.android_mobile_banking.constant;
 public class ApiService {
 
     public static String BASE_URL="http://192.168.18.5:8080/";
+    public static String BASE_URL_2="http://192.168.18.5:3000";
 
 //    Auth
     public static String register=BASE_URL+"api/auth/register/";
@@ -13,6 +14,11 @@ public class ApiService {
 //    Nasabah
     public static String getData=BASE_URL+"api/nasabah/getData/";
     public static String addPersonalData=BASE_URL+"api/nasabah/addPersonalData/";
+    public static String addRelativeData=BASE_URL+"api/nasabah/addRelativeData/";
+    public static String addWorkData=BASE_URL+"api/nasabah/addWorkData/";
+    public static String finishRegister=BASE_URL+"api/nasabah/finishRegister/";
+
+    public static String uploadEKTP=BASE_URL_2+"/app/api/user/uploadEktp";
 
 
 

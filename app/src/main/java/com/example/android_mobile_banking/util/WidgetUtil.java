@@ -33,6 +33,22 @@ public class WidgetUtil {
         baseDialog.setButonNegative(btnNegTitle, negListener);
         baseDialog.show();
     }
+
+    public static void showDoubleButtonDialog(Activity activity, String title, String message,
+                                              String btnPosTitle, DialogClickListener posListener,
+                                              String btnNegTitle, DialogClickListener negListener,
+                                              boolean noClose) {
+        DoubleBtnDialog baseDialog = new DoubleBtnDialog(activity);
+        baseDialog.setMessage(message);
+        baseDialog.setTitle(title);
+        baseDialog.setButonPositive(btnPosTitle, posListener);
+        baseDialog.setButonNegative(btnNegTitle, negListener);
+        baseDialog.setNoClose(true);
+        baseDialog.show();
+    }
+
+
+
     public static void setupSpinner(Spinner spinner, String[] list) {
         //SpinnerAdapter adapter = new SpinnerAdapter(spinner.getContext(), android.R.layout.simple_spinner_item, Arrays.asList(list));
         SpinnerAdapter adapter = new SpinnerAdapter(spinner.getContext(), R.layout.spinner_item, Arrays.asList(list));
@@ -126,6 +142,27 @@ public class WidgetUtil {
             return true;
         } else {
             return false;
+        }
+    }
+
+    public static void setSpinnerSelection(Spinner spinner, String identifer,boolean placeholder) {
+        android.widget.SpinnerAdapter adapter = spinner.getAdapter();
+        if (adapter instanceof SpinnerAdapter) {
+            SpinnerAdapter spinnerAdapter = (SpinnerAdapter) adapter;
+            if (adapter != null) {
+                int spinnerPosition = spinnerAdapter.getPosition(identifer);
+                spinner.setSelection(spinnerPosition+1);
+            }
+        } else {
+            if (adapter != null) {
+                for (int i = 0; i < adapter.getCount(); i++) {
+                    Object obj = adapter.getItem(i);
+                    if (obj != null && identifer != null && obj.toString().equalsIgnoreCase(identifer.toString())) {
+                        spinner.setSelection(i);
+                        break;
+                    }
+                }
+            }
         }
     }
 

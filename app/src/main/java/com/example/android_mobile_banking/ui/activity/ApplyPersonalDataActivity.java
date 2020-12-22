@@ -2,6 +2,7 @@ package com.example.android_mobile_banking.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.lifecycle.ViewModelProviders;
@@ -30,6 +31,8 @@ import com.example.android_mobile_banking.widget.CustomSpinner;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.SimpleMaskTextWatcher;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.xw.repo.XEditText;
 
 import org.json.JSONObject;
@@ -40,6 +43,7 @@ public class ApplyPersonalDataActivity extends SingleActivity {
     private NestedScrollView nested_scroll_view;
     private XEditText et_ektp, et_email,et_alamat,et_rt_rw;
     private AppCompatButton btn_simpan;
+    private AppCompatImageView ic_back;
     private CustomSpinner sp_pendidikan, sp_status_perkawinan,
             sp_kecamatan, sp_kelurahan, sp_kabupaten, sp_provinsi,sp_status_rumah;
 
@@ -74,8 +78,16 @@ public class ApplyPersonalDataActivity extends SingleActivity {
         sp_provinsi = findViewById(R.id.sp_provinsi);
         sp_status_rumah = findViewById(R.id.sp_status_rumah);
         nested_scroll_view = findViewById(R.id.nested_scroll_view);
+        ic_back = findViewById(R.id.ic_back);
 
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void setupView() {
@@ -182,11 +194,88 @@ public class ApplyPersonalDataActivity extends SingleActivity {
         setupData();
     }
     private void setupData(){
+        try {
+            if (!getIntent().getStringExtra("personal_data").equals("-")){
+                Log.v("isiPersonalData: ",getIntent().getStringExtra("personal_data"));
+                JSONObject jsonObject = new JSONObject(getIntent().getStringExtra("personal_data"));
+
+                et_ektp.setText(jsonObject.getString("no_ktp"));
+                et_email.setText(jsonObject.getString("email"));
+                et_alamat.setText(jsonObject.getString("address"));
+                WidgetUtil.setSpinnerSelection(sp_pendidikan,jsonObject.getString("education"),true);
+                WidgetUtil.setSpinnerSelection(sp_status_perkawinan,jsonObject.getString("marital"),true);
+                WidgetUtil.setSpinnerSelection(sp_provinsi,jsonObject.getString("province"),true);
+                WidgetUtil.setSpinnerSelection(sp_kabupaten,jsonObject.getString("city"),true);
+                WidgetUtil.setSpinnerSelection(sp_status_rumah,jsonObject.getString("living_status"),true);
+
+                et_rt_rw.setText(jsonObject.getString("rt")+"/"+jsonObject.getString("rw"));
+
+                String Kecamatan =  jsonObject.getString("district");
+                String Kelurahan =  jsonObject.getString("sub_district");
+
+                sp_kabupaten.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                        switch (i) {
+                            case 0:
+                                WidgetUtil.setupSpinner(sp_kecamatan, AppConstant.listJakBarKec);
+                                WidgetUtil.setSpinnerSelection(sp_kecamatan,Kecamatan,true);
+                                break;
+                            case 1:
+                                WidgetUtil.setupSpinner(sp_kecamatan, AppConstant.listJakSelKec);
+                                WidgetUtil.setSpinnerSelection(sp_kecamatan,Kecamatan,true);
+                                break;
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+                    }
+                });
+
+                sp_kecamatan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                        if (i>=0){
+                            switch (adapterView.getSelectedItem().toString()){
+                                case "Cilandak":
+                                    WidgetUtil.setupSpinner(sp_kelurahan, AppConstant.listKelCilandak);
+                                    WidgetUtil.setSpinnerSelection(sp_kelurahan,Kelurahan,true);
+                                    break;
+                                case "Mampang Prapatan":
+                                    WidgetUtil.setupSpinner(sp_kelurahan, AppConstant.listKelMampang);
+                                    WidgetUtil.setSpinnerSelection(sp_kelurahan,Kelurahan,true);
+                                    break;
+                                case "Taman Sari":
+                                    WidgetUtil.setupSpinner(sp_kelurahan, AppConstant.listKelTamsar);
+                                    WidgetUtil.setSpinnerSelection(sp_kelurahan,Kelurahan,true);
+                                    break;
+                                case "Grogol Petamburan":
+                                    WidgetUtil.setupSpinner(sp_kelurahan, AppConstant.listKelGrogol);
+                                    WidgetUtil.setSpinnerSelection(sp_kelurahan,Kelurahan,true);
+                                    break;
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> adapterView) {
+                    }
+                });
+
+
+            }
+        } catch (Exception e){
+            Log.v("error Setup Data",e.getMessage());
+        }
 
     }
 
-    public static void navigate(Activity activity) {
+
+    public static void navigate(Activity activity,String personal_data) {
         Intent intent = new Intent(activity, ApplyPersonalDataActivity.class);
+        intent.putExtra("personal_data",personal_data);
         activity.startActivity(intent);
     }
 
@@ -207,11 +296,11 @@ public class ApplyPersonalDataActivity extends SingleActivity {
                 if (inputLayout.getError() != null && inputLayout.getError().toString().length() > 0) {
                     inputLayout.setError(null);
                 }
-                if (s.length() > 0) {
-                    inputLayout.setHint(null);
-                } else {
-                    inputLayout.setHint(hint);
-                }
+//                if (s.length() > 0) {
+//                    inputLayout.setHint(null);
+//                } else {
+//                    inputLayout.setHint(hint);
+//                }
                 checkEnabledButton();
             }
         });
@@ -294,7 +383,7 @@ public class ApplyPersonalDataActivity extends SingleActivity {
                        Toast.makeText(getApplicationContext(),"Data Pribadi Berhasil Ditambah",Toast.LENGTH_SHORT);
                        ApplyDataActivity.navigate(ApplyPersonalDataActivity.this);
                    } else if (userResponse.getResponse().equals("401")){
-                       LoginActivity.navigate(ApplyPersonalDataActivity.this,true);
+                       LoginPinActivity.navigate(ApplyPersonalDataActivity.this,true);
                    } else if (userResponse.getMessage().equals("Your Email and KTP Number Exist!")){
                        Toast.makeText(getApplicationContext(),"Nomor KTP atau Email Anda telah Terdaftar",Toast.LENGTH_SHORT);
                    }
