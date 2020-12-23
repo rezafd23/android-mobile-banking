@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="6dp"
+    card_view:cardElevation="3dp"
+    card_view:cardUseCompatPadding="true">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_nominal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:gravity="center|bottom"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_nominal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_xs_18" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_nominal2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.cardview.widget.CardView>

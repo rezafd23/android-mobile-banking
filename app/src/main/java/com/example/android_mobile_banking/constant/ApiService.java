@@ -17,8 +17,10 @@ public class ApiService {
     public static String addRelativeData=BASE_URL+"api/nasabah/addRelativeData/";
     public static String addWorkData=BASE_URL+"api/nasabah/addWorkData/";
     public static String finishRegister=BASE_URL+"api/nasabah/finishRegister/";
-
     public static String uploadEKTP=BASE_URL_2+"/app/api/user/uploadEktp";
+
+//    Token
+    public static String getTokenList=BASE_URL+"api/token/getVoucer/";
 
 
 

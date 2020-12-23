@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         app:navigationIcon="@drawable/ic_back"
-        app:title="@string/pulsa"></androidx.appcompat.widget.Toolbar>
+        app:title="@string/pulsa"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/layoutSaldo"
@@ -43,7 +43,7 @@
             android:textSize="@dimen/text_xs_14" />
 
         <com.xw.repo.XEditText
-            android:id="@+id/et_ektp"
+            android:id="@+id/et_nomor_pln"
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:background="@drawable/edit_bg_selector"
@@ -51,11 +51,19 @@
             android:hint="@string/meter_m"
             android:imeOptions="actionNext"
             android:inputType="numberDecimal"
-            android:maxLength="20"
-            android:nextFocusDown="@+id/input_email"
             android:textSize="@dimen/text_xs_16"
             app:x_disableClear="true"
             app:x_disableEmoji="true" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/pad_10"
+            android:textColor="@color/white"
+            android:fontFamily="@font/rubik_medium"
+            android:textSize="@dimen/text_xs_16"
+            android:background="@drawable/card_customer"
+            android:text="Cek Nomor"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <RelativeLayout
@@ -66,6 +74,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
+        android:visibility="invisible"
         android:background="@color/white">
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -147,7 +156,7 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/pulsaRecyclerView"
+            android:id="@+id/voucerRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/layout_cus"

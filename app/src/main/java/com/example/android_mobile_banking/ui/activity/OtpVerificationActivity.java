@@ -13,7 +13,6 @@ import android.view.View;
 
 import com.alimuzaffar.lib.pin.PinEntryEditText;
 import com.example.android_mobile_banking.R;
-import com.example.android_mobile_banking.repositories.AuthController;
 import com.example.android_mobile_banking.ui.helper.SingleActivity;
 import com.example.android_mobile_banking.util.Util;
 import com.example.android_mobile_banking.viewmodel.AuthViewModel;
@@ -26,7 +25,6 @@ public class OtpVerificationActivity extends SingleActivity {
     private PinEntryEditText pinEntry;
     private AppCompatTextView tv_alert;
     private AppCompatTextView tv_resend_otp;
-    private AuthController authController = new AuthController();
     private AuthViewModel authViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,5 +1,6 @@
 package com.example.android_mobile_banking.ui.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.LinearLayoutCompat;
@@ -11,6 +12,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout;
@@ -49,6 +51,28 @@ public class MainActivity extends SingleActivity {
         doAjukan();
         doContinue();
         doRefresh();
+        doMenu();
+    }
+
+    private void doMenu(){
+        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.mutasi:
+//                        mfragment = new Home();
+                        break;
+                    case R.id.qris:
+//                        mfragment = new Search();
+                        break;
+                    case R.id.pln:
+                        BuyPlnActivity.navigate(MainActivity.this);
+//                        mfragment = new Acount();
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     public static void navigate(Activity activity) {

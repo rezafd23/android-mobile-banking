@@ -16,7 +16,6 @@ import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.example.android_mobile_banking.R;
-import com.example.android_mobile_banking.repositories.AuthController;
 import com.example.android_mobile_banking.util.Util;
 import com.example.android_mobile_banking.viewmodel.AuthViewModel;
 import com.example.android_mobile_banking.ui.helper.SingleActivity;
@@ -30,7 +29,6 @@ public class LoginActivity extends SingleActivity {
     private AppCompatTextView tv_sign_up, tv_title1, tv_title2, tv_tnc;
     private AppCompatButton btn_signup;
     private AppCompatCheckBox cb_tnc;
-    private AuthController authController = new AuthController();
     private AuthViewModel authViewModel;
 
     @Override
