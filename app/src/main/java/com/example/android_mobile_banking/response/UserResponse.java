@@ -42,4 +42,5 @@ public class UserResponse {
     public void setPayload(JSONObject payload) {
         this.payload = payload;
     }
+
 }

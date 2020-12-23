@@ -3,6 +3,7 @@ package com.example.android_mobile_banking.ui.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.lifecycle.ViewModelProviders;
@@ -35,10 +36,11 @@ public class MainActivity extends SingleActivity {
     private NestedScrollView scrollView;
     private RelativeLayout layout_loading_data, layout_apply_onprogress,
             layout_credit_finish;
-    private LinearLayoutCompat layout_apply_new,layoutCard1,layoutCard2;
+    private LinearLayoutCompat layout_apply_new,layoutCard1;
     private AppCompatButton btn_ajukan,btn_continue_apply;
     private SwipeRefreshLayout swiperefresh;
     private HorizontalScrollView scroll_ewallet;
+    private AppCompatTextView cardName1,tv_cash_used;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,8 +102,9 @@ public class MainActivity extends SingleActivity {
         btn_continue_apply = findViewById(R.id.btn_continue_apply);
         swiperefresh = findViewById(R.id.swiperefresh);
         scroll_ewallet = findViewById(R.id.scroll_ewallet);
-        layoutCard2 = findViewById(R.id.layoutCard2);
+        cardName1 = findViewById(R.id.cardName1);
         layoutCard1 = findViewById(R.id.layoutCard1);
+        tv_cash_used = findViewById(R.id.tv_cash_used);
 
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
     }
@@ -127,6 +130,7 @@ public class MainActivity extends SingleActivity {
                         dismissProgressDialog();
                         if (swiperefresh.isRefreshing())swiperefresh.setRefreshing(false);
                         Log.v("isiResponse: ", userResponse.getPayload().toString());
+                        Util.setData(getApplication(),"data_nasabah",userResponse.getPayload().toString());
                         setUpHome(userResponse.getPayload());
                     } else if (userResponse.getResponse().equals("401")){
                         LoginPinActivity.navigate(MainActivity.this,true);
@@ -168,7 +172,6 @@ public class MainActivity extends SingleActivity {
                     layout_apply_new.setVisibility(View.VISIBLE);
                     navigationView.setVisibility(View.GONE);
                     scroll_ewallet.setVisibility(View.GONE);
-                    layoutCard2.setVisibility(View.GONE);
                     layoutCard1.setVisibility(View.GONE);
                     break;
                 case "IN_PROGGRESS":
@@ -178,7 +181,6 @@ public class MainActivity extends SingleActivity {
                     layout_apply_new.setVisibility(View.GONE);
                     navigationView.setVisibility(View.GONE);
                     scroll_ewallet.setVisibility(View.GONE);
-                    layoutCard2.setVisibility(View.GONE);
                     layoutCard1.setVisibility(View.GONE);
                     break;
                 case "APPLICATION_SUCCESS":
@@ -189,10 +191,15 @@ public class MainActivity extends SingleActivity {
                     navigationView.setVisibility(View.VISIBLE);
                     layoutCard1.setVisibility(View.VISIBLE);
                     scroll_ewallet.setVisibility(View.VISIBLE);
-                    layoutCard2.setVisibility(View.VISIBLE);
+                    Log.v("saldo: ",jsonObject.getJSONObject("banking").getString("saldo"));
+                    if (!jsonObject.getJSONObject("banking").getString("saldo").equals("0")){
+                        tv_cash_used.setText(Util.round(String.valueOf(jsonObject.getJSONObject("banking").getInt("saldo"))));
+                    }else {
+                        tv_cash_used.setText(String.valueOf(jsonObject.getJSONObject("banking").getInt("saldo")));
+                    }
+                    cardName1.setText(jsonObject.getJSONObject("personal").getString("nama"));
                     break;
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }

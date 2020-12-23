@@ -79,7 +79,30 @@
                     android:maxLength="16"
                     android:gravity="bottom"
                     style="@style/EditTextLayoutApply"
-                    android:nextFocusDown="@+id/et_pengeluaran"
+                    android:nextFocusDown="@+id/et_nama"
+                    android:imeOptions="actionNext"
+                    android:background="@drawable/edit_bg_selector"
+                    android:fontFamily="@font/opensans_regular"/>
+            </com.example.android_mobile_banking.widget.CustomTextInputLayout>
+
+            <com.example.android_mobile_banking.widget.CustomTextInputLayout
+                android:id="@+id/input_nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_15"
+                android:hint="Nama Sesuai KTP"
+                app:errorTextAppearance="@style/MyErrorText"
+                android:layout_marginBottom="15dp"
+                style="@style/EditTextLayoutApply">
+                <com.xw.repo.XEditText
+                    android:id="@+id/et_nama"
+                    android:layout_width="match_parent"
+                    android:inputType="textPersonName"
+                    android:textColorHint="@color/colorLightGrey"
+                    android:layout_height="56dp"
+                    android:gravity="bottom"
+                    style="@style/EditTextLayoutApply"
+                    android:nextFocusDown="@+id/et_email"
                     android:imeOptions="actionNext"
                     android:background="@drawable/edit_bg_selector"
                     android:fontFamily="@font/opensans_regular"/>
@@ -102,7 +125,7 @@
                     android:layout_height="56dp"
                     android:gravity="bottom"
                     style="@style/EditTextLayoutApply"
-                    android:nextFocusDown="@+id/et_pengeluaran"
+                    android:nextFocusDown="@+id/sp_pendidikan"
                     android:imeOptions="actionNext"
                     android:background="@drawable/edit_bg_selector"
                     android:fontFamily="@font/opensans_regular"/>

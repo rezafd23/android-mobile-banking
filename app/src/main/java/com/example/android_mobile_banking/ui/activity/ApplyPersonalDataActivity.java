@@ -39,9 +39,9 @@ import org.json.JSONObject;
 
 public class ApplyPersonalDataActivity extends SingleActivity {
 
-    private TextInputLayout inputNoKTP, inputEmail,input_alamat,input_rt_rw;
+    private TextInputLayout inputNoKTP, inputEmail,input_alamat,input_rt_rw,input_nama;
     private NestedScrollView nested_scroll_view;
-    private XEditText et_ektp, et_email,et_alamat,et_rt_rw;
+    private XEditText et_ektp, et_email,et_alamat,et_rt_rw,et_nama;
     private AppCompatButton btn_simpan;
     private AppCompatImageView ic_back;
     private CustomSpinner sp_pendidikan, sp_status_perkawinan,
@@ -61,6 +61,7 @@ public class ApplyPersonalDataActivity extends SingleActivity {
     }
 
     private void initView() {
+        input_nama = findViewById(R.id.input_nama);
         inputNoKTP = findViewById(R.id.input_ektp);
         inputEmail = findViewById(R.id.input_email);
         input_alamat = findViewById(R.id.input_alamat);
@@ -69,6 +70,7 @@ public class ApplyPersonalDataActivity extends SingleActivity {
         et_email = findViewById(R.id.et_email);
         et_rt_rw = findViewById(R.id.et_rt_rw);
         et_alamat = findViewById(R.id.et_alamat);
+        et_nama = findViewById(R.id.et_nama);
         btn_simpan = findViewById(R.id.btn_simpan);
         sp_pendidikan = findViewById(R.id.sp_pendidikan);
         sp_status_perkawinan = findViewById(R.id.sp_status_perkawinan);
@@ -92,10 +94,11 @@ public class ApplyPersonalDataActivity extends SingleActivity {
 
     private void setupView() {
 
-        setTextChange(et_ektp, inputNoKTP, "No E-KTP");
-        setTextChange(et_email, inputEmail, "Email");
-        setTextChange(et_alamat, input_alamat, "Alamat Lengkap");
-        setTextChange(et_rt_rw, input_rt_rw, "RT/RW");
+        setTextChange(et_ektp, inputNoKTP);
+        setTextChange(et_email, inputEmail);
+        setTextChange(et_alamat, input_alamat);
+        setTextChange(et_rt_rw, input_rt_rw);
+        setTextChange(et_nama, input_nama);
 
         SimpleMaskTextWatcher textWatcher = new SimpleMaskTextWatcher(et_rt_rw, "NNN/NNN");
         et_rt_rw.addTextChangedListener(textWatcher);
@@ -199,6 +202,7 @@ public class ApplyPersonalDataActivity extends SingleActivity {
                 Log.v("isiPersonalData: ",getIntent().getStringExtra("personal_data"));
                 JSONObject jsonObject = new JSONObject(getIntent().getStringExtra("personal_data"));
 
+                et_nama.setText(jsonObject.getString("nama"));
                 et_ektp.setText(jsonObject.getString("no_ktp"));
                 et_email.setText(jsonObject.getString("email"));
                 et_alamat.setText(jsonObject.getString("address"));
@@ -279,7 +283,7 @@ public class ApplyPersonalDataActivity extends SingleActivity {
         activity.startActivity(intent);
     }
 
-    private void setTextChange(XEditText editText, final TextInputLayout inputLayout, String hint) {
+    private void setTextChange(XEditText editText, final TextInputLayout inputLayout) {
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -351,6 +355,7 @@ public class ApplyPersonalDataActivity extends SingleActivity {
                String rw = parts[1];
                JSONObject jsonObject = new JSONObject();
                jsonObject.put("no_ktp",et_ektp.getText().toString());
+               jsonObject.put("nama",et_nama.getText().toString());
                jsonObject.put("email",et_email.getText().toString());
                jsonObject.put("education",sp_pendidikan.getSelectedItem().toString());
                jsonObject.put("marital",sp_status_perkawinan.getSelectedItem().toString());

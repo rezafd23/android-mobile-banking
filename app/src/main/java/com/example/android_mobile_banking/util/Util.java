@@ -9,6 +9,9 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.LinearLayout;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Util {
 
     public static void expand(final View v, int animationSpeed) {
@@ -89,5 +92,17 @@ public class Util {
         Bitmap newBitmap = Bitmap.createScaledBitmap(realImage, width,
                 height, filter);
         return newBitmap;
+    }
+
+    public static String round(String val) {
+        return NumberFormat.getNumberInstance(Locale.GERMAN).format(parseInteger(val.substring(0, val.indexOf(".")), 0));
+    }
+
+    public static int parseInteger(String string, int defaultValue) {
+        try {
+            return Integer.parseInt(string);
+        } catch (NumberFormatException e) {
+            return defaultValue;
+        }
     }
 }

@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.android_mobile_banking">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -18,32 +19,30 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-
-<!--    android:name=".MainApplication"-->
-<!--    android:allowBackup="false"-->
-<!--    android:icon="@mipmap/ic_launcher"-->
-<!--    android:supportsRtl="true"-->
-<!--    android:theme="@style/AppTheme">-->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:usesCleartextTraffic="true"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Androidmobilebanking">
-        <activity android:name=".ui.activity.CreatePinActivity"></activity>
+        android:theme="@style/Theme.Androidmobilebanking"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.activity.CardDetailActivity"></activity>
+        <activity android:name=".ui.activity.CreatePinActivity" />
         <activity android:name=".ui.activity.SuccessResponseActivity" />
         <activity android:name=".ui.activity.BuyPlnActivity" />
         <activity android:name=".ui.activity.CameraFaceConfirmationActivity" />
         <activity android:name=".ui.activity.CameraKtpActivity" />
         <activity android:name=".ui.activity.CreditFinishActivity" />
-        <activity android:name=".ui.activity.ApplyRelevanDataActivity"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".ui.activity.ApplyPersonalDataActivity"
-            android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".ui.activity.ApplyWorkDataActivity"
-            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".ui.activity.ApplyRelevanDataActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.activity.ApplyPersonalDataActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.activity.ApplyWorkDataActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.activity.ApplyDataActivity" />
         <activity android:name=".ui.activity.OtpVerificationActivity" />
         <activity android:name=".ui.activity.LoginActivity" />

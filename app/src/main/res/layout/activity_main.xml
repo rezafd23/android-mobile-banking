@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.MainActivity">
 
-
-
-
 <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
@@ -732,7 +729,7 @@
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:fontFamily="@font/opensans_regular"
-                                                android:text="Reza Fadilah D"/>
+                                                android:text=""/>
                                             <androidx.appcompat.widget.AppCompatTextView
                                                 android:id="@+id/cardStatus1"
                                                 android:layout_width="wrap_content"
@@ -740,12 +737,6 @@
                                                 android:textColor="@color/green"
                                                 android:fontFamily="@font/opensans_bold"
                                                 android:text="Active"/>
-                                            <androidx.appcompat.widget.AppCompatTextView
-                                                android:id="@+id/cardBalance1"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:fontFamily="@font/opensans_regular"
-                                                android:text="Rp.1.000.000"/>
 
                                         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -768,72 +759,72 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="1dp"
                                     android:background="@color/colorLightGrey"/>
-                                <androidx.appcompat.widget.LinearLayoutCompat
-                                    android:id="@+id/layoutCard2"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical"
-                                    android:paddingTop="@dimen/pad_10"
-                                    android:paddingBottom="@dimen/pad_10">
-                                    <RelativeLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content">
-                                        <androidx.appcompat.widget.AppCompatImageView
-                                            android:id="@+id/card2"
-                                            android:layout_width="@dimen/logo_100"
-                                            android:layout_height="70dp"
-                                            android:background="@drawable/amex"/>
-                                        <androidx.appcompat.widget.LinearLayoutCompat
-                                            android:id="@+id/card_desc2"
-                                            android:layout_marginStart="@dimen/pad_20"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:orientation="vertical"
-                                            android:layout_centerVertical="true"
-                                            android:layout_toEndOf="@id/card2">
+<!--                                <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                                    android:id="@+id/layoutCard2"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:orientation="vertical"-->
+<!--                                    android:paddingTop="@dimen/pad_10"-->
+<!--                                    android:paddingBottom="@dimen/pad_10">-->
+<!--                                    <RelativeLayout-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content">-->
+<!--                                        <androidx.appcompat.widget.AppCompatImageView-->
+<!--                                            android:id="@+id/card2"-->
+<!--                                            android:layout_width="@dimen/logo_100"-->
+<!--                                            android:layout_height="70dp"-->
+<!--                                            android:background="@drawable/amex"/>-->
+<!--                                        <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--                                            android:id="@+id/card_desc2"-->
+<!--                                            android:layout_marginStart="@dimen/pad_20"-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:orientation="vertical"-->
+<!--                                            android:layout_centerVertical="true"-->
+<!--                                            android:layout_toEndOf="@id/card2">-->
 
-                                            <androidx.appcompat.widget.AppCompatTextView
-                                                android:id="@+id/cardName2"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:fontFamily="@font/opensans_regular"
-                                                android:text="Reza Fadilah D"/>
-                                            <androidx.appcompat.widget.AppCompatTextView
-                                                android:id="@+id/cardStatus2"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:textColor="@color/green"
-                                                android:fontFamily="@font/opensans_bold"
-                                                android:text="Active"/>
-                                            <androidx.appcompat.widget.AppCompatTextView
-                                                android:id="@+id/cardBalance2"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:fontFamily="@font/opensans_regular"
-                                                android:text="Rp.1.000.000"/>
+<!--                                            <androidx.appcompat.widget.AppCompatTextView-->
+<!--                                                android:id="@+id/cardName2"-->
+<!--                                                android:layout_width="wrap_content"-->
+<!--                                                android:layout_height="wrap_content"-->
+<!--                                                android:fontFamily="@font/opensans_regular"-->
+<!--                                                android:text="Reza Fadilah D"/>-->
+<!--                                            <androidx.appcompat.widget.AppCompatTextView-->
+<!--                                                android:id="@+id/cardStatus2"-->
+<!--                                                android:layout_width="wrap_content"-->
+<!--                                                android:layout_height="wrap_content"-->
+<!--                                                android:textColor="@color/green"-->
+<!--                                                android:fontFamily="@font/opensans_bold"-->
+<!--                                                android:text="Active"/>-->
+<!--                                            <androidx.appcompat.widget.AppCompatTextView-->
+<!--                                                android:id="@+id/cardBalance2"-->
+<!--                                                android:layout_width="wrap_content"-->
+<!--                                                android:layout_height="wrap_content"-->
+<!--                                                android:fontFamily="@font/opensans_regular"-->
+<!--                                                android:text="Rp.1.000.000"/>-->
 
-                                        </androidx.appcompat.widget.LinearLayoutCompat>
+<!--                                        </androidx.appcompat.widget.LinearLayoutCompat>-->
 
-                                        <androidx.appcompat.widget.AppCompatImageView
-                                            android:layout_centerVertical="true"
-                                            android:layout_alignParentEnd="true"
-                                            android:layout_marginRight="@dimen/pad_20"
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:src="@drawable/ic_more"
-                                            />
+<!--                                        <androidx.appcompat.widget.AppCompatImageView-->
+<!--                                            android:layout_centerVertical="true"-->
+<!--                                            android:layout_alignParentEnd="true"-->
+<!--                                            android:layout_marginRight="@dimen/pad_20"-->
+<!--                                            android:layout_width="wrap_content"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:src="@drawable/ic_more"-->
+<!--                                            />-->
 
-                                    </RelativeLayout>
-                                </androidx.appcompat.widget.LinearLayoutCompat>
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="5dp"
-                                    android:background="@color/colorLightGrey" />
+<!--                                    </RelativeLayout>-->
+<!--                                </androidx.appcompat.widget.LinearLayoutCompat>-->
+<!--                                <View-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="5dp"-->
+<!--                                    android:background="@color/colorLightGrey" />-->
 
-                                <View
-                                    android:layout_width="match_parent"
-                                    android:layout_height="3dp"
-                                    android:background="@color/dark_blue" />
+<!--                                <View-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="3dp"-->
+<!--                                    android:background="@color/dark_blue" />-->
                             </androidx.appcompat.widget.LinearLayoutCompat>
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
