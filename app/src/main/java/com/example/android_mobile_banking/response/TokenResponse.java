@@ -3,6 +3,7 @@ package com.example.android_mobile_banking.response;
 import com.example.android_mobile_banking.model.Token;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class TokenResponse {
     private String status;
 //    private JSONArray payload;
     private List<Token> payload;
+    private JSONObject payloadUser;
 
     public TokenResponse() {
     }
@@ -38,5 +40,13 @@ public class TokenResponse {
 
     public void setPayload(List<Token> payload) {
         this.payload = payload;
+    }
+
+    public JSONObject getPayloadUser() {
+        return payloadUser;
+    }
+
+    public void setPayloadUser(JSONObject payloadUser) {
+        this.payloadUser = payloadUser;
     }
 }

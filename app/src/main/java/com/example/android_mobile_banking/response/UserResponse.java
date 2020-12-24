@@ -1,12 +1,17 @@
 package com.example.android_mobile_banking.response;
 
+import com.example.android_mobile_banking.model.Mutasi;
+
 import org.json.JSONObject;
+
+import java.util.List;
 
 public class UserResponse {
     private String response;
     private String status;
     private String message;
     private JSONObject payload;
+    private List<Mutasi> mutasiList;
 
     public UserResponse() {
     }
@@ -43,4 +48,11 @@ public class UserResponse {
         this.payload = payload;
     }
 
+    public List<Mutasi> getMutasiList() {
+        return mutasiList;
+    }
+
+    public void setMutasiList(List<Mutasi> mutasiList) {
+        this.mutasiList = mutasiList;
+    }
 }

@@ -62,6 +62,7 @@ public class MainActivity extends SingleActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.mutasi:
+                        MutasiRekeningActivity.navigate(MainActivity.this);
 //                        mfragment = new Home();
                         break;
                     case R.id.qris:

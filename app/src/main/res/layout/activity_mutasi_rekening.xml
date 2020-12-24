@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightGrey"
+    android:orientation="vertical"
+    tools:context=".ui.activity.MutasiRekeningActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_blue">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_2"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mutasi_rekening"
+            android:fontFamily="@font/rubik"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_xs_18"
+            android:gravity="center_vertical"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_margin="@dimen/pad_20"
+        android:orientation="vertical"
+        >
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Periode Mutasi"
+            android:textSize="@dimen/text_xs_16"
+            android:fontFamily="@font/rubik_medium"
+            android:textColor="@color/dark_blue"
+            android:paddingTop="@dimen/pad_10"
+            android:paddingStart="@dimen/pad_10"/>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_marginTop="@dimen/pad_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dari Tanggal: "
+                android:textSize="@dimen/text_xs_16"
+                android:fontFamily="@font/opensans_regular"
+                android:textColor="@color/black"
+
+                android:layout_marginStart="@dimen/pad_10"/>
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_start_date"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/pad_32"
+                android:enabled="false"
+                android:layout_marginStart="@dimen/pad_10"
+                android:layout_marginEnd="@dimen/pad_10"
+                android:background="@drawable/bg_date_mutasi"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_start_date"
+            android:layout_width="wrap_content"
+            android:text="Tanggal Awal"
+            android:textAllCaps="false"
+            android:padding="@dimen/pad_5"
+            android:layout_marginStart="@dimen/pad_10"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/pad_10"
+            android:textSize="@dimen/text_xs_14"
+            android:fontFamily="@font/opensans_regular"
+            android:background="@drawable/btn_mutasi_date"
+            android:layout_height="@dimen/pad_32"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_marginTop="@dimen/pad_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sampai Tanggal: "
+                android:textSize="@dimen/text_xs_16"
+                android:fontFamily="@font/opensans_regular"
+                android:textColor="@color/black"
+                android:enabled="false"
+                android:layout_marginStart="@dimen/pad_10"/>
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_end_date"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/pad_32"
+                android:enabled="false"
+                android:layout_marginStart="@dimen/pad_10"
+                android:layout_marginEnd="@dimen/pad_10"
+                android:background="@drawable/bg_date_mutasi"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_end_date"
+            android:layout_width="wrap_content"
+            android:text="Tanggal Akhir"
+            android:textAllCaps="false"
+            android:layout_marginStart="@dimen/pad_10"
+            android:padding="@dimen/pad_5"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/pad_10"
+            android:textSize="@dimen/text_xs_14"
+            android:fontFamily="@font/opensans_regular"
+            android:background="@drawable/btn_mutasi_date"
+            android:layout_height="@dimen/pad_32"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_cek_mutasi"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/pad_10"
+            android:layout_marginStart="@dimen/pad_32"
+            android:layout_marginEnd="@dimen/pad_32"
+            android:layout_marginBottom="@dimen/pad_20"
+            android:text="Cek Mutasi"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_xs_16"
+            android:fontFamily="@font/opensans_regular"
+            android:background="@drawable/selector_btn_primary"
+            android:layout_height="wrap_content"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_mutasi"
+        android:background="@color/white"
+        android:layout_marginStart="@dimen/pad_20"
+        android:layout_marginEnd="@dimen/pad_20"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyler_mutasi"
+            android:paddingTop="@dimen/pad_10"
+            android:layout_marginLeft="@dimen/pad_10"
+            android:layout_marginRight="@dimen/pad_10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

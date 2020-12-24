@@ -1,6 +1,7 @@
 package com.example.android_mobile_banking.util;
 
 import android.app.Application;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -95,7 +96,8 @@ public class Util {
     }
 
     public static String round(String val) {
-        return NumberFormat.getNumberInstance(Locale.GERMAN).format(parseInteger(val.substring(0, val.indexOf(".")), 0));
+//        return NumberFormat.getNumberInstance(Locale.GERMAN).format(parseInteger(val.substring(0, val.indexOf(".")), 0));
+        return NumberFormat.getNumberInstance(Locale.GERMAN).format(parseInteger(val, 0));
     }
 
     public static int parseInteger(String string, int defaultValue) {
@@ -103,6 +105,22 @@ public class Util {
             return Integer.parseInt(string);
         } catch (NumberFormatException e) {
             return defaultValue;
+        }
+    }
+
+    public static void showProgressDialog(ProgressDialog progressDialog, Context context) {
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(context);
+            progressDialog.setMessage("Please wait...");
+            progressDialog.setCancelable(true);
+            progressDialog.setCanceledOnTouchOutside(false);
+        }
+        progressDialog.show();
+    }
+
+    public static void dismissProgressDialog(ProgressDialog progressDialog) {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
         }
     }
 }

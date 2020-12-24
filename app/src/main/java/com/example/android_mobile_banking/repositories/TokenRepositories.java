@@ -9,6 +9,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.android_mobile_banking.constant.ApiService;
+import com.example.android_mobile_banking.model.ParamToken;
 import com.example.android_mobile_banking.model.Token;
 import com.example.android_mobile_banking.response.AuthResponse;
 import com.example.android_mobile_banking.response.TokenResponse;
@@ -72,6 +73,88 @@ public class TokenRepositories {
                             listTokenData.setValue(null);
                             Log.v("Cek Error", "onError: " + anError);
                             anError.printStackTrace();
+                        }
+                    });
+        } catch (Exception e) {
+            listTokenData.setValue(null);
+            e.printStackTrace();
+        }
+        return listTokenData;
+    }
+
+    public MutableLiveData<TokenResponse> checkUser(String no_pelanggan) {
+        MutableLiveData<TokenResponse> listTokenData = new MutableLiveData<>();
+
+        try {
+            final TokenResponse res = new TokenResponse();
+            AndroidNetworking.get(ApiService.checkUser)
+                    .setTag("checkUser")
+                    .addPathParameter("no_pelanggan",no_pelanggan)
+                    .setPriority(Priority.MEDIUM)
+                    .build()
+                    .getAsJSONObject(new JSONObjectRequestListener() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                Log.v("isiResponse: ",response.toString());
+                                if (response.getString("response").equals("200")) {
+                                    res.setResponse(response.getString("response"));
+                                    res.setPayloadUser(response.getJSONObject("payload"));
+                                } else {
+                                    res.setResponse(response.getString("response"));
+                                }
+                                listTokenData.setValue(res);
+                            } catch (Exception e) {
+                                listTokenData.setValue(null);
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onError(ANError anError) {
+                            listTokenData.setValue(null);
+                            Log.v("Cek Error", "onError: " + anError);
+                            anError.printStackTrace();
+                        }
+                    });
+        } catch (Exception e) {
+            listTokenData.setValue(null);
+            e.printStackTrace();
+        }
+        return listTokenData;
+    }
+
+public MutableLiveData<TokenResponse> buyToken(JSONObject paramToken) {
+        MutableLiveData<TokenResponse> listTokenData = new MutableLiveData<>();
+        try {
+            final TokenResponse res = new TokenResponse();
+            AndroidNetworking.post("http://192.168.18.5:8080/api/token/buyToken/")
+                    .setTag("buyToken")
+                    .addJSONObjectBody(paramToken)
+                    .setPriority(Priority.MEDIUM)
+                    .build()
+                    .getAsJSONObject(new JSONObjectRequestListener() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                Log.v("isiResponse: ",response.toString());
+                                if (response.getString("response").equals("200")) {
+                                    res.setResponse(response.getString("response"));
+                                    res.setPayloadUser(response.getJSONObject("payload"));
+                                } else {
+                                    res.setResponse(response.getString("response"));
+                                }
+                                listTokenData.setValue(res);
+                            } catch (Exception e) {
+                                listTokenData.setValue(null);
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onError(ANError anError) {
+                            Log.v("Cek Error", "onError: " + anError.getMessage());
+                            listTokenData.setValue(null);
                         }
                     });
         } catch (Exception e) {

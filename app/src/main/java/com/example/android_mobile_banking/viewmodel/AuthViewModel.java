@@ -18,7 +18,6 @@ public class AuthViewModel extends ViewModel {
             return;
         }
         authRepositories = AuthRepositories.getInstance();
-//        authRepositories=AuthRepositories
     }
 
     public LiveData<AuthResponse> registerPhone(JSONObject object){
@@ -26,6 +25,14 @@ public class AuthViewModel extends ViewModel {
             authRepositories=AuthRepositories.getInstance();
         }
         mutableLiveData=authRepositories.registerPhone(object);
+        return mutableLiveData;
+    }
+
+    public LiveData<AuthResponse> loginPhone(JSONObject object){
+        if (mutableLiveData==null){
+            authRepositories=AuthRepositories.getInstance();
+        }
+        mutableLiveData=authRepositories.loginPhone(object);
         return mutableLiveData;
     }
 

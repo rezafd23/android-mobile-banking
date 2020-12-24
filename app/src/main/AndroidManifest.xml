@@ -27,7 +27,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Androidmobilebanking"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.CardDetailActivity"></activity>
+        <activity android:name=".ui.activity.LoginTermDialog"></activity>
+        <activity
+            android:name=".ui.activity.MutasiRekeningActivity"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name=".ui.activity.CardDetailActivity" />
         <activity android:name=".ui.activity.CreatePinActivity" />
         <activity android:name=".ui.activity.SuccessResponseActivity" />
         <activity android:name=".ui.activity.BuyPlnActivity" />

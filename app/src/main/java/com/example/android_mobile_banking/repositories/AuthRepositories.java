@@ -67,6 +67,48 @@ public class AuthRepositories {
         return registerData;
     }
 
+    public MutableLiveData<AuthResponse> loginPhone(JSONObject object) {
+        MutableLiveData<AuthResponse> registerData = new MutableLiveData<>();
+
+        try {
+            final AuthResponse res = new AuthResponse();
+            AndroidNetworking.post(ApiService.loginPhone)
+                    .addJSONObjectBody(object)
+                    .setTag("loginPhone")
+                    .setPriority(Priority.MEDIUM)
+                    .build()
+                    .getAsJSONObject(new JSONObjectRequestListener() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                if (response.getString("response").equals("200")) {
+                                    res.setResponse(response.getString("response"));
+                                    res.setOtp(response.getJSONObject("payload").getString("otp"));
+                                    res.setOtpId(response.getJSONObject("payload").getString("id"));
+                                } else {
+                                    res.setResponse(response.getString("response"));
+                                    res.setPayload(response.getString("payload"));
+                                }
+                                registerData.setValue(res);
+                            } catch (Exception e) {
+                                registerData.setValue(null);
+                                e.printStackTrace();
+                            }
+                        }
+                        @Override
+                        public void onError(ANError anError) {
+                            registerData.setValue(null);
+                            Log.v("Cek Error", "onError: " + anError);
+                            anError.printStackTrace();
+                        }
+                    });
+        } catch (Exception e) {
+            registerData.setValue(null);
+            e.printStackTrace();
+        }
+        return registerData;
+    }
+
     public MutableLiveData<AuthResponse> submitOtpRegister(JSONObject object) {
         MutableLiveData<AuthResponse> registerData = new MutableLiveData<>();
 

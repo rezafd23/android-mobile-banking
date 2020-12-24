@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModelProviders;
 
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -16,6 +18,7 @@ import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.example.android_mobile_banking.R;
+import com.example.android_mobile_banking.listener.DialogClickListener;
 import com.example.android_mobile_banking.util.Util;
 import com.example.android_mobile_banking.viewmodel.AuthViewModel;
 import com.example.android_mobile_banking.ui.helper.SingleActivity;
@@ -55,6 +58,20 @@ public class LoginActivity extends SingleActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
+                    LoginTermDialog dialog = new LoginTermDialog(LoginActivity.this);
+                    dialog.show();
+                    dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialog) {
+                            MainActivity.navigate(LoginActivity.this, true);
+                        }
+                    });
+                    dialog.setButtonAgree("Saya Setuju", new DialogClickListener() {
+                        @Override
+                        public void onClick(Dialog dialog, View view) {
+                            dialog.dismiss();
+                        }
+                    });
                     btn_signup.setEnabled(true);
                 } else {
                     btn_signup.setEnabled(false);
@@ -76,7 +93,13 @@ public class LoginActivity extends SingleActivity {
                         et_phone.setError("Nomor Anda Tidak Valid");
                     }
                 } else {
-
+                    boolean valid = checkPhoneNumber(et_phone.getText().toString());
+                    if (valid){
+                        loginData(et_phone.getText().toString());
+                    } else {
+                        dismissProgressDialog();
+                        et_phone.setError("Nomor Anda Tidak Valid");
+                    }
                 }
             }
         });
@@ -102,7 +125,31 @@ public class LoginActivity extends SingleActivity {
                             Util.setData(getApplication(),"username",et_phone.getText().toString());
                             Util.setData(getApplication(),"otp",registerResponse.getOtp());
                             Util.setData(getApplication(),"otpId",registerResponse.getOtpId());
-                            OtpVerificationActivity.navigate(LoginActivity.this);
+                            OtpVerificationActivity.navigate(LoginActivity.this,"register_phone");
+                        } else if (registerResponse.getPayload().equals("Phone Number is Registered!")) {
+                            et_phone.setError("Nomor Anda Telah Terdaftar");
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Sistem Error, Mohon Tunggu!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        } catch (Exception e) {
+            Log.v("error1: ", "Try Set Username");
+            e.printStackTrace();
+        }
+    }
+
+    private void loginData(String username){
+        try {
+            JSONObject object = new JSONObject();
+            object.put("username", username);
+            authViewModel.loginPhone(object)
+                    .observe(this, registerResponse -> {
+                        dismissProgressDialog();
+                        if (registerResponse.getResponse().equals("200")) {
+                            Util.setData(getApplication(),"username",et_phone.getText().toString());
+                            Util.setData(getApplication(),"otp",registerResponse.getOtp());
+                            Util.setData(getApplication(),"otpId",registerResponse.getOtpId());
+                            OtpVerificationActivity.navigate(LoginActivity.this,"login_phone");
                         } else if (registerResponse.getPayload().equals("Phone Number is Registered!")) {
                             et_phone.setError("Nomor Anda Telah Terdaftar");
                         } else {
@@ -140,7 +187,7 @@ public class LoginActivity extends SingleActivity {
 
         tv_tnc.setText(Html.fromHtml(getResources().getString(R.string.agree_checked)));
         authViewModel = ViewModelProviders.of(this).get(AuthViewModel.class);
-
+        authViewModel.init();
 
     }
 

@@ -26,6 +26,7 @@ public class OtpVerificationActivity extends SingleActivity {
     private AppCompatTextView tv_alert;
     private AppCompatTextView tv_resend_otp;
     private AuthViewModel authViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +42,7 @@ public class OtpVerificationActivity extends SingleActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length()>0){
+                if (charSequence.length() > 0) {
                     pinEntry.setError(false);
                     pinEntry.setPinLineColors(getColorStateList(R.color.dark_blue));
                     tv_alert.setVisibility(View.GONE);
@@ -54,7 +55,7 @@ public class OtpVerificationActivity extends SingleActivity {
             }
         });
 
-        if (pinEntry!=null){
+        if (pinEntry != null) {
             pinEntry.setOnPinEnteredListener(new PinEntryEditText.OnPinEnteredListener() {
                 @Override
                 public void onPinEntered(CharSequence str) {
@@ -62,9 +63,9 @@ public class OtpVerificationActivity extends SingleActivity {
 //                    Log.v("isiPIN: ","ISIuser"+getIntent().getStringExtra("username"));
 //                    Log.v("isiPIN: ","ISIPIN"+ str.toString());
 //                    Log.v("isiPIN: ","ISIOTPID"+ getIntent().getStringExtra("otpId"));
-                    submitOTP(Util.getData(getApplication(),"username"),
+                    submitOTP(Util.getData(getApplication(), "username"),
                             str.toString(),
-                            Util.getData(getApplication(),"otpId"));
+                            Util.getData(getApplication(), "otpId"));
 //                    Toast.makeText(getApplicationContext(),str.toString(),Toast.LENGTH_SHORT).show();
                 }
             });
@@ -72,21 +73,23 @@ public class OtpVerificationActivity extends SingleActivity {
 
     }
 
-    public static void navigate(Activity activity){
-        Intent intent = new Intent(activity,OtpVerificationActivity.class);
+    public static void navigate(Activity activity, String otp_status) {
+        Intent intent = new Intent(activity, OtpVerificationActivity.class);
+        intent.putExtra("otp_status", otp_status);
         activity.startActivity(intent);
 
     }
-    private void initView(){
-        tv_OTP=findViewById(R.id.tv_OTP);
-        tv_alert=findViewById(R.id.tv_alert);
-        tv_resend_otp=findViewById(R.id.tv_resend_otp);
-        pinEntry=findViewById(R.id.otp_verification_txt);
+
+    private void initView() {
+        tv_OTP = findViewById(R.id.tv_OTP);
+        tv_alert = findViewById(R.id.tv_alert);
+        tv_resend_otp = findViewById(R.id.tv_resend_otp);
+        pinEntry = findViewById(R.id.otp_verification_txt);
         authViewModel = ViewModelProviders.of(this).get(AuthViewModel.class);
-        tv_OTP.setText(Util.getData(getApplication(),"otp"));
+        tv_OTP.setText(Util.getData(getApplication(), "otp"));
     }
 
-    private void submitOTP(String username, String otp, String otpId){
+    private void submitOTP(String username, String otp, String otpId) {
         showProgressDialog();
         try {
             JSONObject object = new JSONObject();
@@ -97,7 +100,14 @@ public class OtpVerificationActivity extends SingleActivity {
                     .observe(this, authResponse -> {
                         dismissProgressDialog();
                         if (authResponse.getResponse().equals("200")) {
-                           CreatePinActivity.navigate(OtpVerificationActivity.this);
+                            switch (getIntent().getStringExtra("otp_status")) {
+                                case "register_phone":
+                                    CreatePinActivity.navigate(OtpVerificationActivity.this);
+                                    break;
+                                case "login_phone":
+                                    LoginPinActivity.navigate(OtpVerificationActivity.this,true);
+                                    break;
+                            }
                         } else {
                             pinEntry.setText("");
                             pinEntry.setPinLineColors(getColorStateList(R.color.colorTextError));

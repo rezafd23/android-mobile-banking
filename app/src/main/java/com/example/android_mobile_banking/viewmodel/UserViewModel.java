@@ -71,4 +71,12 @@ public class UserViewModel extends ViewModel {
         mutableLiveData=userRepositories.finishRegister(auth,noktp);
         return mutableLiveData;
     }
+
+    public LiveData<UserResponse> getMutasi(String no_rekening, String start_date,String end_date){
+        if (mutableLiveData==null){
+            userRepositories=UserRepositories.getInstance();
+        }
+        mutableLiveData=userRepositories.getMutasi(no_rekening,start_date,end_date);
+        return mutableLiveData;
+    }
 }

@@ -10,6 +10,7 @@ public class ApiService {
     public static String submitOTP=BASE_URL+"api/auth/submitOtp/";
     public static String createPIN=BASE_URL+"api/auth/createPin/";
     public static String loginPIN=BASE_URL+"api/auth/loginPin/";
+    public static String loginPhone=BASE_URL+"api/auth/login/";
 
 //    Nasabah
     public static String getData=BASE_URL+"api/nasabah/getData/";
@@ -18,9 +19,12 @@ public class ApiService {
     public static String addWorkData=BASE_URL+"api/nasabah/addWorkData/";
     public static String finishRegister=BASE_URL+"api/nasabah/finishRegister/";
     public static String uploadEKTP=BASE_URL_2+"/app/api/user/uploadEktp";
+    public static String getMutasi=BASE_URL+"/api/nasabah/getMutasi/{no_rekening}/{start_date}/{end_date}";
 
 //    Token
     public static String getTokenList=BASE_URL+"api/token/getVoucer/";
+    public static String checkUser=BASE_URL+"api/token/checkUser/{no_pelanggan}";
+    public static String buyToken=BASE_URL+"api/token/buyToken/";
 
 
 

@@ -10,13 +10,19 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.interfaces.UploadProgressListener;
 import com.example.android_mobile_banking.constant.ApiService;
+import com.example.android_mobile_banking.model.Mutasi;
+import com.example.android_mobile_banking.model.Token;
 import com.example.android_mobile_banking.response.AuthResponse;
+import com.example.android_mobile_banking.response.TokenResponse;
 import com.example.android_mobile_banking.response.UserResponse;
 import com.example.android_mobile_banking.util.Util;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserRepositories {
 
@@ -43,7 +49,7 @@ public class UserRepositories {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                Log.v("isiRESPONSEUSER: ",response.toString());
+                                Log.v("isiRESPONSEUSER: ", response.toString());
                                 if (response.getString("response").equals("200")) {
                                     res.setResponse(response.getString("response"));
                                     res.setStatus(response.getString("status"));
@@ -73,9 +79,9 @@ public class UserRepositories {
         return dataUser;
     }
 
-    public MutableLiveData<UserResponse> addPersonalData(String authorization,JSONObject object) {
+    public MutableLiveData<UserResponse> addPersonalData(String authorization, JSONObject object) {
         MutableLiveData<UserResponse> dataUser = new MutableLiveData<>();
-        Log.v("isiJSON: ",object.toString());
+        Log.v("isiJSON: ", object.toString());
         try {
             final UserResponse res = new UserResponse();
             AndroidNetworking.post(ApiService.addPersonalData)
@@ -88,7 +94,7 @@ public class UserRepositories {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                Log.v("isiRESPONSEUSER: ",response.toString());
+                                Log.v("isiRESPONSEUSER: ", response.toString());
                                 if (response.getString("response").equals("200")) {
                                     res.setResponse(response.getString("response"));
                                     res.setStatus(response.getString("status"));
@@ -117,9 +123,9 @@ public class UserRepositories {
         return dataUser;
     }
 
-    public MutableLiveData<UserResponse> addRelativeData(String authorization,JSONObject object) {
+    public MutableLiveData<UserResponse> addRelativeData(String authorization, JSONObject object) {
         MutableLiveData<UserResponse> dataUser = new MutableLiveData<>();
-        Log.v("isiJSON: ",object.toString());
+        Log.v("isiJSON: ", object.toString());
         try {
             final UserResponse res = new UserResponse();
             AndroidNetworking.post(ApiService.addRelativeData)
@@ -132,7 +138,7 @@ public class UserRepositories {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                Log.v("isiRESPONSEUSER: ",response.toString());
+                                Log.v("isiRESPONSEUSER: ", response.toString());
                                 if (response.getString("response").equals("200")) {
                                     res.setResponse(response.getString("response"));
                                     res.setStatus(response.getString("status"));
@@ -161,9 +167,9 @@ public class UserRepositories {
         return dataUser;
     }
 
-    public MutableLiveData<UserResponse> addWorkData(String authorization,JSONObject object) {
+    public MutableLiveData<UserResponse> addWorkData(String authorization, JSONObject object) {
         MutableLiveData<UserResponse> dataUser = new MutableLiveData<>();
-        Log.v("isiJSON: ",object.toString());
+        Log.v("isiJSON: ", object.toString());
         try {
             final UserResponse res = new UserResponse();
             AndroidNetworking.post(ApiService.addWorkData)
@@ -176,7 +182,7 @@ public class UserRepositories {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                Log.v("isiRESPONSEUSER: ",response.toString());
+                                Log.v("isiRESPONSEUSER: ", response.toString());
                                 if (response.getString("response").equals("200")) {
                                     res.setResponse(response.getString("response"));
                                     res.setStatus(response.getString("status"));
@@ -207,27 +213,27 @@ public class UserRepositories {
 
     public MutableLiveData<UserResponse> uploadEKTP(String authorization, File file) {
         MutableLiveData<UserResponse> dataUser = new MutableLiveData<>();
-        Log.v("isiJSON: ",file.toString());
+        Log.v("isiJSON: ", file.toString());
         try {
             final UserResponse res = new UserResponse();
             AndroidNetworking.upload(ApiService.uploadEKTP)
                     .addHeaders("authorization", authorization)
-                    .addHeaders("Content-Type","multipart/form-data")
-                    .addMultipartFile("ektp",file)
+                    .addHeaders("Content-Type", "multipart/form-data")
+                    .addMultipartFile("ektp", file)
                     .setTag("addWorkData")
                     .setPriority(Priority.MEDIUM)
                     .build()
                     .setUploadProgressListener(new UploadProgressListener() {
                         @Override
                         public void onProgress(long bytesUploaded, long totalBytes) {
-                            Log.v("onPRoggress: ",String.valueOf(bytesUploaded));
+                            Log.v("onPRoggress: ", String.valueOf(bytesUploaded));
                         }
                     })
                     .getAsJSONObject(new JSONObjectRequestListener() {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                Log.v("isiRESPONSEUSER: ",response.toString());
+                                Log.v("isiRESPONSEUSER: ", response.toString());
                                 if (response.getString("response").equals("200")) {
                                     res.setResponse(response.getString("response"));
                                     res.setStatus(response.getString("status"));
@@ -261,23 +267,23 @@ public class UserRepositories {
         try {
             final UserResponse res = new UserResponse();
             AndroidNetworking.post(ApiService.finishRegister)
-                    .addBodyParameter("ektp",no_kttp)
+                    .addBodyParameter("ektp", no_kttp)
                     .addHeaders("authorization", authorization)
-                    .addHeaders("Content-Type","application/x-www-form-urlencoded")
+                    .addHeaders("Content-Type", "application/x-www-form-urlencoded")
                     .setTag("finishRegister")
                     .setPriority(Priority.MEDIUM)
                     .build()
                     .setUploadProgressListener(new UploadProgressListener() {
                         @Override
                         public void onProgress(long bytesUploaded, long totalBytes) {
-                            Log.v("onPRoggress: ",String.valueOf(bytesUploaded));
+                            Log.v("onPRoggress: ", String.valueOf(bytesUploaded));
                         }
                     })
                     .getAsJSONObject(new JSONObjectRequestListener() {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                Log.v("isiRESPONSEUSER: ",response.toString());
+                                Log.v("isiRESPONSEUSER: ", response.toString());
                                 if (response.getString("response").equals("200")) {
                                     res.setResponse(response.getString("response"));
 //                                    res.setStatus(response.getString("status"));
@@ -304,5 +310,65 @@ public class UserRepositories {
             e.printStackTrace();
         }
         return dataUser;
+    }
+
+    public MutableLiveData<UserResponse> getMutasi(String no_rekening, String start_date, String end_date) {
+        MutableLiveData<UserResponse> listUserData = new MutableLiveData<>();
+        try {
+            final UserResponse res = new UserResponse();
+            AndroidNetworking.get(ApiService.getMutasi)
+                    .addPathParameter("no_rekening", no_rekening)
+                    .addPathParameter("start_date", start_date)
+                    .addPathParameter("end_date", end_date)
+                    .setTag("getTokenList")
+                    .setPriority(Priority.MEDIUM)
+                    .build()
+                    .getAsJSONObject(new JSONObjectRequestListener() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                Log.v("isiResponse: ", response.toString());
+                                if (response.getString("response").equals("200")) {
+                                    res.setResponse(response.getString("response"));
+                                    if (response.getString("message").equals("Tidak Ada Transaksi")) {
+                                        res.setMessage(response.getString("message"));
+                                    } else {
+                                        res.setMessage(response.getString("message"));
+                                        List<Mutasi> listMutasi = new ArrayList<>();
+                                        for (int i = 0; i < response.getJSONArray("payload").length(); i++) {
+                                            Mutasi mutasi = new Mutasi();
+                                            mutasi.setNo_rekening(response.getJSONArray("payload").getJSONObject(0).getString("no_rekening"));
+                                            mutasi.setNama_transaksi(response.getJSONArray("payload").getJSONObject(0).getString("nama_transaksi"));
+                                            mutasi.setNominal(response.getJSONArray("payload").getJSONObject(0).getInt("nominal"));
+                                            mutasi.setStatus_transaksi(response.getJSONArray("payload").getJSONObject(0).getString("status_transaksi"));
+                                            mutasi.setTgl_transaksi(response.getJSONArray("payload").getJSONObject(0).getString("tgl_transaksi"));
+                                            listMutasi.add(mutasi);
+                                        }
+                                        res.setMutasiList(listMutasi);
+                                    }
+
+                                } else {
+                                    res.setResponse(response.getString("response"));
+                                    res.setMessage(response.getString("message"));
+                                }
+                                listUserData.setValue(res);
+                            } catch (Exception e) {
+                                listUserData.setValue(null);
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onError(ANError anError) {
+                            listUserData.setValue(null);
+                            Log.v("Cek Error", "onError: " + anError);
+                            anError.printStackTrace();
+                        }
+                    });
+        } catch (Exception e) {
+            listUserData.setValue(null);
+            e.printStackTrace();
+        }
+        return listUserData;
     }
 }

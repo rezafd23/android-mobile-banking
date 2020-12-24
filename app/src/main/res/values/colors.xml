@@ -10,6 +10,7 @@
     <color name="deep_blue">#00BFFF</color>
     <color name="dark_blue">#1E90FF</color>
     <color name="disabled_color">#44000000</color>
+    <color name="div">#bfbfbf</color>
 
     <color name="green">#008000</color>
     <color name="green_s">#00FF00</color>

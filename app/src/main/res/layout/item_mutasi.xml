@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_nama_transaksi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="nama Transaksi"
+            android:textStyle="bold"
+            android:fontFamily="@font/nunito_regular"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_xs_14"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_tgl_transaksi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12/12"
+            android:fontFamily="@font/nunito_regular"
+            android:textColor="@color/black"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/text_xs_14"/>
+    </RelativeLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_nilai_transaksi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nilai Transaksi"
+        android:fontFamily="@font/nunito_regular"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_xs_14"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_status_transaksi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status Transaksi"
+        android:fontFamily="@font/nunito_regular"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_xs_14"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/pad_5"
+        android:layout_marginBottom="@dimen/pad_5"
+        android:background="@color/colorLightGrey"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
