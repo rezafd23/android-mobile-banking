@@ -82,6 +82,11 @@ public class Util {
         return preferences.getString(keyword,"-");
     }
 
+    public static void removeData(Application application,String keyword){
+        SharedPreferences preferences = application.getSharedPreferences("localStorage",Context.MODE_PRIVATE);
+        preferences.edit().remove(keyword).commit();
+    }
+
     public static Bitmap scaleDown(Bitmap realImage, float maxImageSize,
                                    boolean filter) {
         float ratio = Math.min(
@@ -118,9 +123,11 @@ public class Util {
         progressDialog.show();
     }
 
-    public static void dismissProgressDialog(ProgressDialog progressDialog) {
+    public static void dismissProgressDialog(ProgressDialog progressDialog,Context context) {
+        progressDialog=new ProgressDialog(context);
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
+        progressDialog.dismiss();
     }
 }

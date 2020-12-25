@@ -177,13 +177,13 @@ public class ApplyRelevanDataActivity extends SingleActivity {
             ).observe(this,userResponse -> {
                 dismissProgressDialog();
                 if(userResponse.getResponse().equals("200")){
-                    Toast.makeText(getApplicationContext(),"Data Kerabat Berhasil Ditambah",Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(),"Data Kerabat Berhasil Ditambah",Toast.LENGTH_SHORT).show();
                     ApplyDataActivity.navigate(ApplyRelevanDataActivity.this);
                 } else if (userResponse.getResponse().equals("401")){
                     LoginPinActivity.navigate(ApplyRelevanDataActivity.this,true);
                 }
                 else {
-                    Toast.makeText(getApplicationContext(),"Mohon Periksa Kembali Data Anda",Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(),"Mohon Periksa Kembali Data Anda",Toast.LENGTH_SHORT).show();
                 }
             });
 

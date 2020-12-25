@@ -56,6 +56,17 @@
             app:pinBackgroundIsSquare="true"
             app:pinCharacterSpacing="20dp"
             app:pinLineColors="@color/colorBackgroundInfoTint"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:fontFamily="@font/ptsans"
+            android:id="@+id/tv_alert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="PIN salah, Mohon Coba lagi."
+            android:textColor="@color/colorTextError"
+            android:textSize="@dimen/text_xs_13"
+            android:visibility="gone"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_forgotpin"

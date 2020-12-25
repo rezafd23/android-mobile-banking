@@ -154,10 +154,11 @@ public class ApplyWorkDataActivity extends SingleActivity {
     private void checkEnabledButton() {
         String npwp = et_npwp.getText().toString();
         String pendapatan = et_pendapatan.getText().toString();
+        String tmpt_kerja = et_perusahaan.getText().toString();
 
         boolean flag = true;
 
-        if (npwp.isEmpty() || pendapatan.isEmpty()||sp_income.getSelectedItemPosition() < 0
+        if (npwp.isEmpty() || pendapatan.isEmpty()|| tmpt_kerja.isEmpty()||sp_income.getSelectedItemPosition() < 0
                 ||sp_job_type.getSelectedItemPosition() < 0 ||sp_status_kerja.getSelectedItemPosition() < 0 ){
             flag = false;
         }
@@ -185,13 +186,16 @@ public class ApplyWorkDataActivity extends SingleActivity {
             ).observe(this,userResponse -> {
                 dismissProgressDialog();
                 if(userResponse.getResponse().equals("200")){
-                    Toast.makeText(getApplicationContext(),"Data Pekerjaan Berhasil Ditambah",Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(),"Data Pekerjaan Berhasil Ditambah",Toast.LENGTH_SHORT).show();
                     ApplyDataActivity.navigate(ApplyWorkDataActivity.this);
-                } else if (userResponse.getResponse().equals("401")){
+                }else if (userResponse.getMessage().contains("Your NPWP Exist! Please try another number.")){
+                    Toast.makeText(getApplicationContext(),"NPWP telah terdaftar, Mohon Coba Kembali",Toast.LENGTH_SHORT).show();
+                }
+                else if (userResponse.getResponse().equals("401")){
                     LoginPinActivity.navigate(ApplyWorkDataActivity.this,true);
                 }
                 else {
-                    Toast.makeText(getApplicationContext(),"Mohon Periksa Kembali Data Anda",Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(),"Mohon Periksa Kembali Data Anda",Toast.LENGTH_SHORT).show();
                 }
             });
 

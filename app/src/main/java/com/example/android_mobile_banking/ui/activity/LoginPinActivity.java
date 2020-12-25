@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModelProviders;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -25,7 +27,7 @@ public class LoginPinActivity extends SingleActivity {
     private final int MAX_PIN = 6;
     private final int MAX_RETRY = 3;
     private String loginPin = null;
-    private AppCompatTextView tv_title, tv_donthave;
+    private AppCompatTextView tv_title, tv_donthave,tv_alert;
     private AuthViewModel authViewModel;
 
     @Override
@@ -35,6 +37,31 @@ public class LoginPinActivity extends SingleActivity {
         initView();
 
         doLogin();
+
+        tv_donthave.setOnClickListener(view -> {
+            LoginActivity.navigate(LoginPinActivity.this,true);
+        });
+
+        pinEntry.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() > 0) {
+                    pinEntry.setError(false);
+                    pinEntry.setPinLineColors(getColorStateList(R.color.colorBackgroundInfoTint));
+                    tv_alert.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     public static void navigate(Activity activity) {
@@ -55,6 +82,7 @@ public class LoginPinActivity extends SingleActivity {
         pinEntry = findViewById(R.id.txt_pin_entry);
         tv_title = findViewById(R.id.tv_title);
         tv_donthave = findViewById(R.id.tv_donthave);
+        tv_alert = findViewById(R.id.tv_alert);
 
         authViewModel = ViewModelProviders.of(this).get(AuthViewModel.class);
     }
@@ -87,7 +115,10 @@ public class LoginPinActivity extends SingleActivity {
                             MainActivity.navigate(LoginPinActivity.this, true);
                         } else {
                             pinEntry.setText("");
-                            Toast.makeText(getApplicationContext(), "Terjadi Kesalahan, Mohon Ulangi", Toast.LENGTH_SHORT).show();
+                            pinEntry.setPinLineColors(getColorStateList(R.color.colorTextError));
+                            tv_alert.setVisibility(View.VISIBLE);
+                            pinEntry.setError(true);
+//                            Toast.makeText(getApplicationContext(), "Terjadi Kesalahan, Mohon Ulangi", Toast.LENGTH_SHORT).show();
                         }
                     });
         } catch (Exception e) {

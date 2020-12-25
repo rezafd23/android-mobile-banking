@@ -19,9 +19,20 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:navigationIcon="@drawable/ic_back"
-        app:title="@string/pulsa"/>
+        android:background="@color/white">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Listrik Prabayar"
+            android:textColor="@color/black"
+            android:fontFamily="@font/opensans_regular"
+            android:textSize="@dimen/text_xs_16"/>
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/layoutSaldo"

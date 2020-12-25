@@ -6,14 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.MainActivity">
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        app:layout_constraintRight_toRightOf="parent">-->
         <androidx.coordinatorlayout.widget.CoordinatorLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -475,7 +468,7 @@
 
                             <View
                                 android:layout_width="match_parent"
-                                android:layout_height="3dp"
+                                android:layout_height="2dp"
                                 android:background="@color/dark_blue" />
 
                             <androidx.appcompat.widget.LinearLayoutCompat
@@ -656,7 +649,7 @@
 
                             <View
                                 android:layout_width="match_parent"
-                                android:layout_height="3dp"
+                                android:layout_height="2dp"
                                 android:background="@color/dark_blue" />
                             <androidx.appcompat.widget.LinearLayoutCompat
                                 android:id="@+id/layout_card_center"
@@ -855,6 +848,26 @@
             app:layout_constraintRight_toRightOf="parent"
             />
 
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnav2"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/pad_32"
+        android:layout_marginRight="@dimen/pad_32"
+        android:layout_marginBottom="@dimen/rbk_btn_full"
+        android:background="@drawable/bg_float_menu"
+        android:elevation="@dimen/pad_10"
+        app:labelVisibilityMode="selected"
+        app:itemIconSize="28dp"
+        app:menu="@menu/menu_bottom_2"
+        android:paddingTop="@dimen/pad_10"
+        android:paddingBottom="@dimen/pad_15"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

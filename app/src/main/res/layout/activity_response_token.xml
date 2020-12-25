@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/green_s"
+    tools:context=".ui.activity.ResponseToken">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_berhasil"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_berhasil" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_berhasil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/berhasil"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_tag_token"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_berhasil"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="Token Anda"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_xs_24" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_token"
+        android:layout_below="@id/tv_tag_token"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/pad_10"
+        android:layout_marginTop="@dimen/pad_10"
+        android:layout_marginEnd="@dimen/pad_10"
+        android:background="@drawable/bg_date_mutasi"
+        android:gravity="center">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_token"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/pad_10"
+            android:paddingBottom="@dimen/pad_10"
+            android:text="NOMOR TOKEN"
+            android:textSize="@dimen/text_xs_18"
+            android:textColor="@color/colorTextHyperlink"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_back"
+        android:layout_width="200dp"
+        android:layout_below="@id/linear_token"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_20"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_rounded_white"
+        android:text="Kembali Ke Home"
+        android:textAllCaps="false" />
+
+</RelativeLayout>

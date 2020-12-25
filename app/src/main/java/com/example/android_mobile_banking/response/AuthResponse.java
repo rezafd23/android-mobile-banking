@@ -10,8 +10,17 @@ public class AuthResponse {
     private String otp;
     private String otpId;
     private String access_token;
+    private JSONObject payloadData;
 
     public AuthResponse() {
+    }
+
+    public JSONObject getPayloadData() {
+        return payloadData;
+    }
+
+    public void setPayloadData(JSONObject payloadData) {
+        this.payloadData = payloadData;
     }
 
     public String getAccess_token() {

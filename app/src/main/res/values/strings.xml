@@ -24,11 +24,17 @@
     ]]>
       </string>
 
+    <string name="system_error_title">Sori!</string>
+    <string name="system_error_desc">Maaf saat ini sistem kami sedang ramai pelanggan. Silahkan untuk mencoba beberapa saat lagi.</string>
+    <string name="system_error_desc_token">Maaf saat ini sistem kami sedang dalam proses pemeliharaan. Silahkan untuk mencoba beberapa saat lagi.</string>
 
 
     <string name="credit_availble">SALDO TERSEDIA</string>
     <string name="customer_type">Anda Membutuhkan Pinjaman? Segera Klik disini!</string>
     <string name="nikmati">Nikmati Kemudahan Pembayaran</string>
+
+    <string name="congretulation">Selamat akun kamu sudah terbuat!</string>
+    <string name="congratulation_description">Anda dapat menikmati aktivitas perbankan syariah dengan mudah!</string>
 
     <string name="e_wallet">e-Wallet Center</string>
     <string name="card_center">Card Center</string>
@@ -119,4 +125,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="mutasi_rekening">Mutasi Rekening</string>
+    <string name="detai_transaksi">Detai Transaksi</string>
+    <string name="kembali_ke_home">Kembali Ke Home</string>
+    <string name="asyik">Asyik!</string>
 </resources>

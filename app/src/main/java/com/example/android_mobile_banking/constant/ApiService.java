@@ -11,6 +11,7 @@ public class ApiService {
     public static String createPIN=BASE_URL+"api/auth/createPin/";
     public static String loginPIN=BASE_URL+"api/auth/loginPin/";
     public static String loginPhone=BASE_URL+"api/auth/login/";
+    public static String generateOtp=BASE_URL+"api/auth/generateOtp/";
 
 //    Nasabah
     public static String getData=BASE_URL+"api/nasabah/getData/";

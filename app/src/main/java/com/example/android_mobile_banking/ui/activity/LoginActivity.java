@@ -82,7 +82,6 @@ public class LoginActivity extends SingleActivity {
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Util.setData(getApplication(),"status_login","true");
                 showProgressDialog();
                 if (btn_signup.getText().equals("SIGNUP")) {
                     boolean valid = checkPhoneNumber(et_phone.getText().toString());
@@ -150,8 +149,8 @@ public class LoginActivity extends SingleActivity {
                             Util.setData(getApplication(),"otp",registerResponse.getOtp());
                             Util.setData(getApplication(),"otpId",registerResponse.getOtpId());
                             OtpVerificationActivity.navigate(LoginActivity.this,"login_phone");
-                        } else if (registerResponse.getPayload().equals("Phone Number is Registered!")) {
-                            et_phone.setError("Nomor Anda Telah Terdaftar");
+                        } else if (registerResponse.getPayload().equals("Phone Number is not Registered!")) {
+                            et_phone.setError("Nomor Anda Belum Telah Terdaftar");
                         } else {
                             Toast.makeText(getApplicationContext(), "Sistem Error, Mohon Tunggu!", Toast.LENGTH_SHORT).show();
                         }

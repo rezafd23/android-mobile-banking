@@ -3,6 +3,7 @@ package com.example.android_mobile_banking.ui.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -45,6 +46,7 @@ public class MutasiRekeningActivity extends SingleActivity {
     private RecyclerView recyler_mutasi;
     private UserViewModel userViewModel;
     private MutasiAdapter mutasiAdapter;
+    private AppCompatImageView ic_back;
     private ArrayList<Mutasi> arrayList = new ArrayList<>();
     private List<Mutasi> mutasiList;
 
@@ -81,7 +83,20 @@ public class MutasiRekeningActivity extends SingleActivity {
             }
         });
 
+        ic_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        MainActivity.navigate(MutasiRekeningActivity.this,true);
     }
 
     public static void navigate(Activity activity) {
@@ -96,6 +111,7 @@ public class MutasiRekeningActivity extends SingleActivity {
         recyler_mutasi = findViewById(R.id.recyler_mutasi);
         btn_start_date = findViewById(R.id.btn_start_date);
         btn_end_date = findViewById(R.id.btn_end_date);
+        ic_back = findViewById(R.id.ic_back);
 
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
     }
@@ -127,7 +143,7 @@ public class MutasiRekeningActivity extends SingleActivity {
             JsonObject jsonObject = (JsonObject) parser.parse(Util.getData(getApplication(), "data_nasabah"));
 
             if (mutasiAdapter == null) {
-                mutasiAdapter = new MutasiAdapter(MutasiRekeningActivity.this, arrayList);
+                mutasiAdapter = new MutasiAdapter(MutasiRekeningActivity.this,getApplicationContext(), arrayList);
                 recyler_mutasi.setLayoutManager(new LinearLayoutManager(this));
                 recyler_mutasi.setAdapter(mutasiAdapter);
                 recyler_mutasi.setHasFixedSize(true);
@@ -142,7 +158,7 @@ public class MutasiRekeningActivity extends SingleActivity {
                 dismissProgressDialog();
                 if (userResponse.getResponse().equals("200")) {
                     if (userResponse.getMessage().equals("Tidak Ada Transaksi")) {
-                        Toast.makeText(getApplicationContext(), "Tidak Terdapat Transaksi Pada Tanggal Tersebut", Toast.LENGTH_SHORT);
+                        Toast.makeText(getApplicationContext(), "Tidak Terdapat Transaksi Pada Tanggal Tersebut", Toast.LENGTH_SHORT).show();
                     } else {
                         mutasiList = userResponse.getMutasiList();
                         arrayList.clear();
@@ -150,7 +166,7 @@ public class MutasiRekeningActivity extends SingleActivity {
                         mutasiAdapter.notifyDataSetChanged();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), userResponse.getMessage(), Toast.LENGTH_SHORT);
+                    Toast.makeText(getApplicationContext(), userResponse.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
 

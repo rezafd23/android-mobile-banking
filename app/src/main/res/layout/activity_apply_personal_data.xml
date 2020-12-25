@@ -281,7 +281,6 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/selector_btn_primary_full"
         android:text="@string/btnSimpan"
-        android:onClick="onSaveClicked"
         android:enabled="false"
         android:textAllCaps="false"
         android:textColor="@color/white"/>

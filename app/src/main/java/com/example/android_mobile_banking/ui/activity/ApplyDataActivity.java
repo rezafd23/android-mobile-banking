@@ -41,17 +41,13 @@ import java.io.FileInputStream;
 public class ApplyDataActivity extends SingleActivity {
 
     private static final int INTENT_REQ_CAMERA = 101;
-    private static final int INTENT_REQ_PERSONAL = 102;
-    private static final int INTENT_REQ_RELEVAN = 103;
-    private static final int INTENT_REQ_WORK = 104;
-    private static final int INTENT_REQ_FINISH = 105;
 
     private UserViewModel userViewModel;
 
     private AppCompatTextView tv_progress, tv_personal, tv_relevan, tv_work,tv_cam_desc,tv_cam_title;
     private ContentLoadingProgressBar progressBar;
     private AppCompatImageView iv_arrow_personal, iv_arrow_relevan, iv_arrow_work,iv_arrow_cam,iv_camera,iv_foto;
-    private RelativeLayout btn_relevan_info, btn_work_info;
+    private RelativeLayout btn_relevan_info, btn_work_info,btn_personal_info;
     private LinearLayoutCompat btn_capture_ktp, btn_capture_face,
             personal_detail, relative_detail, work_detail;
     private AppCompatButton btn_send,btn_save_local,btn_edit_cam;
@@ -81,7 +77,7 @@ public class ApplyDataActivity extends SingleActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+//        super.onBackPressed();
         onSaveAndStopClicked(btn_save_local);
     }
 
@@ -108,6 +104,7 @@ public class ApplyDataActivity extends SingleActivity {
         tv_personal = findViewById(R.id.tv_personal);
         tv_relevan = findViewById(R.id.tv_relevan);
         tv_work = findViewById(R.id.tv_work);
+        btn_personal_info = findViewById(R.id.btn_personal_info);
         btn_relevan_info = findViewById(R.id.btn_relevan_info);
         btn_work_info = findViewById(R.id.btn_work_info);
         btn_capture_ktp = findViewById(R.id.btn_capture_ktp);
@@ -186,7 +183,7 @@ public class ApplyDataActivity extends SingleActivity {
     }
 
     private void addPersonalData() {
-        iv_arrow_personal.setOnClickListener(new View.OnClickListener() {
+        btn_personal_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ApplyPersonalDataActivity.navigate(ApplyDataActivity.this, personal_data);
@@ -195,7 +192,7 @@ public class ApplyDataActivity extends SingleActivity {
     }
 
     private void addRelativeData() {
-        iv_arrow_relevan.setOnClickListener(new View.OnClickListener() {
+        btn_relevan_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ApplyRelevanDataActivity.navigate(ApplyDataActivity.this, relative_data);
@@ -204,7 +201,7 @@ public class ApplyDataActivity extends SingleActivity {
     }
 
     private void addWorkData() {
-        iv_arrow_work.setOnClickListener(new View.OnClickListener() {
+        btn_work_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ApplyWorkDataActivity.navigate(ApplyDataActivity.this, work_data);
@@ -351,7 +348,9 @@ public class ApplyDataActivity extends SingleActivity {
                     try {
                         if (userResponse.getResponse().equals("200")) {
                             MainActivity.navigate(ApplyDataActivity.this,true);
+                            DialogActivity.navigateDialog(ApplyDataActivity.this,"success_register");
                         } else {
+                            DialogActivity.navigateDialog(ApplyDataActivity.this,"failed");
                             Toast.makeText(getApplicationContext(), "Terjadi Kesalahan, Mohon Ulangi", Toast.LENGTH_SHORT).show();
                         }
                     } catch (Exception e) {
@@ -372,6 +371,7 @@ public class ApplyDataActivity extends SingleActivity {
                 "Ya, Batalkan", new DialogClickListener() {
                     @Override
                     public void onClick(Dialog dialog, View view) {
+                        dialog.dismiss();
                         MainActivity.navigate(ApplyDataActivity.this,true);
                     }
                 }, true);

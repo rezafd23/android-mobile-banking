@@ -59,4 +59,11 @@ public class AuthViewModel extends ViewModel {
         mutableLiveData=authRepositories.loginPin(object);
         return mutableLiveData;
     }
+    public LiveData<AuthResponse> generateOtp(String phone_number){
+        if (mutableLiveData==null){
+            authRepositories=AuthRepositories.getInstance();
+        }
+        mutableLiveData=authRepositories.generateOtp(phone_number);
+        return mutableLiveData;
+    }
 }

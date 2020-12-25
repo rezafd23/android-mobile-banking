@@ -13,6 +13,7 @@ import com.example.android_mobile_banking.model.ParamToken;
 import com.example.android_mobile_banking.model.Token;
 import com.example.android_mobile_banking.response.AuthResponse;
 import com.example.android_mobile_banking.response.TokenResponse;
+import com.example.android_mobile_banking.util.Util;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -124,12 +125,15 @@ public class TokenRepositories {
         return listTokenData;
     }
 
-public MutableLiveData<TokenResponse> buyToken(JSONObject paramToken) {
+public MutableLiveData<TokenResponse> buyToken(JSONObject paramToken,String auth) {
+        Log.v("isiParamTOken: ",paramToken.toString());
         MutableLiveData<TokenResponse> listTokenData = new MutableLiveData<>();
         try {
             final TokenResponse res = new TokenResponse();
             AndroidNetworking.post("http://192.168.18.5:8080/api/token/buyToken/")
                     .setTag("buyToken")
+                    .addHeaders("Content-Type","application/json")
+                    .addHeaders("authorization",auth)
                     .addJSONObjectBody(paramToken)
                     .setPriority(Priority.MEDIUM)
                     .build()
@@ -143,6 +147,7 @@ public MutableLiveData<TokenResponse> buyToken(JSONObject paramToken) {
                                     res.setPayloadUser(response.getJSONObject("payload"));
                                 } else {
                                     res.setResponse(response.getString("response"));
+                                    res.setStatus(response.getString("message"));
                                 }
                                 listTokenData.setValue(res);
                             } catch (Exception e) {

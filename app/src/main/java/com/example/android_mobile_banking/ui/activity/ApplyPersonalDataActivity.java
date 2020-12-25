@@ -7,6 +7,7 @@ import androidx.core.content.res.ResourcesCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -58,6 +59,10 @@ public class ApplyPersonalDataActivity extends SingleActivity {
 
         initView();
         setupView();
+
+        btn_simpan.setOnClickListener(view -> {
+            savePersonalData();
+        });
     }
 
     private void initView() {
@@ -144,11 +149,14 @@ public class ApplyPersonalDataActivity extends SingleActivity {
         WidgetUtil.setupSpinner(sp_kabupaten, AppConstant.listDKI);
         WidgetUtil.setupSpinner(sp_status_rumah, AppConstant.listStatusRumah);
 
+
+
 //        sp_kabupaten.setOnItemSelectedListener(new );
 
         sp_kabupaten.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                checkEnabledButton();
 //                Log.v("isiNilai: ", String.valueOf(i));
 //                Log.v("isiNilai: ", String.valueOf(adapterView.getSelectedItem()));
                 switch (i) {
@@ -169,6 +177,7 @@ public class ApplyPersonalDataActivity extends SingleActivity {
         sp_kecamatan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                checkEnabledButton();
 //                Log.v("isiNilai: ", String.valueOf(i));
 //                Log.v("isiNilai: ", String.valueOf(adapterView.getSelectedItem()));
                 if (i>=0){
@@ -191,6 +200,40 @@ public class ApplyPersonalDataActivity extends SingleActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+        sp_pendidikan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                checkEnabledButton();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        sp_status_rumah.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                checkEnabledButton();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        sp_status_perkawinan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                checkEnabledButton();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 
@@ -310,44 +353,7 @@ public class ApplyPersonalDataActivity extends SingleActivity {
         });
     }
 
-    public void onSaveClicked(View view) {
-//        boolean notValid = true;
-//        if (WidgetUtil.notValidate(inputNoKTP, et_ektp)) {
-//            WidgetUtil.scrollToView(nested_scroll_view, et_ektp);
-//        }
-//        else if (WidgetUtil.notValidate(inputEmail, et_email)) {
-//            WidgetUtil.scrollToView(nested_scroll_view, et_email);
-//        } else if (!WidgetUtil.isEmailValid(et_email.getText().toString())) {
-//            WidgetUtil.scrollToView(nested_scroll_view, et_email);
-//            et_email.requestFocus();
-//            inputEmail.setError(getString(R.string.err_msg_email_not_valid));
-//        } else if (WidgetUtil.notValidate(sp_pendidikan)) {
-//            WidgetUtil.scrollToView(nested_scroll_view, sp_pendidikan);
-//        } else if (WidgetUtil.notValidate(sp_status_perkawinan)) {
-//            WidgetUtil.scrollToView(nested_scroll_view, sp_status_perkawinan);
-//        }
-//        else if (WidgetUtil.notValidate(input_alamat, et_alamat)) {
-//            WidgetUtil.scrollToView(nested_scroll_view, et_alamat);
-//        }
-//        else if (WidgetUtil.notValidate(sp_provinsi)) {
-//            WidgetUtil.scrollToView(nested_scroll_view, sp_provinsi);
-//        } else if (WidgetUtil.notValidate(sp_kabupaten)) {
-//            WidgetUtil.scrollToView(nested_scroll_view, sp_kabupaten);
-//        } else if (WidgetUtil.notValidate(sp_kecamatan)) {
-//            WidgetUtil.scrollToView(nested_scroll_view, sp_kecamatan);
-//        } else if (WidgetUtil.notValidate(sp_kelurahan)) {
-//            WidgetUtil.scrollToView(nested_scroll_view, sp_kelurahan);
-//        }
-//        else if (WidgetUtil.notValidate(input_rt_rw, et_rt_rw)) {
-//            WidgetUtil.scrollToView(nested_scroll_view, et_rt_rw);
-//        }
-//        else if (WidgetUtil.notValidateRTRW(input_rt_rw, et_rt_rw)) {
-//            WidgetUtil.scrollToView(nested_scroll_view, et_rt_rw);
-//        }
-//        else {
-//            notValid = false;
-//        }
-//        if (notValid){
+    public void savePersonalData() {
 
            try {
                String[] parts = et_rt_rw.getText().toString().split("/");
@@ -367,33 +373,22 @@ public class ApplyPersonalDataActivity extends SingleActivity {
                jsonObject.put("rt",rt);
                jsonObject.put("rw",rw);
                jsonObject.put("living_status",sp_status_rumah.getSelectedItem().toString());
-//               userViewModel.getUserData(auth)
-//                       .observe(this, userResponse -> {
-//                           dismissProgressDialog();
-//                           Log.v("isiREsponse: ", userResponse.getResponse());
-//                           if (userResponse.getResponse().equals("200")) {
-//                               dismissProgressDialog();
-//                               Log.v("isiResponse: ", userResponse.getPayload().toString());
-//                               setUpHome(userResponse.getPayload());
-//                           } else {
-//                               dismissProgressDialog();
-//                               Toast.makeText(getApplicationContext(), "Terjadi Kesalahan, Mohon Ulangi", Toast.LENGTH_SHORT).show();
-//                           }
-//                       });
+
                showProgressDialog();
                userViewModel.addPersonalData(Util.getData(getApplication(),"access_token"),jsonObject
                ).observe(this,userResponse -> {
                    dismissProgressDialog();
                    if(userResponse.getResponse().equals("200")){
-                       Toast.makeText(getApplicationContext(),"Data Pribadi Berhasil Ditambah",Toast.LENGTH_SHORT);
+                       Toast.makeText(getApplicationContext(),"Data Pribadi Berhasil Ditambah",Toast.LENGTH_SHORT).show();
                        ApplyDataActivity.navigate(ApplyPersonalDataActivity.this);
                    } else if (userResponse.getResponse().equals("401")){
                        LoginPinActivity.navigate(ApplyPersonalDataActivity.this,true);
-                   } else if (userResponse.getMessage().equals("Your Email and KTP Number Exist!")){
-                       Toast.makeText(getApplicationContext(),"Nomor KTP atau Email Anda telah Terdaftar",Toast.LENGTH_SHORT);
+                   } else if (userResponse.getMessage().contains("Your Email and KTP Number Exist!")){
+                       Log.v("cek","Masuk 1");
+                       Toast.makeText(ApplyPersonalDataActivity.this,"Nomor KTP atau Email Anda telah Terdaftar",Toast.LENGTH_SHORT).show();
                    }
                    else {
-                       Toast.makeText(getApplicationContext(),"Mohon Periksa Kembali Data Anda",Toast.LENGTH_SHORT);
+                       Toast.makeText(getApplicationContext(),"Mohon Periksa Kembali Data Anda",Toast.LENGTH_SHORT).show();
                    }
                });
 
@@ -406,26 +401,23 @@ public class ApplyPersonalDataActivity extends SingleActivity {
     private void checkEnabledButton() {
         String email = et_email.getText().toString();
         String ektp = et_ektp.getText().toString();
-//        String alamat = etAlamatLengkap.getText().toString();
-//        String rtrw = etRtRw.getText().toString();
-//        String inputTelpRumah = etTelpRumah.getText().toString();
+        String nama = et_nama.getText().toString();
+        String alamat = et_alamat.getText().toString();
+        String rtrw = et_rt_rw.getText().toString();
+
         boolean flag = true;
 
-        if (email.isEmpty() || ektp.isEmpty()) flag = false;
-//        if (email.isEmpty() || rtrw.isEmpty() || alamat.isEmpty()) flag = false;
+        if (email.isEmpty() || ektp.isEmpty()||nama.isEmpty() || alamat.isEmpty()||rtrw.isEmpty()) flag = false;
 
-//        if (!switchPunyaTelpRumah.isChecked() && inputTelpRumah.isEmpty()) flag = true;
-//        if (switchPunyaTelpRumah.isChecked() && inputTelpRumah.isEmpty()) flag = false;
-//        if (!switchPunyaTelpRumah.isChecked() && !inputTelpRumah.isEmpty()) flag = true;
-//
-//        if (spPendidikan.getSelectedItemPosition() == 0 ||
-//                spStatusPerkawinan.getSelectedItemPosition() == 0 ||
-//                spProvinsi.getSelectedItemPosition() == 0 ||
-//                spKabupaten.getSelectedItemPosition() == 0 ||
-//                spStatusRumah.getSelectedItemPosition() == 0 ||
-//                spLamaMenempati.getSelectedItemPosition() == 0) {
-//            flag = false;
-//        }
+        if (sp_pendidikan.getSelectedItemPosition() < 0 ||
+                sp_status_perkawinan.getSelectedItemPosition() < 0 ||
+                sp_provinsi.getSelectedItemPosition() < 0 ||
+                sp_kabupaten.getSelectedItemPosition() < 0 ||
+                sp_kecamatan.getSelectedItemPosition() < 0 ||
+                sp_kelurahan.getSelectedItemPosition() < 0 ||
+                sp_status_rumah.getSelectedItemPosition() < 0) {
+            flag = false;
+        }
 
         if (flag) {
             btn_simpan.setEnabled(true);

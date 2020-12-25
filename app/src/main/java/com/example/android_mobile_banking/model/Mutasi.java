@@ -3,12 +3,21 @@ package com.example.android_mobile_banking.model;
 public class Mutasi {
     private String no_rekening;
     private String nama_transaksi;
+    private String desc_transaksi;
     private int nominal;
     private String status_transaksi;
     private String card_no;
     private String tgl_transaksi;
 
     public Mutasi() {
+    }
+
+    public String getDesc_transaksi() {
+        return desc_transaksi;
+    }
+
+    public void setDesc_transaksi(String desc_transaksi) {
+        this.desc_transaksi = desc_transaksi;
     }
 
     public String getNo_rekening() {

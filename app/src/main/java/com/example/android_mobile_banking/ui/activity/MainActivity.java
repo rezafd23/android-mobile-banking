@@ -32,7 +32,7 @@ public class MainActivity extends SingleActivity {
 
     private UserViewModel userViewModel;
 
-    private BottomNavigationView navigationView;
+    private BottomNavigationView navigationView,navigationView2;
     private NestedScrollView scrollView;
     private RelativeLayout layout_loading_data, layout_apply_onprogress,
             layout_credit_finish;
@@ -40,7 +40,7 @@ public class MainActivity extends SingleActivity {
     private AppCompatButton btn_ajukan,btn_continue_apply;
     private SwipeRefreshLayout swiperefresh;
     private HorizontalScrollView scroll_ewallet;
-    private AppCompatTextView cardName1,tv_cash_used;
+    private AppCompatTextView cardName1,tv_cash_used,welcome_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +48,14 @@ public class MainActivity extends SingleActivity {
         setContentView(R.layout.activity_main);
         initView();
         navigationView.setItemIconTintList(null);
+        navigationView2.setItemIconTintList(null);
 
         getDataUser(Util.getData(getApplication(), "access_token"));
         doAjukan();
         doContinue();
         doRefresh();
         doMenu();
+        doMenu2();
     }
 
     private void doMenu(){
@@ -65,12 +67,35 @@ public class MainActivity extends SingleActivity {
                         MutasiRekeningActivity.navigate(MainActivity.this);
 //                        mfragment = new Home();
                         break;
-                    case R.id.qris:
+                    case R.id.profile:
+                        ProfileActivity.navigate(MainActivity.this,"APPLICATION_SUCCESS");
 //                        mfragment = new Search();
                         break;
                     case R.id.pln:
                         BuyPlnActivity.navigate(MainActivity.this);
 //                        mfragment = new Acount();
+                        break;
+                    case R.id.logout:
+                        LoginPinActivity.navigate(MainActivity.this,true);
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+
+    private void doMenu2(){
+        navigationView2.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+
+                    case R.id.profile:
+                        ProfileActivity.navigate(MainActivity.this,"NOT_YET");
+//                        mfragment = new Search();
+                        break;
+                    case R.id.logout:
+                        LoginPinActivity.navigate(MainActivity.this,true);
                         break;
                 }
                 return true;
@@ -94,6 +119,7 @@ public class MainActivity extends SingleActivity {
 
     private void initView() {
         navigationView = findViewById(R.id.bottomnav);
+        navigationView2 = findViewById(R.id.bottomnav2);
         scrollView = findViewById(R.id.scroll_view);
         layout_loading_data = findViewById(R.id.layout_loading_data);
         layout_apply_new = findViewById(R.id.layout_apply_new);
@@ -106,6 +132,7 @@ public class MainActivity extends SingleActivity {
         cardName1 = findViewById(R.id.cardName1);
         layoutCard1 = findViewById(R.id.layoutCard1);
         tv_cash_used = findViewById(R.id.tv_cash_used);
+        welcome_text = findViewById(R.id.welcome_text);
 
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
     }
@@ -167,6 +194,7 @@ public class MainActivity extends SingleActivity {
 
             switch (application_status){
                 case "NOT_YET":
+                    navigationView2.setVisibility(View.VISIBLE);
                     layout_loading_data.setVisibility(View.GONE);
                     layout_credit_finish.setVisibility(View.GONE);
                     layout_apply_onprogress.setVisibility(View.GONE);
@@ -177,6 +205,7 @@ public class MainActivity extends SingleActivity {
                     break;
                 case "IN_PROGGRESS":
                     layout_apply_onprogress.setVisibility(View.VISIBLE);
+                    navigationView2.setVisibility(View.VISIBLE);
                     layout_loading_data.setVisibility(View.GONE);
                     layout_credit_finish.setVisibility(View.GONE);
                     layout_apply_new.setVisibility(View.GONE);
@@ -190,6 +219,7 @@ public class MainActivity extends SingleActivity {
                     layout_apply_onprogress.setVisibility(View.GONE);
                     layout_credit_finish.setVisibility(View.VISIBLE);
                     navigationView.setVisibility(View.VISIBLE);
+                    navigationView2.setVisibility(View.GONE);
                     layoutCard1.setVisibility(View.VISIBLE);
                     scroll_ewallet.setVisibility(View.VISIBLE);
                     Log.v("saldo: ",jsonObject.getJSONObject("banking").getString("saldo"));
@@ -199,6 +229,10 @@ public class MainActivity extends SingleActivity {
                         tv_cash_used.setText(String.valueOf(jsonObject.getJSONObject("banking").getInt("saldo")));
                     }
                     cardName1.setText(jsonObject.getJSONObject("personal").getString("nama"));
+
+                    String[]arrName=jsonObject.getJSONObject("personal").getString("nama").split(" ");
+
+                    welcome_text.setText("Hi,\n"+arrName[0]+"!");
                     break;
             }
         } catch (Exception e) {

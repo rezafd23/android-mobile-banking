@@ -337,11 +337,13 @@ public class UserRepositories {
                                         List<Mutasi> listMutasi = new ArrayList<>();
                                         for (int i = 0; i < response.getJSONArray("payload").length(); i++) {
                                             Mutasi mutasi = new Mutasi();
-                                            mutasi.setNo_rekening(response.getJSONArray("payload").getJSONObject(0).getString("no_rekening"));
-                                            mutasi.setNama_transaksi(response.getJSONArray("payload").getJSONObject(0).getString("nama_transaksi"));
-                                            mutasi.setNominal(response.getJSONArray("payload").getJSONObject(0).getInt("nominal"));
-                                            mutasi.setStatus_transaksi(response.getJSONArray("payload").getJSONObject(0).getString("status_transaksi"));
-                                            mutasi.setTgl_transaksi(response.getJSONArray("payload").getJSONObject(0).getString("tgl_transaksi"));
+                                            mutasi.setNo_rekening(response.getJSONArray("payload").getJSONObject(i).getString("no_rekening"));
+                                            mutasi.setNama_transaksi(response.getJSONArray("payload").getJSONObject(i).getString("nama_transaksi"));
+                                            mutasi.setDesc_transaksi(response.getJSONArray("payload").getJSONObject(i).getString("desc_transaksi"));
+                                            mutasi.setNominal(response.getJSONArray("payload").getJSONObject(i).getInt("nominal"));
+                                            mutasi.setStatus_transaksi(response.getJSONArray("payload").getJSONObject(i).getString("status_transaksi"));
+                                            mutasi.setTgl_transaksi(response.getJSONArray("payload").getJSONObject(i).getString("tgl_transaksi"));
+                                            mutasi.setCard_no(response.getJSONArray("payload").getJSONObject(i).getString("card_no"));
                                             listMutasi.add(mutasi);
                                         }
                                         res.setMutasiList(listMutasi);

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    tools:context=".ui.activity.DetailTransactionActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/deep_blue">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_2"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detai_transaksi"
+            android:layout_marginStart="@dimen/pad_24"
+            android:textSize="@dimen/text_xs_18"
+            android:textColor="@color/white"
+            android:fontFamily="@font/opensans_regular"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/deep_blue"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="@dimen/pad_32"
+        android:layout_marginStart="@dimen/pad_32"
+        android:layout_marginEnd="@dimen/pad_32"
+        android:background="@color/white"
+        android:orientation="vertical">
+        
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/logo"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/pad_10"/>
+        
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_tgl_trx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tgl trx"
+            android:layout_marginStart="@dimen/pad_10"
+            android:layout_marginBottom="@dimen/pad_10"
+            android:fontFamily="@font/nunito_regular"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="@dimen/pad_5"
+            android:layout_marginEnd="@dimen/pad_5"
+            android:background="@color/colorDarkGrey"
+            android:layout_marginBottom="@dimen/pad_10"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="@dimen/pad_10"
+            android:layout_marginBottom="@dimen/pad_10">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_complete_2"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Transaksi Berhasil"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_nama_transaksi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_xs_16"
+            android:textColor="@color/black"
+            android:fontFamily="@font/opensans_regular"
+            android:layout_marginStart="@dimen/pad_10"
+            android:text="Nama Transaksi"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pad_10"
+            android:layout_marginEnd="@dimen/pad_10"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/pad_10"
+            android:background="@drawable/bg_date_mutasi">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_token"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextHyperlink"
+                android:textStyle="bold"
+                android:paddingTop="@dimen/pad_10"
+                android:paddingBottom="@dimen/pad_10"
+                android:text="NOMOR TOKEN"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pad_10"
+            android:layout_marginEnd="@dimen/pad_10"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/pad_10"
+            android:background="#e2fafe">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:paddingTop="@dimen/pad_10"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/pad_5"
+                android:paddingBottom="@dimen/pad_10"
+                android:text="Total Payment"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_total_payment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:paddingTop="@dimen/pad_10"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:layout_marginEnd="@dimen/pad_5"
+                android:paddingBottom="@dimen/pad_10"
+                android:text="Rp."/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pad_10"
+            android:layout_marginEnd="@dimen/pad_10"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/pad_5">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/pad_10"
+                android:textStyle="bold"
+                android:fontFamily="@font/opensans_regular"
+                android:layout_marginStart="@dimen/pad_5"
+                android:paddingBottom="@dimen/pad_10"
+                android:text="Debit Card No."/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_card_no"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/rubik"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/pad_10"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:layout_marginEnd="@dimen/pad_5"
+                android:paddingBottom="@dimen/pad_10"
+                android:text="12345567"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_btn_primary"
+            android:layout_marginTop="@dimen/pad_24"
+            android:text="@string/kembali_ke_home"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:fontFamily="@font/opensans_bold"
+            android:layout_marginStart="@dimen/pad_10"
+            android:layout_marginEnd="@dimen/pad_10"/>
+
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</RelativeLayout>

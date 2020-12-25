@@ -226,4 +226,47 @@ public class AuthRepositories {
         }
         return registerData;
     }
+
+    public MutableLiveData<AuthResponse> generateOtp(String phone_number) {
+        MutableLiveData<AuthResponse> registerData = new MutableLiveData<>();
+
+        try {
+            final AuthResponse res = new AuthResponse();
+            AndroidNetworking.post(ApiService.generateOtp)
+                    .addBodyParameter("phone_number",phone_number)
+                    .setTag("generateOtp")
+                    .setPriority(Priority.MEDIUM)
+                    .build()
+                    .getAsJSONObject(new JSONObjectRequestListener() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                if (response.getString("response").equals("200")) {
+                                    res.setResponse(response.getString("response"));
+                                    res.setStatus(response.getString("status"));
+                                    res.setPayloadData(response.getJSONObject("payload"));
+                                } else {
+                                    res.setResponse(response.getString("response"));
+                                    res.setPayload(response.getString("payload"));
+                                }
+                                registerData.setValue(res);
+                            } catch (Exception e) {
+                                registerData.setValue(null);
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onError(ANError anError) {
+                            registerData.setValue(null);
+                            Log.v("Cek Error", "onError: " + anError);
+                            anError.printStackTrace();
+                        }
+                    });
+        } catch (Exception e) {
+            registerData.setValue(null);
+            e.printStackTrace();
+        }
+        return registerData;
+    }
 }

@@ -41,11 +41,11 @@ public class TokenViewModel extends ViewModel {
     }
 
 
-public LiveData<TokenResponse> buyToken(JSONObject paramToken){
+public LiveData<TokenResponse> buyToken(JSONObject paramToken,String auth){
         if (mutableLiveData==null){
             tokenRepositories=TokenRepositories.getInstance();
         }
-        mutableLiveData=tokenRepositories.buyToken(paramToken);
+        mutableLiveData=tokenRepositories.buyToken(paramToken, auth);
         return mutableLiveData;
     }
 }
