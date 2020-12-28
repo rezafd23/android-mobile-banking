@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -81,7 +82,12 @@ public class LoginTermDialog extends Dialog implements CustomScrollView.ScrollVi
     }
 
     private void getTncData() {
-        mWebView.loadData(String.valueOf(R.string.tnc_text), "text/html", "utf-8");
+        String data3 ="  <![CDATA[\n" +
+                "       <h2>Apakah Lorem Ipsum itu?</h2> <br>\n" +
+                "        Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting.\n" +
+                "        <br>Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf. Ia tidak hanya bertahan selama 5 abad, tapi juga telah beralih ke penataan huruf elektronik, tanpa ada perubahan apapun. Ia mulai dipopulerkan pada tahun 1960 dengan diluncurkannya lembaran-lembaran Letraset yang menggunakan kalimat-kalimat dari Lorem Ipsum, dan seiring munculnya perangkat lunak Desktop Publishing seperti Aldus PageMaker juga memiliki versi Lorem Ipsum.</p>\n" +
+                "    ]]>";
+        mWebView.loadData(String.valueOf(Html.fromHtml(data3)), "text/html", "utf-8");
     }
     private void initView(){
         Window window = this.getWindow();

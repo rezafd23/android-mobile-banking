@@ -194,7 +194,7 @@ public class LoginActivity extends SingleActivity {
         et_phone.setText("");
         cb_tnc.setChecked(false);
         tv_title1.setText("Ayo Gunakan");
-        tv_title2.setText("mySyaria");
+        tv_title2.setText("mySharia");
         tv_sign_up.setText("LOGIN");
         btn_signup.setText("SIGNUP");
     }
@@ -203,7 +203,7 @@ public class LoginActivity extends SingleActivity {
         et_phone.setText("");
         cb_tnc.setChecked(false);
         tv_title1.setText("Selamat \nDatang Kembali");
-        tv_title2.setText("di mySyaria");
+        tv_title2.setText("di mySharia");
         tv_sign_up.setText("SIGNUP");
         btn_signup.setText("LOGIN");
     }

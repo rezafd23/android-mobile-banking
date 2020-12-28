@@ -12,7 +12,7 @@
         android:layout_height="@dimen/logo_200"
         android:layout_centerInParent="true"
         android:adjustViewBounds="true"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logonew" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
